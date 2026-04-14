@@ -1,0 +1,53 @@
+{
+  "EDUCATION_LEVELS": {
+    "elementary": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "middle": [
+      6,
+      7,
+      8
+    ],
+    "high": [
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "LABEL_MAP": {
+    "elementary": 0,
+    "middle": 1,
+    "high": 2
+  },
+  "LABEL_NAMES": [
+    "elementary",
+    "middle",
+    "high"
+  ],
+  "DATASET_NAME": "derek-thomas/ScienceQA",
+  "SAMPLES_PER_LEVEL": 1516,
+  "TOTAL_BALANCED": 4548,
+  "TRAIN_SIZE": 3638,
+  "TEST_SIZE": 910,
+  "LLM_MODELS": {
+    "llama2-7b": "meta-llama/Llama-2-7b-chat-hf",
+    "llama2-13b": "meta-llama/Llama-2-13b-chat-hf",
+    "mistral-7b": "mistralai/Mistral-7B-Instruct-v0.2",
+    "gemma-7b": "google/gemma-7b-it"
+  },
+  "LLM_TEMPERATURE": 0.0,
+  "LLM_MAX_NEW_TOKENS": 256,
+  "LLM_MAX_INPUT_LENGTH": 2048,
+  "NUM_STATIC_METRICS": 46,
+  "NUM_PROMPT_METRICS": 63,
+  "BOOTSTRAP_SAMPLES": 1000,
+  "SIGNIFICANCE_LEVEL": 0.05,
+  "ZERO_SHOT_PROMPT": "Your task is to predict the education level corresponding to a given text. You are provided with three labels to choose from: 1) elementary school 2) middle school 3) high school. Text: {text} Educational level: ",
+  "DEFAULT_INVALID_LABEL": "elementary",
+  "RANDOM_SEED": 42
+}

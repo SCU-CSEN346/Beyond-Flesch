@@ -1,0 +1,326 @@
+{
+  "total_metrics": 63,
+  "categories": {
+    "education_level": 30,
+    "complexity": 8,
+    "topic": 10,
+    "readability": 15
+  },
+  "metrics": [
+    {
+      "id": 0,
+      "question": "Is this text readable for a elementary school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 1,
+      "question": "Is this text suitable for a elementary school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 2,
+      "question": "Is this text easy to understand for elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 3,
+      "question": "Is this text relevant to curriculum topics for elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 4,
+      "question": "Is this text relevant to the knowledge and experiences of elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 5,
+      "question": "Could an average elementary school student engage with the content of this task?",
+      "category": "education_level"
+    },
+    {
+      "id": 6,
+      "question": "Could most elementary school students complete this task without significant difficulty?",
+      "category": "education_level"
+    },
+    {
+      "id": 7,
+      "question": "Is this text appropriate for the skills and knowledges of elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 8,
+      "question": "Is the length of this text suitable for elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 9,
+      "question": "Would the vocabulary in this text be comprehensible to elementary school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 10,
+      "question": "Is this text readable for a middle school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 11,
+      "question": "Is this text suitable for a middle school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 12,
+      "question": "Is this text easy to understand for middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 13,
+      "question": "Is this text relevant to curriculum topics for middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 14,
+      "question": "Is this text relevant to the knowledge and experiences of middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 15,
+      "question": "Could an average middle school student engage with the content of this task?",
+      "category": "education_level"
+    },
+    {
+      "id": 16,
+      "question": "Could most middle school students complete this task without significant difficulty?",
+      "category": "education_level"
+    },
+    {
+      "id": 17,
+      "question": "Is this text appropriate for the skills and knowledges of middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 18,
+      "question": "Is the length of this text suitable for middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 19,
+      "question": "Would the vocabulary in this text be comprehensible to middle school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 20,
+      "question": "Is this text readable for a high school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 21,
+      "question": "Is this text suitable for a high school student?",
+      "category": "education_level"
+    },
+    {
+      "id": 22,
+      "question": "Is this text easy to understand for high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 23,
+      "question": "Is this text relevant to curriculum topics for high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 24,
+      "question": "Is this text relevant to the knowledge and experiences of high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 25,
+      "question": "Could an average high school student engage with the content of this task?",
+      "category": "education_level"
+    },
+    {
+      "id": 26,
+      "question": "Could most high school students complete this task without significant difficulty?",
+      "category": "education_level"
+    },
+    {
+      "id": 27,
+      "question": "Is this text appropriate for the skills and knowledges of high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 28,
+      "question": "Is the length of this text suitable for high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 29,
+      "question": "Would the vocabulary in this text be comprehensible to high school students?",
+      "category": "education_level"
+    },
+    {
+      "id": 30,
+      "question": "Does this text contain metaphors and/or figurative language?",
+      "category": "complexity"
+    },
+    {
+      "id": 31,
+      "question": "Does this text use complex language?",
+      "category": "complexity"
+    },
+    {
+      "id": 32,
+      "question": "Does this text use simple language?",
+      "category": "complexity"
+    },
+    {
+      "id": 33,
+      "question": "Does this text contain technical jargon?",
+      "category": "complexity"
+    },
+    {
+      "id": 34,
+      "question": "Does this text contain basic concepts that are easy to comprehend?",
+      "category": "complexity"
+    },
+    {
+      "id": 35,
+      "question": "Does this text cover multiple concepts?",
+      "category": "complexity"
+    },
+    {
+      "id": 36,
+      "question": "Does this text provide a very explicit explanation?",
+      "category": "complexity"
+    },
+    {
+      "id": 37,
+      "question": "Does this text contain simple examples?",
+      "category": "complexity"
+    },
+    {
+      "id": 38,
+      "question": "Is this text about science?",
+      "category": "topic"
+    },
+    {
+      "id": 39,
+      "question": "Is this text about language science?",
+      "category": "topic"
+    },
+    {
+      "id": 40,
+      "question": "Is this text about natural science?",
+      "category": "topic"
+    },
+    {
+      "id": 41,
+      "question": "Is this text about social science?",
+      "category": "topic"
+    },
+    {
+      "id": 42,
+      "question": "Is this text about math?",
+      "category": "topic"
+    },
+    {
+      "id": 43,
+      "question": "Is this text about physics?",
+      "category": "topic"
+    },
+    {
+      "id": 44,
+      "question": "Is this text about chemistry?",
+      "category": "topic"
+    },
+    {
+      "id": 45,
+      "question": "Is this text about earth science?",
+      "category": "topic"
+    },
+    {
+      "id": 46,
+      "question": "Is this text about world history?",
+      "category": "topic"
+    },
+    {
+      "id": 47,
+      "question": "Is this text about geography?",
+      "category": "topic"
+    },
+    {
+      "id": 48,
+      "question": "Based on the Flesch-Kincaid reading-ease score, is this text suitable for elementary school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 49,
+      "question": "Based on the Flesch-Kincaid reading-ease score, is this text suitable for middle school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 50,
+      "question": "Based on the Flesch-Kincaid reading-ease score, is this text suitable for high school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 51,
+      "question": "Based on the Gunning Fog Index, is this text suitable for elementary school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 52,
+      "question": "Based on the Gunning Fog Index, is this text suitable for middle school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 53,
+      "question": "Based on the Gunning Fog Index, is this text suitable for high school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 54,
+      "question": "Based on the Coleman-Liau Index, is this text suitable for elementary school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 55,
+      "question": "Based on the Coleman-Liau Index, is this text suitable for middle school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 56,
+      "question": "Based on the Coleman-Liau Index, is this text suitable for high school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 57,
+      "question": "Based on the Automated Readability Index (ARI), is this text suitable for elementary school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 58,
+      "question": "Based on the Automated Readability Index (ARI), is this text suitable for middle school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 59,
+      "question": "Based on the Automated Readability Index (ARI), is this text suitable for high school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 60,
+      "question": "Based on the SMOG Index, is this text suitable for elementary school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 61,
+      "question": "Based on the SMOG Index, is this text suitable for middle school readers?",
+      "category": "readability"
+    },
+    {
+      "id": 62,
+      "question": "Based on the SMOG Index, is this text suitable for high school readers?",
+      "category": "readability"
+    }
+  ]
+}
