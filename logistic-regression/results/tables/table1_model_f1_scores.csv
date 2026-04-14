@@ -1,0 +1,4 @@
+model,macro_f1,elementary_f1,middle_f1,high_f1
+STATIC (SelectKBest k=35),0.7778,0.8322,0.694,0.807
+PROMPT (SelectKBest k=50),0.6813,0.6699,0.5597,0.8144
+COMBO (SelectKBest k=70),0.7894,0.8464,0.6988,0.823

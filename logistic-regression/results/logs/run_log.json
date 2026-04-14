@@ -1,0 +1,13 @@
+{
+  "run_date": "2026-04-14 17:37",
+  "static_f1": 0.7778,
+  "prompt_f1": 0.6813,
+  "combo_f1": 0.7894,
+  "zero_shot_f1": 0.1654,
+  "few_shot_f1": 0.1856,
+  "prompt_model": "gemma-7b",
+  "train_size": 3638,
+  "test_size": 910,
+  "bootstrap_combo_significant": true,
+  "bootstrap_combo_pvalue": 0.031
+}

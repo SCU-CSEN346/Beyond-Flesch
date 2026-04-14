@@ -1,0 +1,10 @@
+model,class,precision,recall,f1_score,support
+STATIC (SelectKBest k=35),elementary,0.8295,0.835,0.8322,303
+STATIC (SelectKBest k=35),middle,0.7224,0.6678,0.694,304
+STATIC (SelectKBest k=35),high,0.7809,0.835,0.807,303
+PROMPT (SelectKBest k=50),elementary,0.6571,0.6832,0.6699,303
+PROMPT (SelectKBest k=50),middle,0.6109,0.5164,0.5597,304
+PROMPT (SelectKBest k=50),high,0.7722,0.8614,0.8144,303
+COMBO (SelectKBest k=70),elementary,0.8382,0.8548,0.8464,303
+COMBO (SelectKBest k=70),middle,0.7329,0.6678,0.6988,304
+COMBO (SelectKBest k=70),high,0.7963,0.8515,0.823,303

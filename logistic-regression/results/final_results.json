@@ -1,0 +1,123 @@
+{
+  "model_results": {
+    "static": {
+      "name": "STATIC (SelectKBest k=35)",
+      "macro_f1": 0.777757159994002,
+      "report": {
+        "elementary": {
+          "precision": 0.8295081967213115,
+          "recall": 0.834983498349835,
+          "f1-score": 0.8322368421052632,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.7808641975308642,
+          "recall": 0.834983498349835,
+          "f1-score": 0.8070175438596491,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.7224199288256228,
+          "recall": 0.6677631578947368,
+          "f1-score": 0.694017094017094,
+          "support": 304.0
+        },
+        "accuracy": 0.7791208791208791,
+        "macro avg": {
+          "precision": 0.7775974410259329,
+          "recall": 0.7792433848648023,
+          "f1-score": 0.777757159994002,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.7775368063971413,
+          "recall": 0.7791208791208791,
+          "f1-score": 0.777665137943478,
+          "support": 910.0
+        }
+      }
+    },
+    "prompt": {
+      "name": "PROMPT (SelectKBest k=50)",
+      "macro_f1": 0.6813234272444121,
+      "report": {
+        "elementary": {
+          "precision": 0.6571428571428571,
+          "recall": 0.6831683168316832,
+          "f1-score": 0.6699029126213593,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.772189349112426,
+          "recall": 0.8613861386138614,
+          "f1-score": 0.8143525741029641,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.6108949416342413,
+          "recall": 0.5164473684210527,
+          "f1-score": 0.5597147950089126,
+          "support": 304.0
+        },
+        "accuracy": 0.6868131868131868,
+        "macro avg": {
+          "precision": 0.6800757159631748,
+          "recall": 0.6870006079555324,
+          "f1-score": 0.6813234272444121,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.6799996931342418,
+          "recall": 0.6868131868131868,
+          "f1-score": 0.6811897913848125,
+          "support": 910.0
+        }
+      }
+    },
+    "combo": {
+      "name": "COMBO (SelectKBest k=70)",
+      "macro_f1": 0.7893889722193649,
+      "report": {
+        "elementary": {
+          "precision": 0.8381877022653722,
+          "recall": 0.8547854785478548,
+          "f1-score": 0.8464052287581699,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.7962962962962963,
+          "recall": 0.8514851485148515,
+          "f1-score": 0.8229665071770335,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.7328519855595668,
+          "recall": 0.6677631578947368,
+          "f1-score": 0.6987951807228916,
+          "support": 304.0
+        },
+        "accuracy": 0.7912087912087912,
+        "macro avg": {
+          "precision": 0.7891119947070783,
+          "recall": 0.7913445949858143,
+          "f1-score": 0.7893889722193649,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.7890501705212021,
+          "recall": 0.7912087912087912,
+          "f1-score": 0.7892894186023358,
+          "support": 910.0
+        }
+      }
+    }
+  },
+  "ood_results": {
+    "ScienceQA_indomain": 0.777757159994002,
+    "OneStopEnglish": 0.1935,
+    "UniversalCEFR": 0.4221,
+    "random_baseline": 0.3333
+  },
+  "prompt_model_used": "gemma-7b",
+  "bootstrap_significant": true
+}
