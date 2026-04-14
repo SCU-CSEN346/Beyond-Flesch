@@ -20,8 +20,8 @@ Rooein et al. (2024) classify educational texts into three grade buckets — ele
 That's where we're going. On top of the reproduction, we're adapting the scalar-mixed transformer with rational regression heads from Gombert et al. (2024) — originally built for biomedical item difficulty — to this task, and testing how well it holds up when we hold out entire ScienceQA subjects from training. S1 covers the intro, related work, and the data + metrics pipeline. The model work starts in S2.
 
 **Links**
-- Paper (Overleaf): 
-- HF Dataset: 
+- Paper (Overleaf): https://www.overleaf.com/project/69d7dc6cf65cac573d60c762
+- HF Dataset: https://huggingface.co/datasets/nlpscu/Beyond-Flesch
 - HF Model: In Progress
 
 ---
