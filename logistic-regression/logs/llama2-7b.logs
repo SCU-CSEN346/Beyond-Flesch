@@ -1,0 +1,15 @@
+
+Output logs from `python step5_llama2_7b_inference.py` run.
+
+-----------------------------------------
+...
+...
+...
+
+Done! 4548 texts in 413.0 min
+Saved: (3638, 64) train, (910, 64) test
+  /home/shrishti/my_repos/text_difficulty_classifier/outputs/prompt_metrics/train_prompt_metrics_mistral-7b.csv
+  /home/shrishti/my_repos/text_difficulty_classifier/outputs/prompt_metrics/test_prompt_metrics_mistral-7b.csv
+
+llama2-7b COMPLETE!
+-----------------------------------------

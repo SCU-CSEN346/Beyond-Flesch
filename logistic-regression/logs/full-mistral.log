@@ -1,0 +1,427 @@
+$python step5_mistral_inference.py
+[runner] PROJECT_ROOT = /home/shrishti/my_repos/text_difficulty_classifier
+GPU: NVIDIA RTX 5880 Ada Generation
+Memory: 50.9 GB
+Model: mistral-7b (mistralai/Mistral-7B-Instruct-v0.2)
+Texts: 4548 | Prompts: 63 | Total calls: 286,524
+Loading mistral-7b...
+config.json: 100%|█████████████████████████████| 596/596 [00:00<00:00, 5.27MB/s]
+tokenizer_config.json: 2.10kB [00:00, 13.4MB/s]
+tokenizer.json: 1.80MB [00:00, 21.3MB/s]
+tokenizer.model: 100%|███████████████████████| 493k/493k [00:00<00:00, 1.15MB/s]
+special_tokens_map.json: 100%|█████████████████| 414/414 [00:00<00:00, 5.39MB/s]
+model.safetensors.index.json: 25.1kB [00:00, 136MB/s]
+Downloading (incomplete total...):  32%|▉  | 4.64G/14.5G [00:51<02:07, 77.2MB/s]Downlo
+ading (incomplete total...):  35%|█▍  | 5.11G/14.5G [00:53<01:10, 134MB/s]Downloading
+(incomplete total...):  36%|█▍  | 5.17G/14.5G [00:53<01:05, 143MB/s]^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[BDownloading (incomplete total.
+..):  36%|█▍  | 5.24G/14.5G [00:54<01:07, 138MB/s]Downloading (incomplete total...):
+48%|█▉  | 6.91G/14.5G [01:05<00:57, 132MB/s]Downloading (incomplete total...):  48%|█▉
+  | 6.97G/14.5G [01:06<01:13, 102MB/s]^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[BDownloading (incomplete total...):  75%|██▉ | 10.8G/14.5G [01:32<00:18,
+205MB/s]^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[BFetching 3 files: 100%
+|███████████████████████████| 3/3 [01:46<00:00, 35.57s/it]
+Download complete: 100%|████████████████████| 14.5G/14.5G [01:46<00:00, 136MB/s]
+Loading weights: 100%|████████████████████████| 291/291 [00:10<00:00, 27.35it/s]
+generation_config.json: 100%|██████████████████| 111/111 [00:00<00:00, 1.24MB/s]
+Model loaded: mistral-7b
+GPU memory: 50.9 GB → BATCH_SIZE = 16
+/home/shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/b
+itsandbytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast
+ from torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+Test: 'Yes.' -> 1
+Batch inference ready! BATCH_SIZE=16
+RESUMING from text 2300/4548
+Remaining: 2248 texts
+mistral-7b batched:   0%|                              | 0/2248 [00:00<?, ?it/s]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:   0%|                    | 9/2248 [02:29<9:10:27, 14.75s/it]^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[Bmistral-7b batched:   2%|▍
+        | 49/2248 [14:18<9:37:42, 15.76s/it]  Checkpoint 2350/4548 | 0.06 texts/sec |
+~640 min left
+mistral-7b batched:   2%|▍                  | 50/2248 [14:33<9:19:19, 15.27s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:   3%|▌                 | 74/2248 [22:07<10:16:06, 17.00s/it]^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[Bmistral-7b batched
+:   4%|▋                 | 90/2248 [26:32<10:02:10, 16.74s/it]^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[
+[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[Bmistral-7b batched:   4%|▊                  | 99/2248
+[29:01<9:41:00, 16.22s/it]  Checkpoint 2400/4548 | 0.06 texts/sec | ~633 min left
+mistral-7b batched:   4%|▊                | 100/2248 [29:26<11:20:51, 19.02s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:   7%|█▏                | 149/2248 [43:31<8:56:25, 15.33s/it]  Chec
+kpoint 2450/4548 | 0.06 texts/sec | ~614 min left
+mistral-7b batched:   7%|█▏               | 150/2248 [43:55<10:26:46, 17.92s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:   9%|█▌               | 199/2248 [58:32<10:07:31, 17.79s/it]  Chec
+kpoint 2500/4548 | 0.06 texts/sec | ~603 min left
+mistral-7b batched:   9%|█▌               | 200/2248 [58:53<10:39:25, 18.73s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  11%|█▊              | 249/2248 [1:12:44<9:23:15, 16.91s/it]  Chec
+kpoint 2550/4548 | 0.06 texts/sec | ~584 min left
+mistral-7b batched:  11%|█▊              | 250/2248 [1:13:02<9:35:16, 17.28s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  13%|██▏             | 299/2248 [1:26:42<8:19:29, 15.38s/it]  Chec
+kpoint 2600/4548 | 0.06 texts/sec | ~565 min left
+mistral-7b batched:  13%|██▏             | 300/2248 [1:27:03<9:09:03, 16.91s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  16%|██▍             | 349/2248 [1:41:13<8:39:46, 16.42s/it]  Chec
+kpoint 2650/4548 | 0.06 texts/sec | ~550 min left
+mistral-7b batched:  16%|██▍             | 350/2248 [1:41:28<8:26:14, 16.00s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  18%|██▊             | 399/2248 [1:55:14<8:46:47, 17.09s/it]  Chec
+kpoint 2700/4548 | 0.06 texts/sec | ~534 min left
+mistral-7b batched:  18%|██▊             | 400/2248 [1:55:36<9:35:04, 18.67s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  20%|███▏            | 449/2248 [2:09:17<8:24:52, 16.84s/it]  Chec
+kpoint 2750/4548 | 0.06 texts/sec | ~517 min left
+mistral-7b batched:  20%|███▏            | 450/2248 [2:09:30<7:50:51, 15.71s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  22%|███▌            | 499/2248 [2:22:56<7:42:03, 15.85s/it]  Chec
+kpoint 2800/4548 | 0.06 texts/sec | ~500 min left
+mistral-7b batched:  22%|███▌            | 500/2248 [2:23:09<7:12:55, 14.86s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  24%|███▉            | 549/2248 [2:36:34<7:58:15, 16.89s/it]  Chec
+kpoint 2850/4548 | 0.06 texts/sec | ~484 min left
+mistral-7b batched:  24%|███▉            | 550/2248 [2:36:51<8:05:12, 17.15s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  27%|████▎           | 599/2248 [2:50:48<7:10:07, 15.65s/it]  Chec
+kpoint 2900/4548 | 0.06 texts/sec | ~470 min left
+mistral-7b batched:  27%|████▎           | 600/2248 [2:51:07<7:39:50, 16.74s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  29%|████▌           | 649/2248 [3:05:04<7:26:23, 16.75s/it]  Chec
+kpoint 2950/4548 | 0.06 texts/sec | ~456 min left
+mistral-7b batched:  29%|████▋           | 650/2248 [3:05:27<8:13:00, 18.51s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  31%|████▉           | 699/2248 [3:19:18<7:11:59, 16.73s/it]  Chec
+kpoint 3000/4548 | 0.06 texts/sec | ~441 min left
+mistral-7b batched:  31%|████▉           | 700/2248 [3:19:37<7:32:00, 17.52s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  33%|█████▎          | 749/2248 [3:33:46<8:15:32, 19.83s/it]  Chec
+kpoint 3050/4548 | 0.06 texts/sec | ~428 min left
+mistral-7b batched:  33%|█████▎          | 750/2248 [3:34:05<8:08:27, 19.56s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  36%|█████▋          | 799/2248 [3:48:02<7:34:11, 18.81s/it]  Chec
+kpoint 3100/4548 | 0.06 texts/sec | ~413 min left
+mistral-7b batched:  36%|█████▋          | 800/2248 [3:48:15<6:54:18, 17.17s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  38%|██████          | 849/2248 [4:03:05<6:28:01, 16.64s/it]  Chec
+kpoint 3150/4548 | 0.06 texts/sec | ~400 min left
+mistral-7b batched:  38%|██████          | 850/2248 [4:03:21<6:25:11, 16.53s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  40%|██████▍         | 899/2248 [4:17:05<5:52:08, 15.66s/it]  Chec
+kpoint 3200/4548 | 0.06 texts/sec | ~385 min left
+mistral-7b batched:  40%|██████▍         | 900/2248 [4:17:21<5:51:40, 15.65s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  42%|██████▊         | 949/2248 [4:30:40<3:33:04,  9.84s/it]  Chec
+kpoint 3250/4548 | 0.06 texts/sec | ~370 min left
+mistral-7b batched:  42%|██████▊         | 950/2248 [4:30:45<3:02:14,  8.42s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  44%|███████         | 999/2248 [4:35:59<2:10:10,  6.25s/it]  Chec
+kpoint 3300/4548 | 0.06 texts/sec | ~345 min left
+mistral-7b batched:  44%|██████▋        | 1000/2248 [4:36:04<2:01:03,  5.82s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  47%|██████▉        | 1049/2248 [4:41:31<2:11:34,  6.58s/it]  Chec
+kpoint 3350/4548 | 0.06 texts/sec | ~321 min left
+mistral-7b batched:  47%|███████        | 1050/2248 [4:41:36<2:01:29,  6.09s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  49%|███████▎       | 1099/2248 [4:47:03<2:05:31,  6.56s/it]  Chec
+kpoint 3400/4548 | 0.06 texts/sec | ~300 min left
+mistral-7b batched:  49%|███████▎       | 1100/2248 [4:47:11<2:09:27,  6.77s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  51%|███████▋       | 1149/2248 [4:52:30<1:45:43,  5.77s/it]  Chec
+kpoint 3450/4548 | 0.07 texts/sec | ~279 min left
+mistral-7b batched:  51%|███████▋       | 1150/2248 [4:52:39<2:06:51,  6.93s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  53%|████████       | 1199/2248 [4:57:49<2:15:50,  7.77s/it]  Chec
+kpoint 3500/4548 | 0.07 texts/sec | ~260 min left
+mistral-7b batched:  53%|████████       | 1200/2248 [4:57:54<2:04:31,  7.13s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  56%|████████▎      | 1249/2248 [5:03:33<1:52:03,  6.73s/it]  Chec
+kpoint 3550/4548 | 0.07 texts/sec | ~242 min left
+mistral-7b batched:  56%|████████▎      | 1250/2248 [5:03:39<1:43:58,  6.25s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  58%|████████▋      | 1299/2248 [5:09:20<1:47:06,  6.77s/it]  Chec
+kpoint 3600/4548 | 0.07 texts/sec | ~226 min left
+mistral-7b batched:  58%|████████▋      | 1300/2248 [5:09:35<2:27:03,  9.31s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  60%|█████████      | 1349/2248 [5:14:55<1:23:36,  5.58s/it]  Chec
+kpoint 3650/4548 | 0.07 texts/sec | ~210 min left
+mistral-7b batched:  60%|█████████      | 1350/2248 [5:15:01<1:22:14,  5.50s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  62%|█████████▎     | 1399/2248 [5:20:26<1:24:51,  6.00s/it]  Chec
+kpoint 3700/4548 | 0.07 texts/sec | ~194 min left
+mistral-7b batched:  62%|█████████▎     | 1400/2248 [5:20:32<1:25:10,  6.03s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  64%|█████████▋     | 1449/2248 [5:25:48<1:29:04,  6.69s/it]  Chec
+kpoint 3750/4548 | 0.07 texts/sec | ~179 min left
+mistral-7b batched:  65%|█████████▋     | 1450/2248 [5:25:55<1:31:25,  6.87s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  67%|██████████     | 1499/2248 [5:31:55<1:22:10,  6.58s/it]  Chec
+kpoint 3800/4548 | 0.08 texts/sec | ~166 min left
+mistral-7b batched:  67%|██████████     | 1500/2248 [5:32:00<1:17:57,  6.25s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  69%|██████████▎    | 1549/2248 [5:37:05<1:20:52,  6.94s/it]  Chec
+kpoint 3850/4548 | 0.08 texts/sec | ~152 min left
+mistral-7b batched:  69%|██████████▎    | 1550/2248 [5:37:12<1:18:55,  6.78s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  71%|████████████     | 1599/2248 [5:42:34<57:53,  5.35s/it]  Chec
+kpoint 3900/4548 | 0.08 texts/sec | ~139 min left
+mistral-7b batched:  71%|██████████▋    | 1600/2248 [5:42:44<1:11:33,  6.63s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  73%|███████████    | 1649/2248 [5:48:14<1:01:15,  6.14s/it]  Chec
+kpoint 3950/4548 | 0.08 texts/sec | ~126 min left
+mistral-7b batched:  73%|███████████    | 1650/2248 [5:48:20<1:01:39,  6.19s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  76%|████████████▊    | 1699/2248 [5:53:38<57:06,  6.24s/it]  Chec
+kpoint 4000/4548 | 0.08 texts/sec | ~114 min left
+mistral-7b batched:  76%|███████████▎   | 1700/2248 [5:53:46<1:02:29,  6.84s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  78%|█████████████▏   | 1749/2248 [5:59:14<51:00,  6.13s/it]  Chec
+kpoint 4050/4548 | 0.08 texts/sec | ~102 min left
+mistral-7b batched:  78%|█████████████▏   | 1750/2248 [5:59:19<48:05,  5.79s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  80%|█████████████▌   | 1799/2248 [6:04:12<41:48,  5.59s/it]  Chec
+kpoint 4100/4548 | 0.08 texts/sec | ~91 min left
+mistral-7b batched:  80%|█████████████▌   | 1800/2248 [6:04:18<42:17,  5.66s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  82%|█████████████▉   | 1849/2248 [6:09:58<51:03,  7.68s/it]  Chec
+kpoint 4150/4548 | 0.08 texts/sec | ~80 min left
+mistral-7b batched:  82%|█████████████▉   | 1850/2248 [6:10:03<45:53,  6.92s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  84%|██████████████▎  | 1899/2248 [6:15:09<32:00,  5.50s/it]  Chec
+kpoint 4200/4548 | 0.08 texts/sec | ~69 min left
+mistral-7b batched:  85%|██████████████▎  | 1900/2248 [6:15:16<33:00,  5.69s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  87%|██████████████▋  | 1949/2248 [6:20:44<35:18,  7.08s/it]  Chec
+kpoint 4250/4548 | 0.09 texts/sec | ~58 min left
+mistral-7b batched:  87%|██████████████▋  | 1950/2248 [6:20:51<34:56,  7.04s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  89%|███████████████  | 1999/2248 [6:26:16<25:06,  6.05s/it]  Chec
+kpoint 4300/4548 | 0.09 texts/sec | ~48 min left
+mistral-7b batched:  89%|███████████████  | 2000/2248 [6:26:24<27:14,  6.59s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  91%|███████████████▍ | 2049/2248 [6:31:36<21:27,  6.47s/it]  Chec
+kpoint 4350/4548 | 0.09 texts/sec | ~38 min left
+mistral-7b batched:  91%|███████████████▌ | 2050/2248 [6:31:42<20:27,  6.20s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  93%|███████████████▊ | 2099/2248 [6:36:35<14:12,  5.72s/it]  Chec
+kpoint 4400/4548 | 0.09 texts/sec | ~28 min left
+mistral-7b batched:  93%|███████████████▉ | 2100/2248 [6:36:45<16:44,  6.79s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  96%|████████████████▎| 2149/2248 [6:42:34<10:08,  6.15s/it]  Chec
+kpoint 4450/4548 | 0.09 texts/sec | ~18 min left
+mistral-7b batched:  96%|████████████████▎| 2150/2248 [6:42:41<10:22,  6.35s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched:  98%|████████████████▋| 2199/2248 [6:47:48<05:24,  6.63s/it]  Chec
+kpoint 4500/4548 | 0.09 texts/sec | ~9 min left
+mistral-7b batched:  98%|████████████████▋| 2200/2248 [6:47:53<04:55,  6.16s/it]/home/
+shrishti/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/bitsand
+bytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from
+torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during q
+uantization")
+mistral-7b batched: 100%|█████████████████| 2248/2248 [6:52:57<00:00, 11.02s/it]
+
+Done! 4548 texts in 413.0 min
+Saved: (3638, 64) train, (910, 64) test
+  /home/shrishti/my_repos/text_difficulty_classifier/outputs/prompt_metrics/train_promp
+t_metrics_mistral-7b.csv
+  /home/shrishti/my_repos/text_difficulty_classifier/outputs/prompt_metrics/test_prompt
+_metrics_mistral-7b.csv
+
+mistral-7b COMPLETE!
