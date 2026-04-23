@@ -1,0 +1,154 @@
+{
+  "experiment_info": {
+    "paper": "Beyond Flesch-Kincaid (Rooein et al., BEA 2024)",
+    "dataset": "ScienceQA",
+    "train_size": 3638,
+    "test_size": 910,
+    "prompt_model": "llama2-7b",
+    "date": "2026-04-22"
+  },
+  "model_results": {
+    "static": {
+      "name": "STATIC (k=45, C=0.3)",
+      "macro_f1": 0.8005,
+      "report": {
+        "elementary": {
+          "precision": 0.8581081081081081,
+          "recall": 0.8382838283828383,
+          "f1-score": 0.8480801335559266,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.8005952380952381,
+          "recall": 0.8877887788778878,
+          "f1-score": 0.8419405320813772,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.7446043165467626,
+          "recall": 0.680921052631579,
+          "f1-score": 0.711340206185567,
+          "support": 304.0
+        },
+        "accuracy": 0.8021978021978022,
+        "macro avg": {
+          "precision": 0.8011025542500363,
+          "recall": 0.8023312199641017,
+          "f1-score": 0.8004536239409569,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.8010404682745382,
+          "recall": 0.8021978021978022,
+          "f1-score": 0.8003556971082587,
+          "support": 910.0
+        }
+      }
+    },
+    "prompt": {
+      "name": "PROMPT (k=40, C=1.0)",
+      "macro_f1": 0.7045,
+      "report": {
+        "elementary": {
+          "precision": 0.6813880126182965,
+          "recall": 0.7128712871287128,
+          "f1-score": 0.6967741935483871,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.7711864406779662,
+          "recall": 0.900990099009901,
+          "f1-score": 0.8310502283105022,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.6652719665271967,
+          "recall": 0.5230263157894737,
+          "f1-score": 0.585635359116022,
+          "support": 304.0
+        },
+        "accuracy": 0.7120879120879121,
+        "macro avg": {
+          "precision": 0.7059488066078198,
+          "recall": 0.712295900642696,
+          "f1-score": 0.7044865936583039,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.7059041067835553,
+          "recall": 0.7120879120879121,
+          "f1-score": 0.7043559879060595,
+          "support": 910.0
+        }
+      }
+    },
+    "combo": {
+      "name": "COMBO (k=70, C=10.0)",
+      "macro_f1": 0.8368,
+      "report": {
+        "elementary": {
+          "precision": 0.9055944055944056,
+          "recall": 0.8547854785478548,
+          "f1-score": 0.8794567062818336,
+          "support": 303.0
+        },
+        "high": {
+          "precision": 0.8263473053892215,
+          "recall": 0.9108910891089109,
+          "f1-score": 0.8665620094191523,
+          "support": 303.0
+        },
+        "middle": {
+          "precision": 0.7827586206896552,
+          "recall": 0.7467105263157895,
+          "f1-score": 0.7643097643097643,
+          "support": 304.0
+        },
+        "accuracy": 0.8373626373626374,
+        "macro avg": {
+          "precision": 0.838233443891094,
+          "recall": 0.8374623646575183,
+          "f1-score": 0.8367761600035833,
+          "support": 910.0
+        },
+        "weighted avg": {
+          "precision": 0.8381724825469167,
+          "recall": 0.8373626373626374,
+          "f1-score": 0.836696526601722,
+          "support": 910.0
+        }
+      }
+    }
+  },
+  "zero_few_shot": {
+    "zero_shot_f1": 0.1654,
+    "few_shot_f1": 0.1856,
+    "model": "gemma-7b-it",
+    "invalid_zero": 0,
+    "invalid_few": 9,
+    "prediction_dist_zero": {
+      "high": 100
+    },
+    "prediction_dist_few": {
+      "high": 84,
+      "elementary": 13,
+      "middle": 3
+    }
+  },
+  "bootstrap": {
+    "combo_vs_static": {
+      "observed_improvement": 0.0363,
+      "p_value": 0.031,
+      "significant": true,
+      "n_bootstrap": 1000,
+      "alpha": 0.05
+    },
+    "prompt_vs_static": {
+      "observed_improvement": -0.096,
+      "p_value": 1.0,
+      "significant": false,
+      "n_bootstrap": 1000,
+      "alpha": 0.05
+    }
+  }
+}

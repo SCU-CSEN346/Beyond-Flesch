@@ -1,8 +1,8 @@
 {
-  "run_date": "2026-04-14 17:37",
-  "static_f1": 0.7778,
-  "prompt_f1": 0.6813,
-  "combo_f1": 0.7894,
+  "run_date": "2026-04-20 23:05",
+  "static_f1": 0.8005,
+  "prompt_f1": 0.6836,
+  "combo_f1": 0.8279,
   "zero_shot_f1": 0.1654,
   "few_shot_f1": 0.1856,
   "prompt_model": "gemma-7b",

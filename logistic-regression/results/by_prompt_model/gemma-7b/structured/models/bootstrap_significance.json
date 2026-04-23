@@ -1,0 +1,16 @@
+{
+  "combo_vs_static": {
+    "observed_improvement": 0.0285,
+    "p_value": 0.031,
+    "significant": true,
+    "n_bootstrap": 1000,
+    "alpha": 0.05
+  },
+  "prompt_vs_static": {
+    "observed_improvement": -0.1169,
+    "p_value": 1.0,
+    "significant": false,
+    "n_bootstrap": 1000,
+    "alpha": 0.05
+  }
+}

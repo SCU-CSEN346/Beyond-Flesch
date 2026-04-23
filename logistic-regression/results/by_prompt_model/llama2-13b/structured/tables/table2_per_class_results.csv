@@ -1,0 +1,10 @@
+model,class,precision,recall,f1_score,support
+"STATIC (k=45, C=0.3)",elementary,0.8581,0.8383,0.8481,303
+"STATIC (k=45, C=0.3)",middle,0.7446,0.6809,0.7113,304
+"STATIC (k=45, C=0.3)",high,0.8006,0.8878,0.8419,303
+"PROMPT (k=60, C=0.1)",elementary,0.7987,0.8383,0.818,303
+"PROMPT (k=60, C=0.1)",middle,0.7161,0.5559,0.6259,304
+"PROMPT (k=60, C=0.1)",high,0.7725,0.9076,0.8346,303
+"COMBO (k=109, C=10.0)",elementary,0.8926,0.8779,0.8852,303
+"COMBO (k=109, C=10.0)",middle,0.7819,0.7664,0.7741,304
+"COMBO (k=109, C=10.0)",high,0.8471,0.8779,0.8622,303

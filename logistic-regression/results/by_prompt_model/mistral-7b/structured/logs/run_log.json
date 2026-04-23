@@ -1,0 +1,13 @@
+{
+  "run_date": "2026-04-22 23:33",
+  "static_f1": 0.8005,
+  "prompt_f1": 0.7431,
+  "combo_f1": 0.8416,
+  "zero_shot_f1": 0.1654,
+  "few_shot_f1": 0.1856,
+  "prompt_model": "mistral-7b",
+  "train_size": 3638,
+  "test_size": 910,
+  "bootstrap_combo_significant": true,
+  "bootstrap_combo_pvalue": 0.031
+}

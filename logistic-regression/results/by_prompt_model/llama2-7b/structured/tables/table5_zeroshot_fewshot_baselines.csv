@@ -1,0 +1,3 @@
+method,macro_f1,invalid_responses,out_of
+Zero-shot (Gemma-7b),0.1654,0,100
+Few-shot (Gemma-7b),0.1856,9,100

@@ -1,0 +1,64 @@
+feature,f_score,p_value,significant
+Is this text about language science?,297.07893900005064,3.164571811736395e-120,True
+Is this text about social science?,292.00479453606755,2.4926897257409308e-118,True
+Does this text contain metaphors and/or figurative language?,157.97112570394853,1.6341249498446878e-66,True
+Could an average high school student engage with the content of this task?,145.62439969458103,1.452422407638686e-61,True
+Does this text provide a very explicit explanation?,136.45841397334846,7.180751994254723e-58,True
+Is this text readable for a elementary school student?,123.71786695338875,1.0465350336319156e-52,True
+Does this text contain simple examples?,92.08691221272824,9.712799647873279e-40,True
+Could an average middle school student engage with the content of this task?,88.88556133882511,2.0499223671860719e-38,True
+Is this text relevant to the knowledge and experiences of elementary school students?,81.15325217717304,3.3095958691085974e-35,True
+Would the vocabulary in this text be comprehensible to elementary school students?,57.597476676798635,2.3654361819538923e-25,True
+Could most high school students complete this task without significant difficulty?,56.176533537838736,9.381883132688339e-25,True
+Does this text use complex language?,53.4962206749931,1.2654445654543022e-23,True
+Is this text about world history?,53.27070037344491,1.5753994208498027e-23,True
+"Based on the SMOG Index, is this text suitable for elementary school readers?",52.590172189629584,3.051944971418962e-23,True
+"Based on the Coleman-Liau Index, is this text suitable for elementary school readers?",50.93418383124404,1.5270321662996202e-22,True
+Is this text relevant to curriculum topics for high school students?,47.526313219408244,4.2153753438018035e-21,True
+Is this text about geography?,40.730606240890815,3.207881457981644e-18,True
+Is the length of this text suitable for high school students?,38.493269339657466,2.865207368086925e-17,True
+"Based on the Flesch-Kincaid reading-ease score, is this text suitable for high school readers?",36.326028756617966,2.3954898687329074e-16,True
+Does this text cover multiple concepts?,35.2137781694539,7.130425105494196e-16,True
+Is this text about earth science?,27.03747611077381,2.2093091040184074e-12,True
+Is this text easy to understand for elementary school students?,26.31634020025242,4.496881627839932e-12,True
+Is this text appropriate for the skills and knowledges of elementary school students?,25.981422942373737,6.256064028345768e-12,True
+Is this text relevant to curriculum topics for middle school students?,25.694593306147798,8.300870535822266e-12,True
+"Based on the Coleman-Liau Index, is this text suitable for middle school readers?",25.462271010535616,1.0438057441552982e-11,True
+"Based on the Flesch-Kincaid reading-ease score, is this text suitable for middle school readers?",24.327577654362894,3.197069215871568e-11,True
+Is this text suitable for a high school student?,22.356324763260176,2.2387259616390591e-10,True
+Is this text about science?,17.99142793430442,1.678193684797745e-08,True
+Could most middle school students complete this task without significant difficulty?,17.943871635698837,1.759111392121083e-08,True
+Could an average elementary school student engage with the content of this task?,17.469453812913635,2.8141190967507014e-08,True
+Does this text contain technical jargon?,16.282447067032223,9.122426251865411e-08,True
+Is this text easy to understand for high school students?,14.247918342279632,6.860181943908754e-07,True
+Is the length of this text suitable for middle school students?,13.992593665649819,8.838262448623847e-07,True
+Would the vocabulary in this text be comprehensible to middle school students?,13.532849024995175,1.3948608685666012e-06,True
+"Based on the Flesch-Kincaid reading-ease score, is this text suitable for elementary school readers?",12.709678783511372,3.1583973412411144e-06,True
+Is this text readable for a high school student?,12.494768252555621,3.909835765246677e-06,True
+Is this text about natural science?,12.189735235555167,5.2934539057336485e-06,True
+Is this text relevant to the knowledge and experiences of middle school students?,12.084562667643205,5.876408854720041e-06,True
+"Based on the SMOG Index, is this text suitable for middle school readers?",10.973358017938537,1.7728016444494994e-05,True
+"Based on the Gunning Fog Index, is this text suitable for elementary school readers?",10.542692326112453,2.720165356580926e-05,True
+Is this text about chemistry?,10.322935414541778,3.384463275531576e-05,True
+"Based on the Automated Readability Index (ARI), is this text suitable for high school readers?",10.010343467760041,4.618400565783946e-05,True
+Is this text appropriate for the skills and knowledges of middle school students?,9.612507578384557,6.860279804695749e-05,True
+Is this text appropriate for the skills and knowledges of high school students?,9.034274657173656,0.0001219504937450777,True
+Is this text relevant to the knowledge and experiences of high school students?,8.959445226935932,0.00013137765165698324,True
+"Based on the SMOG Index, is this text suitable for high school readers?",8.273360163077685,0.00026006298204368523,True
+Does this text use simple language?,8.11028062860749,0.00030590409636875447,True
+"Based on the Gunning Fog Index, is this text suitable for middle school readers?",7.965923066558491,0.0003531855575760513,True
+"Based on the Coleman-Liau Index, is this text suitable for high school readers?",7.807723631029372,0.000413438797192203,True
+Is this text suitable for a elementary school student?,6.816564728728985,0.001109535544663805,False
+Is this text about math?,6.718435060575809,0.0012234896386881487,False
+Could most elementary school students complete this task without significant difficulty?,6.145131104824461,0.002166232400302894,False
+Is this text easy to understand for middle school students?,5.930196326634626,0.002683743303735644,False
+Is the length of this text suitable for elementary school students?,5.249571403350597,0.005289642175346147,False
+"Based on the Gunning Fog Index, is this text suitable for high school readers?",4.564636826596828,0.010473422917986653,False
+Is this text relevant to curriculum topics for elementary school students?,4.415962753569742,0.012147805828011565,False
+Is this text about physics?,3.683925902342865,0.025217995570657573,False
+Does this text contain basic concepts that are easy to comprehend?,3.3228378031615335,0.03615991778253819,False
+"Based on the Automated Readability Index (ARI), is this text suitable for middle school readers?",2.7970804445607533,0.06111913193228636,False
+Is this text suitable for a middle school student?,1.5430208503377247,0.21387442740186444,False
+Would the vocabulary in this text be comprehensible to high school students?,1.448015311933294,0.2351718404691793,False
+"Based on the Automated Readability Index (ARI), is this text suitable for elementary school readers?",1.2259519031223425,0.2935995190250363,False
+Is this text readable for a middle school student?,0.6584554386636529,0.5177119912724752,False
