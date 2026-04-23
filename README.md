@@ -62,7 +62,7 @@ A GPU is needed for Step 5 (LLM inference). Everything else runs on CPU. We deve
 
 ## How to run it
 
-Notebooks live in `logistic-regression/notebooks/` and are meant to be run in order. Each one writes to `logistic-regression/outputs/` so the next can pick up where it left off. Config constants from the paper live in `logistic-regression/outputs/config.json`.
+Notebooks live in `logistic-regression/notebooks/`. Steps 1-5 generate features and prompt metrics; modeling/evaluation now uses split notebooks so Step 6 baselines and Step 7+ logistic runs can be rerun independently.
 
 | Step | What it does | Runtime |
 |------|-------------|---------|
@@ -71,14 +71,18 @@ Notebooks live in `logistic-regression/notebooks/` and are meant to be run in or
 | 3 | Static metric extraction (46 metrics from Appendix C) | ~10 min |
 | 4 | Prompt template generation (63 prompts from Appendix A) | ~1 min |
 | 5 | LLM inference — runs all 63 prompts against all 4,548 texts, one notebook per model | ~10 hours per model on A100 |
-| 6 | Zero-shot / few-shot Gemma-7B baselines (100-example eval subset) | ~20-40 min (GPU) |
+| 6 | Zero-shot / few-shot baselines (model-selectable, 100-example eval subset) | ~20-40 min (GPU) |
 | 7 | Multinomial logistic regression (STATIC / PROMPT / COMBO) + SelectKBest tuning | ~5-10 min |
 | 8 | Evaluation: macro-F1, per-class report, 1,000-sample bootstrap significance tests | ~5-10 min |
 | 9 | Feature importance analysis (univariate F-tests) + ranking tables | ~2-5 min |
-| 10 | Out-of-domain generalization (OneStopEnglish, UniversalCEFR) | coming in S2 |
+| 10 | Out-of-domain generalization (OneStopEnglish, UniversalCEFR) | moved to S3 |
 | 11 | Reproduce paper-style result tables + save final artifacts | ~2-5 min |
 
-Steps 1–4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across four LLMs (Llama-2-7B, Llama-2-13B, Mistral-7B, Gemma-7B) — one notebook each, meant to be run in parallel Colab tabs. It's set up to be resumable: if Colab disconnects (and it will), just re-run the cell and it picks up from the last checkpoint. Progress saves every 50 texts to `outputs/prompt_metrics/{model}_progress.csv`.
+Steps 1-4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across four LLMs (Llama-2-7B, Llama-2-13B, Mistral-7B, Gemma-7B) — one notebook each, meant to be run in parallel Colab tabs. It's set up to be resumable: if Colab disconnects (and it will), just re-run the cell and it picks up from the last checkpoint. Progress saves every 50 texts to `outputs/prompt_metrics/{model}_progress.csv`.
+
+For Part 2 execution:
+- `Step6_Baselines_ZeroShot_FewShot.ipynb` -> zero/few-shot baselines
+- `Step7_Modeling_Evaluation.ipynb` -> logistic regression, evaluation, feature analysis, and result packaging
 
 ---
 
@@ -101,17 +105,15 @@ Steps 1–4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across 
 - `logistic-regression/outputs/prompt_metrics/{train,test}_prompt_metrics_{model}.csv` — 63 prompt-metric columns, each a yes/no score from that LLM
 - `logistic-regression/outputs/prompt_metrics/{model}_progress.csv` — resumable progress state
 
-**After Modeling & Evaluation :**
-- `logistic-regression/results/tables/table1_model_f1_scores.csv` — macro-F1 + per-class F1 summary for STATIC/PROMPT/COMBO
-- `logistic-regression/results/tables/table2_per_class_results.csv` — detailed class-wise precision/recall/F1
-- `logistic-regression/results/tables/table3_static_feature_importance.csv` — ranked static features from univariate F-tests
-- `logistic-regression/results/tables/table4_prompt_feature_importance.csv` — ranked prompt features from univariate F-tests
-- `logistic-regression/results/tables/table5_zeroshot_fewshot_baselines.csv` — zero-shot/few-shot Gemma-7B baseline scores
-- `logistic-regression/results/models/bootstrap_significance.json` — bootstrap significance test outputs (`n=1000`, p-values, significance flags)
-- `logistic-regression/results/models/full_results.json` — serialized model outputs and evaluation artifacts
-- `logistic-regression/results/final_results.json` — consolidated summary of key experiment outputs
-- `logistic-regression/results/figures/{fig1_confusion_matrices,fig2_model_comparison,fig3_feature_importance}.png` — main analysis figures
-- `logistic-regression/results/logs/run_log.json` — run metadata and execution log
+**After Modeling & Evaluation:**
+- Per prompt model run:
+  - `logistic-regression/results/by_prompt_model/{model}/final_results_{model}.json`
+  - `logistic-regression/results/by_prompt_model/{model}/confusion_matrices_{model}.png`
+  - `logistic-regression/results/by_prompt_model/{model}/feature_importance_{model}.png`
+  - `logistic-regression/results/by_prompt_model/{model}/artifacts/*_{model}.joblib`
+  - `logistic-regression/results/by_prompt_model/{model}/structured/{tables,figures,models,logs}/...`
+- Baselines:
+  - `logistic-regression/results/baselines/by_model/{model}/baseline_{model}.json`
 
 ---
 
@@ -128,21 +130,21 @@ Steps 1–4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across 
 
 ## Part 2 status (Modeling, Evaluation, Analysis)
 
-- Baselines (Gemma-7B): zero-shot macro-F1 = **0.1654**, few-shot macro-F1 = **0.1856** (`results/tables/table5_zeroshot_fewshot_baselines.csv`)
-- Logistic regression + feature selection:
-  - STATIC (`k=35`) macro-F1 = **0.7778**
-  - PROMPT (`k=50`) macro-F1 = **0.6813**
-  - COMBO (`k=70`) macro-F1 = **0.7894** (best)
-- Bootstrap significance (`n=1000`):
-  - COMBO vs STATIC: **+0.0116** macro-F1, **p=0.031**, significant at alpha=0.05
-  - PROMPT vs STATIC: **-0.0964**, **p=1.0**, not significant
-- Out-of-domain generalization:
-  - **Queued for next phase** (including OneStopEnglish and UniversalCEFR evaluation)
-- Final artifacts saved under `logistic-regression/results/`:
-  - `tables/` (model F1s, per-class metrics, static/prompt feature rankings, baseline table)
-  - `figures/` (confusion matrices, model comparison, feature importance)
-  - `models/` (bootstrap significance + full serialized results)
-  - `logs/` (run log)
+- Baselines:
+  - Zero/few-shot runs are model-specific and saved under `results/baselines/by_model/{model}/`.
+- Logistic regression + feature selection (latest per prompt-metric source):
+
+| Prompt metric source | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
+|---|---:|---:|---:|
+| Gemma-7B | **0.8005** | 0.6836 | 0.8290 |
+| Llama-2-7B | **0.8005** | 0.7045 | 0.8368 |
+| Mistral-7B | **0.8005** | 0.7431 | **0.8416** |
+| Llama-2-13B | **0.8005** | **0.7595** | 0.8405 |
+
+- Best COMBO so far: **Mistral-7B prompt metrics -> 0.8416 macro-F1**.
+- OOD generalization (OneStopEnglish / UniversalCEFR):
+  - **Moved to S3** (not reported as final in this stage).
+- Final artifacts are organized per model under `logistic-regression/results/by_prompt_model/{model}/`.
 
 ---
 
@@ -155,7 +157,7 @@ Got the environment set up with the pinned versions from Appendix B. Built the f
 Identified that the allennlp and rational_activations packages are incompatible with modern PyTorch versions and cannot be installed. To resolve this, extracted the ScalarMix module directly from the AllenNLP repository and refactored it into a standalone, dependency-free module for our project. Also adapted the codebase from Gombert et al., which was originally designed for USMLE-style regression tasks, to work with the ScienceQA dataset. This involved writing data parsing and preprocessing code for ScienceQA including grade-level labeling and class balancing, converting the model from regression to classification by replacing MSE loss with cross-entropy loss, simplifying the architecture from two regression heads with two ScalarMix modules down to a single classification head with one ScalarMix, and replacing the Rational activation function with ReLU since the original Rational implementation was unavailable.
 
 **Maneesha — Modeling, Evaluation & Analysis (`logistic-regression/`, Steps 6–11)**
-Built the full modeling and evaluation pipeline on top of the Step 1-5 feature matrices. Implemented multinomial logistic regression with `SelectKBest` feature selection across three configurations (STATIC/PROMPT/COMBO), ran macro-F1 and per-class evaluation, and added 1,000-sample bootstrap significance testing. Results show COMBO improves over STATIC by +0.0116 macro-F1 and is statistically significant (p=0.031), while PROMPT-only underperforms. Added zero-shot/few-shot Gemma-7B baselines and performed univariate F-test feature importance analysis. Out-of-domain generalization experiments (including OneStopEnglish) are queued for the next phase. Packaged final results into reproducible tables, figures, model JSON outputs, and logs under `logistic-regression/results/`.
+Built the full modeling and evaluation pipeline on top of the Step 1-5 feature matrices. Implemented multinomial logistic regression with `SelectKBest` feature selection across three configurations (STATIC/PROMPT/COMBO), ran macro-F1 and per-class evaluation, and added 1,000-sample bootstrap significance testing. Expanded runs across prompt metrics from Gemma-7B, Llama-2-7B, Llama-2-13B, and Mistral-7B, with best COMBO performance currently at 0.8416 macro-F1 (Mistral-7B prompt metrics). Added model-specific output packaging (`results/by_prompt_model/{model}/...`) plus separate Step 6 and Step 7+ notebooks for easier reruns. Out-of-domain generalization experiments (including OneStopEnglish / UniversalCEFR) are deferred to S3.
 
 ---
 
