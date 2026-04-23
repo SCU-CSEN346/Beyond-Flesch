@@ -3,7 +3,7 @@
 Cross-subject generalization of transformer-based difficulty classification for educational texts.
 
 **Team:** Beyond Flesch
-**Course project — Submission 1**
+**Course project — Submission 2**
 
 ---
 
@@ -120,9 +120,9 @@ Steps 1–4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across 
 | LLM | Status |
 |-----|--------|
 | Gemma-7B-IT | ✅ complete (all 4,548 texts) |
-| Mistral-7B-Instruct-v0.2 | 🟡 ~50% (2,250 / 4,548) — resuming in S2 |
-| Llama-2-7B-Chat | queued for S2 |
-| Llama-2-13B-Chat | queued for S2 |
+| Mistral-7B-Instruct-v0.2 | ✅ complete (all 4,548 texts)|
+| Llama-2-7B-Chat | ✅ complete (all 4,548 texts) |
+| Llama-2-13B-Chat |✅ complete (all 4,548 texts)|
 
 ---
 
@@ -149,7 +149,7 @@ Steps 1–4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across 
 ## Who did what
 
 **Shrishti — Rooein pipeline reproduction (`logistic-regression/`, Steps 1–5)**
-Got the environment set up with the pinned versions from Appendix B. Built the full ScienceQA preprocessing pipeline: pulling from `derek-thomas/ScienceQA`, dropping image-based items, collapsing the 12 K-12 grades into three buckets per Section 4.1, deduplicating, sampling 1,516 per level with seed 42 to get the 4,548-text balanced subset, and doing the 80/20 stratified split. Implemented the 46 static metrics from Appendix C and generated the 63 prompt templates from Appendix A. Ran Step 5 end-to-end for Gemma-7B-IT (all 4,548 texts) and got Mistral-7B-Instruct to ~50% before the S1 cutoff, both with 8-bit quantization and resumable progress saving. Remaining two LLM runs (Llama-2-7B, Llama-2-13B) queued for S2.
+Got the environment set up with the pinned versions from Appendix B. Built the full ScienceQA preprocessing pipeline: pulling from `derek-thomas/ScienceQA`, dropping image-based items, collapsing the 12 K-12 grades into three buckets per Section 4.1, deduplicating, sampling 1,516 per level with seed 42 to get the 4,548-text balanced subset, and doing the 80/20 stratified split. Implemented the 46 static metrics from Appendix C and generated the 63 prompt templates from Appendix A. Ran Step 5 for Gemma-7B-IT, Mistral-7B-Instruct-v0.2, and Llama-2-7B-Chat (all 4,548 texts each), with 8-bit quantization and resumable progress saving. Smruthi ran Llama-2-13B-Chat. All four LLM inference runs from the paper are now complete.
 
 **Smruthi — Gombert transformer adaptation (`transformers/`)**
 Identified that the allennlp and rational_activations packages are incompatible with modern PyTorch versions and cannot be installed. To resolve this, extracted the ScalarMix module directly from the AllenNLP repository and refactored it into a standalone, dependency-free module for our project. Also adapted the codebase from Gombert et al., which was originally designed for USMLE-style regression tasks, to work with the ScienceQA dataset. This involved writing data parsing and preprocessing code for ScienceQA including grade-level labeling and class balancing, converting the model from regression to classification by replacing MSE loss with cross-entropy loss, simplifying the architecture from two regression heads with two ScalarMix modules down to a single classification head with one ScalarMix, and replacing the Rational activation function with ReLU since the original Rational implementation was unavailable.
