@@ -1,0 +1,53 @@
+
+Epoch 0
+  Epoch 0: 0 skipped, avg loss 0.4790
+              precision    recall  f1-score   support
+
+     class_0       0.75      0.98      0.85       303
+     class_1       0.99      0.84      0.91       607
+
+    accuracy                           0.88       910
+   macro avg       0.87      0.91      0.88       910
+weighted avg       0.91      0.88      0.89       910
+
+{'macro_f1': 0.8780595192061043}
+
+Epoch 1
+  Epoch 1: 0 skipped, avg loss 0.2759
+              precision    recall  f1-score   support
+
+     class_0       0.96      0.91      0.94       303
+     class_1       0.96      0.98      0.97       607
+
+    accuracy                           0.96       910
+   macro avg       0.96      0.95      0.95       910
+weighted avg       0.96      0.96      0.96       910
+
+{'macro_f1': 0.9523494556979468}
+
+Epoch 2
+  Epoch 2: 0 skipped, avg loss 0.2075
+              precision    recall  f1-score   support
+
+     class_0       0.97      0.91      0.94       303
+     class_1       0.96      0.98      0.97       607
+
+    accuracy                           0.96       910
+   macro avg       0.96      0.95      0.95       910
+weighted avg       0.96      0.96      0.96       910
+
+{'macro_f1': 0.9535623997495376}
+
+Total skipped: 0
+
+--- Final Stage 1 evaluation ---
+                precision    recall  f1-score   support
+
+    elementary       0.97      0.91      0.94       303
+not_elementary       0.96      0.98      0.97       607
+
+      accuracy                           0.96       910
+     macro avg       0.96      0.95      0.95       910
+  weighted avg       0.96      0.96      0.96       910
+
+{'macro_f1': 0.9535623997495376}

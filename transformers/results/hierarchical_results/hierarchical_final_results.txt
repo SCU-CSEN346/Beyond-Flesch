@@ -1,0 +1,20 @@
+
+=== HIERARCHICAL CLASSIFIER FINAL RESULTS ===
+              precision    recall  f1-score   support
+
+  elementary       0.97      0.91      0.94       303
+      middle       0.84      0.85      0.85       304
+        high       0.88      0.92      0.90       303
+
+    accuracy                           0.89       910
+   macro avg       0.90      0.89      0.89       910
+weighted avg       0.90      0.89      0.89       910
+
+
+Final macro-F1: 0.8950
+
+Confusion matrix (rows=true, cols=predicted):
+               elem  mid  high
+  elementary   276    24     3
+  middle        10   259    35
+  high           0    24   279
