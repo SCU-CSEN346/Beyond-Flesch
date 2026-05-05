@@ -132,7 +132,7 @@ For Part 2 execution:
 
 - Baselines:
   - Zero/few-shot runs are model-specific and saved under `results/baselines/by_model/{model}/`.
-- Logistic regression + feature selection (latest per prompt-metric source):
+- Logistic regression + feature selection (ScienceQA in-domain, latest per prompt-metric source):
 
 | Prompt metric source | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
 |---|---:|---:|---:|
@@ -140,10 +140,26 @@ For Part 2 execution:
 | Llama-2-7B | **0.8005** | 0.7045 | 0.8368 |
 | Mistral-7B | **0.8005** | 0.7431 | **0.8416** |
 | Llama-2-13B | **0.8005** | **0.7595** | 0.8405 |
+| Qwen2.5-7B | **0.8005** | 0.7634 | 0.8394 |
 
-- Best COMBO so far: **Mistral-7B prompt metrics -> 0.8416 macro-F1**.
-- OOD generalization (OneStopEnglish / UniversalCEFR):
-  - **Moved to S3** (not reported as final in this stage).
+- Best ScienceQA COMBO so far: **Mistral-7B prompt metrics -> 0.8416 macro-F1**.
+- OOD generalization (frozen ScienceQA-trained models -> OneStopEnglish, Mistral artifacts):
+
+| OOD setting (OneStopEnglish, n=567) | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
+|---|---:|---:|---:|
+| Frozen transfer eval | 0.1802 | **0.2496** | 0.1707 |
+
+- In-domain OOD training (train/test split on OneStopEnglish features, n=453/114, Mistral features):
+
+| In-domain OOD setting (OneStopEnglish test split) | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
+|---|---:|---:|---:|
+| Re-train on OOD train split | 0.9130 | 0.7829 | **0.9649** |
+
+- OneStopEnglish in-domain takeaway:
+  - Re-training on OneStopEnglish with the same Step 7 configuration gives a major jump over frozen transfer and yields the current **best overall COMBO score: 0.9649 macro-F1** (test split).
+
+- Qwen run summary:
+  - ScienceQA in-domain (Step 7): STATIC **0.8005**, PROMPT **0.7634**, COMBO **0.8394**
 - Final artifacts are organized per model under `logistic-regression/results/by_prompt_model/{model}/`.
 
 ---
@@ -157,7 +173,7 @@ Got the environment set up with the pinned versions from Appendix B. Built the f
 Identified that the allennlp and rational_activations packages are incompatible with modern PyTorch versions and cannot be installed. To resolve this, extracted the ScalarMix module directly from the AllenNLP repository and refactored it into a standalone, dependency-free module for our project. Also adapted the codebase from Gombert et al., which was originally designed for USMLE-style regression tasks, to work with the ScienceQA dataset. This involved writing data parsing and preprocessing code for ScienceQA including grade-level labeling and class balancing, converting the model from regression to classification by replacing MSE loss with cross-entropy loss, simplifying the architecture from two regression heads with two ScalarMix modules down to a single classification head with one ScalarMix, and replacing the Rational activation function with ReLU since the original Rational implementation was unavailable.
 
 **Maneesha — Modeling, Evaluation & Analysis (`logistic-regression/`, Steps 6–11)**
-Built the full modeling and evaluation pipeline on top of the Step 1-5 feature matrices. Implemented multinomial logistic regression with `SelectKBest` feature selection across three configurations (STATIC/PROMPT/COMBO), ran macro-F1 and per-class evaluation, and added 1,000-sample bootstrap significance testing. Expanded runs across prompt metrics from Gemma-7B, Llama-2-7B, Llama-2-13B, and Mistral-7B, with best COMBO performance currently at 0.8416 macro-F1 (Mistral-7B prompt metrics). Added model-specific output packaging (`results/by_prompt_model/{model}/...`) plus separate Step 6 and Step 7+ notebooks for easier reruns. Out-of-domain generalization experiments (including OneStopEnglish / UniversalCEFR) are deferred to S3.
+Built the full modeling and evaluation pipeline on top of the Step 1-5 feature matrices. Implemented multinomial logistic regression with `SelectKBest` feature selection across three configurations (STATIC/PROMPT/COMBO), ran macro-F1 and per-class evaluation, and added 1,000-sample bootstrap significance testing. Expanded runs across prompt metrics from Gemma-7B, Llama-2-7B, Llama-2-13B, Mistral-7B, and Qwen2.5-7B. Added model-specific output packaging (`results/by_prompt_model/{model}/...`) plus separate Step 6 and Step 7+ notebooks for easier reruns. Also ran OOD transfer evaluation on OneStopEnglish with frozen ScienceQA artifacts and built an in-domain OOD train/test workflow, producing **COMBO macro-F1 = 0.9649** on the OneStopEnglish in-domain test split.
 
 ---
 
