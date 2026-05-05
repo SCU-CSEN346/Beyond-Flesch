@@ -1,0 +1,13 @@
+{
+  "run_date": "2026-05-05 17:02",
+  "static_f1": 0.8005,
+  "prompt_f1": 0.7634,
+  "combo_f1": 0.8394,
+  "zero_shot_f1": 0.1654,
+  "few_shot_f1": 0.1856,
+  "prompt_model": "qwen2.5-7b",
+  "train_size": 3638,
+  "test_size": 910,
+  "bootstrap_combo_significant": true,
+  "bootstrap_combo_pvalue": 0.031
+}
