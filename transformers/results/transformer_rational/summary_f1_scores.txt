@@ -1,0 +1,7 @@
+Summary of F1 Scores
+       tanh: 0.8886
+       gelu: 0.8869
+ leaky_relu: 0.8866
+       relu: 0.8865
+    sigmoid: 0.8858
+      swish: 0.8842

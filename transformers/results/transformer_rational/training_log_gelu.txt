@@ -1,0 +1,78 @@
+=== Activation: gelu ===
+Epoch 0
+  Epoch 0: avg loss 0.5731
+              precision    recall  f1-score   support
+
+  elementary       0.91      0.91      0.91      1107
+      middle       0.81      0.71      0.76       690
+        high       0.78      0.96      0.86       427
+
+    accuracy                           0.85      2224
+   macro avg       0.83      0.86      0.84      2224
+weighted avg       0.86      0.85      0.85      2224
+
+{'macro_f1': 0.8411730523167034}
+Epoch 1
+  Epoch 1: avg loss 0.2685
+              precision    recall  f1-score   support
+
+  elementary       0.99      0.90      0.94      1107
+      middle       0.73      0.96      0.83       690
+        high       0.96      0.70      0.81       427
+
+    accuracy                           0.88      2224
+   macro avg       0.89      0.85      0.86      2224
+weighted avg       0.90      0.88      0.88      2224
+
+{'macro_f1': 0.8602040885104993}
+Epoch 2
+  Epoch 2: avg loss 0.2157
+              precision    recall  f1-score   support
+
+  elementary       0.99      0.89      0.94      1107
+      middle       0.83      0.81      0.82       690
+        high       0.76      1.00      0.86       427
+
+    accuracy                           0.88      2224
+   macro avg       0.86      0.90      0.87      2224
+weighted avg       0.90      0.88      0.88      2224
+
+{'macro_f1': 0.8716235980010253}
+Epoch 3
+  Epoch 3: avg loss 0.1989
+              precision    recall  f1-score   support
+
+  elementary       0.99      0.89      0.94      1107
+      middle       0.83      0.84      0.84       690
+        high       0.79      1.00      0.88       427
+
+    accuracy                           0.90      2224
+   macro avg       0.87      0.91      0.89      2224
+weighted avg       0.91      0.90      0.90      2224
+
+{'macro_f1': 0.8877064479915445}
+Epoch 4
+  Epoch 4: avg loss 0.1833
+              precision    recall  f1-score   support
+
+  elementary       0.99      0.89      0.94      1107
+      middle       0.83      0.84      0.84       690
+        high       0.79      1.00      0.88       427
+
+    accuracy                           0.90      2224
+   macro avg       0.87      0.91      0.89      2224
+weighted avg       0.91      0.90      0.90      2224
+
+{'macro_f1': 0.8869027897091996}
+--- Final evaluation ---
+              precision    recall  f1-score   support
+
+  elementary       0.99      0.89      0.94      1107
+      middle       0.83      0.84      0.84       690
+        high       0.79      1.00      0.88       427
+
+    accuracy                           0.90      2224
+   macro avg       0.87      0.91      0.89      2224
+weighted avg       0.91      0.90      0.90      2224
+
+{'macro_f1': 0.8869027897091996}
