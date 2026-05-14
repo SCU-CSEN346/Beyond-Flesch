@@ -1,0 +1,4 @@
+trained_on,corpus,accuracy,macro_f1
+deepseek,ScienceQA (all),0.3032524049473202,0.29007291688121933
+deepseek,OneStopEnglish,0.3474426807760141,0.23414167753150805
+deepseek,RACE combined (middle+high),0.7003333333333334,0.6895552637404692

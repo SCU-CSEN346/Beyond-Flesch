@@ -1,0 +1,107 @@
+
+############################################################
+# Run: claude
+# Source: /content/drive/MyDrive/multi_corpus/synthetic_claude_qa.csv
+############################################################
+[claude] Loaded 1206 synthetic rows
+[claude] Class distribution: {'elementary': 463, 'middle': 397, 'high': 346}
+[claude] Train: 964   Held-in: 242
+Epoch 0
+  Epoch 0: avg loss 0.9909
+              precision    recall  f1-score   support
+
+  elementary       0.82      0.97      0.89        93
+      middle       0.85      0.65      0.74        80
+        high       0.89      0.91      0.90        69
+
+    accuracy                           0.85       242
+   macro avg       0.85      0.84      0.84       242
+weighted avg       0.85      0.85      0.84       242
+
+{'macro_f1': 0.8414293866238106}
+Epoch 1
+  Epoch 1: avg loss 0.5392
+              precision    recall  f1-score   support
+
+  elementary       1.00      0.80      0.89        93
+      middle       0.77      0.80      0.79        80
+        high       0.81      1.00      0.90        69
+
+    accuracy                           0.86       242
+   macro avg       0.86      0.87      0.86       242
+weighted avg       0.87      0.86      0.86       242
+
+{'macro_f1': 0.8558691715445693}
+Epoch 2
+  Epoch 2: avg loss 0.3030
+              precision    recall  f1-score   support
+
+  elementary       0.95      0.90      0.93        93
+      middle       0.86      0.88      0.87        80
+        high       0.92      0.97      0.94        69
+
+    accuracy                           0.91       242
+   macro avg       0.91      0.92      0.91       242
+weighted avg       0.91      0.91      0.91       242
+
+{'macro_f1': 0.9138013282674669}
+
+============================================================
+[claude] Eval: ScienceQA (all)
+============================================================
+  Accuracy: 0.3082
+  Macro-F1 over [0, 1, 2]: 0.1688
+  Prediction distribution: { elementary: 113, middle: 8618, high: 1 }
+              precision    recall  f1-score   support
+
+  elementary      0.920     0.023     0.045      4511
+      middle      0.300     0.997     0.461      2595
+        high      0.000     0.000     0.000      1626
+
+    accuracy                          0.308      8732
+   macro avg      0.407     0.340     0.169      8732
+weighted avg      0.565     0.308     0.160      8732
+
+
+============================================================
+[claude] Eval: OneStopEnglish
+============================================================
+  Accuracy: 0.3474
+  Macro-F1 over [0, 1, 2]: 0.2308
+  Prediction distribution: { middle: 525, high: 42 }
+              precision    recall  f1-score   support
+
+  elementary      0.000     0.000     0.000       189
+      middle      0.330     0.915     0.485       189
+        high      0.571     0.127     0.208       189
+
+    accuracy                          0.347       567
+   macro avg      0.300     0.347     0.231       567
+weighted avg      0.300     0.347     0.231       567
+
+
+============================================================
+[claude] Eval: RACE combined (middle+high)
+============================================================
+  Accuracy: 0.4990
+  Macro-F1 over [1, 2]: 0.3564
+  Prediction distribution: { elementary: 44, middle: 2915, high: 41 }
+              precision    recall  f1-score   support
+
+  elementary      0.000     0.000     0.000         0
+      middle      0.499     0.971     0.660      1500
+        high      1.000     0.027     0.053      1500
+
+    accuracy                          0.499      3000
+   macro avg      0.500     0.333     0.238      3000
+weighted avg      0.750     0.499     0.356      3000
+
+
+[claude] Summary:
+trained_on                      corpus  accuracy  macro_f1
+    claude             ScienceQA (all)  0.308177  0.168804
+    claude              OneStopEnglish  0.347443  0.230795
+    claude RACE combined (middle+high)  0.499000  0.356391
+
+[claude] Saved CSV → synthetic_eval_summary_claude.csv
+[claude] Full log  → electra_claude_full_log.txt

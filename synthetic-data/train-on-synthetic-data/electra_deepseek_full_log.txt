@@ -1,0 +1,107 @@
+
+############################################################
+# Run: deepseek
+# Source: /content/drive/MyDrive/multi_corpus/synthetic_deepseek_qa.csv
+############################################################
+[deepseek] Loaded 1054 synthetic rows
+[deepseek] Class distribution: {'middle': 365, 'high': 361, 'elementary': 328}
+[deepseek] Train: 843   Held-in: 211
+Epoch 0
+  Epoch 0: avg loss 1.0071
+              precision    recall  f1-score   support
+
+  elementary       0.00      0.00      0.00        66
+      middle       0.26      0.30      0.28        73
+        high       0.55      0.97      0.70        72
+
+    accuracy                           0.44       211
+   macro avg       0.27      0.42      0.33       211
+weighted avg       0.28      0.44      0.34       211
+
+{'macro_f1': 0.32792412166992074}
+Epoch 1
+  Epoch 1: avg loss 0.6442
+              precision    recall  f1-score   support
+
+  elementary       1.00      0.61      0.75        66
+      middle       0.55      0.99      0.71        73
+        high       0.97      0.54      0.70        72
+
+    accuracy                           0.72       211
+   macro avg       0.84      0.71      0.72       211
+weighted avg       0.84      0.72      0.72       211
+
+{'macro_f1': 0.7190093018339411}
+Epoch 2
+  Epoch 2: avg loss 0.3939
+              precision    recall  f1-score   support
+
+  elementary       0.95      0.82      0.88        66
+      middle       0.75      0.88      0.81        73
+        high       0.91      0.88      0.89        72
+
+    accuracy                           0.86       211
+   macro avg       0.87      0.86      0.86       211
+weighted avg       0.87      0.86      0.86       211
+
+{'macro_f1': 0.8605974613476272}
+
+============================================================
+[deepseek] Eval: ScienceQA (all)
+============================================================
+  Accuracy: 0.3033
+  Macro-F1 over [0, 1, 2]: 0.2901
+  Prediction distribution: { elementary: 40, middle: 7177, high: 1515 }
+              precision    recall  f1-score   support
+
+  elementary      1.000     0.009     0.018      4511
+      middle      0.261     0.721     0.383      2595
+        high      0.487     0.454     0.470      1626
+
+    accuracy                          0.303      8732
+   macro avg      0.583     0.394     0.290      8732
+weighted avg      0.685     0.303     0.210      8732
+
+
+============================================================
+[deepseek] Eval: OneStopEnglish
+============================================================
+  Accuracy: 0.3474
+  Macro-F1 over [0, 1, 2]: 0.2341
+  Prediction distribution: { middle: 106, high: 461 }
+              precision    recall  f1-score   support
+
+  elementary      0.000     0.000     0.000       189
+      middle      0.245     0.138     0.176       189
+        high      0.371     0.905     0.526       189
+
+    accuracy                          0.347       567
+   macro avg      0.205     0.347     0.234       567
+weighted avg      0.205     0.347     0.234       567
+
+
+============================================================
+[deepseek] Eval: RACE combined (middle+high)
+============================================================
+  Accuracy: 0.7003
+  Macro-F1 over [1, 2]: 0.6896
+  Prediction distribution: { elementary: 20, middle: 2121, high: 859 }
+              precision    recall  f1-score   support
+
+  elementary      0.000     0.000     0.000         0
+      middle      0.642     0.907     0.752      1500
+        high      0.861     0.493     0.627      1500
+
+    accuracy                          0.700      3000
+   macro avg      0.501     0.467     0.460      3000
+weighted avg      0.752     0.700     0.690      3000
+
+
+[deepseek] Summary:
+trained_on                      corpus  accuracy  macro_f1
+  deepseek             ScienceQA (all)  0.303252  0.290073
+  deepseek              OneStopEnglish  0.347443  0.234142
+  deepseek RACE combined (middle+high)  0.700333  0.689555
+
+[deepseek] Saved CSV → synthetic_eval_summary_deepseek.csv
+[deepseek] Full log  → electra_deepseek_full_log.txt

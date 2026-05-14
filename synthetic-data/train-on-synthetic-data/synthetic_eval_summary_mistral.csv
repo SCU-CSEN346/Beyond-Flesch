@@ -1,0 +1,4 @@
+trained_on,corpus,accuracy,macro_f1
+mistral,ScienceQA (all),0.25458085203847913,0.14259034069647564
+mistral,OneStopEnglish,0.3350970017636684,0.1899802241265656
+mistral,RACE combined (middle+high),0.492,0.34088325727027924

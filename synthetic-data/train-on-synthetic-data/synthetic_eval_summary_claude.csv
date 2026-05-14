@@ -1,0 +1,4 @@
+trained_on,corpus,accuracy,macro_f1
+claude,ScienceQA (all),0.3081768208886853,0.16880379926455027
+claude,OneStopEnglish,0.3474426807760141,0.23079534844240726
+claude,RACE combined (middle+high),0.499,0.35639092439716824
