@@ -1,0 +1,49 @@
+{
+  "experiment": "BERT+Static v2 (balanced+wiki)",
+  "generated_at_utc": "2026-05-14T16:33:48.587239+00:00",
+  "metrics": {
+    "LR_COMBO_Rooein_baseline": {
+      "ScienceQA_macro_f1": 0.8416,
+      "RACE_macro_f1": null,
+      "Wiki_macro_f1": null,
+      "Synthetic_macro_f1": null
+    },
+    "BERT_Static_v1": {
+      "ScienceQA_macro_f1": 0.895,
+      "RACE_macro_f1": 0.8387,
+      "Wiki_macro_f1": 0.4186,
+      "Synthetic_macro_f1": null
+    },
+    "BERT_Static_v2_balanced_wiki": {
+      "ScienceQA_macro_f1": 0.8987,
+      "RACE_macro_f1": 0.8049,
+      "Wiki_macro_f1": 0.9567,
+      "Synthetic_macro_f1": 0.3679
+    }
+  },
+  "synthetic_eval": {
+    "n_per_class": 20,
+    "accuracy": 0.42,
+    "macro_f1": 0.3679,
+    "per_class": {
+      "elementary": {
+        "precision": 0.1,
+        "recall": 0.05,
+        "f1": 0.07,
+        "support": 20
+      },
+      "high": {
+        "precision": 0.74,
+        "recall": 1.0,
+        "f1": 0.85,
+        "support": 20
+      },
+      "middle": {
+        "precision": 0.17,
+        "recall": 0.2,
+        "f1": 0.19,
+        "support": 20
+      }
+    }
+  }
+}
