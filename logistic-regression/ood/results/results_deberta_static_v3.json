@@ -1,0 +1,86 @@
+{
+  "experiment": "DeBERTa+Static v3 (8 domains)",
+  "generated_at_utc": "2026-05-14T20:28:36.430555+00:00",
+  "clear_eval_setup": {
+    "balancing": "undersample to min class",
+    "min_class_size": 426,
+    "samples_per_class": {
+      "elementary": 426,
+      "middle": 426,
+      "high": 426
+    },
+    "total_eval_samples": 1278
+  },
+  "metrics": {
+    "scienceqa_test": {
+      "macro_f1": 0.8128,
+      "accuracy": 0.82,
+      "per_class": {
+        "elementary": {
+          "precision": 0.84,
+          "recall": 0.9,
+          "f1": 0.87,
+          "support": 303
+        },
+        "high": {
+          "precision": 0.8,
+          "recall": 0.96,
+          "f1": 0.88,
+          "support": 303
+        },
+        "middle": {
+          "precision": 0.82,
+          "recall": 0.6,
+          "f1": 0.69,
+          "support": 304
+        }
+      }
+    },
+    "race_test": {
+      "macro_f1": 0.7404,
+      "micro_f1": 0.77,
+      "per_class": {
+        "middle": {
+          "precision": 0.59,
+          "recall": 0.75,
+          "f1": 0.66,
+          "support": 1436
+        },
+        "high": {
+          "precision": 0.88,
+          "recall": 0.77,
+          "f1": 0.82,
+          "support": 3498
+        }
+      }
+    },
+    "wikipedia_ood": {
+      "macro_f1": 0.9248,
+      "note": "Add per_class dict here if you still have the classification_report output."
+    },
+    "clear_ood_balanced": {
+      "macro_f1": 0.4429,
+      "note": "Add per_class dict here if you still have the classification_report output."
+    }
+  },
+  "comparison_summary": {
+    "LR_COMBO_Rooein_baseline": {
+      "ScienceQA_macro_f1": 0.8416,
+      "RACE_macro_f1": null,
+      "Wiki_macro_f1": null,
+      "CLEAR_macro_f1": null
+    },
+    "BERT_Static_v2": {
+      "ScienceQA_macro_f1": 0.8987,
+      "RACE_macro_f1": 0.8049,
+      "Wiki_macro_f1": 0.9567,
+      "CLEAR_macro_f1": null
+    },
+    "DeBERTa_Static_v3_8_domains": {
+      "ScienceQA_macro_f1": 0.8128,
+      "RACE_macro_f1": 0.7404,
+      "Wiki_macro_f1": 0.9248,
+      "CLEAR_macro_f1": 0.4429
+    }
+  }
+}
