@@ -1,0 +1,219 @@
+[run] (1/7) Pull OneStop out of train/val/test -> outputs/splits/
+[codecarbon WARNING @ 22:28:11] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 22:28:11] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 22:28:12] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 22:28:12] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 22:28:12] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 22:28:12] No CPU tracking mode found. Falling back on CPU load mode.
+[step3e] train: 17306 -> 16849 kept, 457 -> onestop
+[step3e] val: 2153 -> 2099 kept, 54 -> onestop
+[step3e] test: 2153 -> 2099 kept, 54 -> onestop
+[step3e] ood_onestop.csv rows=565 label_dist={'high': 189, 'middle': 189, 'elementary': 187}
+[step3e] ood_race-middle: passed through, rows=500
+[step3e] ood_race-high: passed through, rows=500
+[run] (2/7) Static features for all 6 splits (~5 min CPU)
+[codecarbon WARNING @ 22:28:18] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 22:28:18] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 22:28:19] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 22:28:19] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 22:28:19] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 22:28:19] No CPU tracking mode found. Falling back on CPU load mode.
+static/train:   0%|          | 0/16849 [00:00<?, ?it/s]static/train:   0%|          | 1/16849 [00:00<1:04:03,  4.38it/s]static/train:   1%|          | 194/16849 [00:00<00:22, 744.16it/s]static/train:   2%|▏         | 383/16849 [00:00<00:14, 1148.92it/s]static/train:   3%|▎         | 578/16849 [00:00<00:11, 1415.70it/s]static/train:   5%|▍         | 769/16849 [00:00<00:10, 1573.82it/s]static/train:   6%|▌         | 944/16849 [00:00<00:10, 1581.29it/s]static/train:   7%|▋         | 1114/16849 [00:00<00:10, 1513.53it/s]static/train:   8%|▊         | 1274/16849 [00:00<00:10, 1514.80it/s]static/train:   8%|▊         | 1432/16849 [00:01<00:10, 1478.96it/s]static/train:   9%|▉         | 1584/16849 [00:01<00:10, 1475.10it/s]static/train:  10%|█         | 1753/16849 [00:01<00:09, 1536.44it/s]static/train:  12%|█▏        | 1944/16849 [00:01<00:09, 1644.72it/s]static/train:  13%|█▎        | 2118/16849 [00:01<00:08, 1671.99it/s]static/train:  14%|█▎        | 2287/16849 [00:01<00:08, 1659.70it/s]static/train:  15%|█▍        | 2455/16849 [00:01<00:08, 1628.12it/s]static/train:  16%|█▌        | 2619/16849 [00:02<00:15, 943.15it/s] static/train:  16%|█▋        | 2748/16849 [00:02<00:17, 784.99it/s]static/train:  17%|█▋        | 2854/16849 [00:02<00:17, 778.21it/s]static/train:  18%|█▊        | 2951/16849 [00:02<00:18, 767.74it/s]static/train:  22%|██▏       | 3743/16849 [00:02<00:05, 2230.86it/s]static/train:  26%|██▌       | 4356/16849 [00:02<00:04, 3112.52it/s]static/train:  32%|███▏      | 5371/16849 [00:02<00:02, 4830.56it/s]static/train:  38%|███▊      | 6320/16849 [00:02<00:01, 6034.74it/s]static/train:  43%|████▎     | 7263/16849 [00:03<00:01, 6945.17it/s]static/train:  48%|████▊     | 8029/16849 [00:03<00:02, 3523.10it/s]static/train:  51%|█████     | 8614/16849 [00:03<00:03, 2642.04it/s]static/train:  54%|█████▍    | 9069/16849 [00:04<00:03, 2271.96it/s]static/train:  56%|█████▌    | 9432/16849 [00:04<00:03, 2071.07it/s]static/train:  58%|█████▊    | 9732/16849 [00:04<00:03, 1932.83it/s]static/train:  59%|█████▉    | 9987/16849 [00:04<00:03, 1828.02it/s]static/train:  61%|██████    | 10210/16849 [00:04<00:03, 1763.91it/s]static/train:  62%|██████▏   | 10412/16849 [00:05<00:03, 1781.38it/s]static/train:  63%|██████▎   | 10610/16849 [00:05<00:03, 1804.66it/s]static/train:  64%|██████▍   | 10805/16849 [00:05<00:03, 1716.61it/s]static/train:  65%|██████▌   | 10986/16849 [00:05<00:03, 1653.70it/s]static/train:  66%|██████▌   | 11157/16849 [00:05<00:03, 1636.16it/s]static/train:  67%|██████▋   | 11325/16849 [00:05<00:03, 1621.30it/s]static/train:  70%|██████▉   | 11739/16849 [00:05<00:02, 2271.76it/s]static/train:  72%|███████▏  | 12201/16849 [00:05<00:01, 2904.79it/s]static/train:  74%|███████▍  | 12507/16849 [00:05<00:01, 2811.38it/s]static/train:  76%|███████▌  | 12800/16849 [00:06<00:01, 2760.25it/s]static/train:  79%|███████▉  | 13327/16849 [00:06<00:01, 3446.70it/s]static/train:  81%|████████  | 13683/16849 [00:06<00:01, 2899.60it/s]static/train:  83%|████████▎ | 13995/16849 [00:06<00:01, 2608.67it/s]static/train:  85%|████████▍ | 14275/16849 [00:06<00:01, 2447.74it/s]static/train:  86%|████████▋ | 14533/16849 [00:06<00:01, 2216.21it/s]static/train:  88%|████████▊ | 14766/16849 [00:06<00:01, 1864.66it/s]static/train:  89%|████████▉ | 14967/16849 [00:07<00:01, 1690.00it/s]static/train:  90%|████████▉ | 15146/16849 [00:07<00:01, 1563.30it/s]static/train:  91%|█████████ | 15309/16849 [00:07<00:01, 1486.20it/s]static/train:  92%|█████████▏| 15461/16849 [00:07<00:00, 1407.31it/s]static/train:  93%|█████████▎| 15604/16849 [00:07<00:00, 1378.45it/s]static/train:  93%|█████████▎| 15743/16849 [00:07<00:00, 1364.67it/s]static/train:  94%|█████████▍| 15880/16849 [00:07<00:00, 1359.07it/s]static/train:  95%|█████████▌| 16029/16849 [00:07<00:00, 1394.13it/s]static/train:  96%|█████████▌| 16172/16849 [00:08<00:00, 1402.99it/s]static/train:  97%|█████████▋| 16317/16849 [00:08<00:00, 1413.68it/s]static/train:  98%|█████████▊| 16469/16849 [00:08<00:00, 1440.73it/s]static/train:  99%|█████████▊| 16620/16849 [00:08<00:00, 1459.32it/s]static/train: 100%|█████████▉| 16768/16849 [00:08<00:00, 1461.65it/s]static/train: 100%|██████████| 16849/16849 [00:08<00:00, 1976.35it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/train_static.csv: rows=16849 features=34
+static/val:   0%|          | 0/2099 [00:00<?, ?it/s]static/val:   8%|▊         | 162/2099 [00:00<00:01, 1616.49it/s]static/val:  15%|█▌        | 324/2099 [00:00<00:01, 1486.41it/s]static/val:  29%|██▉       | 619/2099 [00:00<00:00, 2123.16it/s]static/val:  49%|████▊     | 1022/2099 [00:00<00:00, 2850.04it/s]static/val:  63%|██████▎   | 1312/2099 [00:00<00:00, 2187.32it/s]static/val:  74%|███████▍  | 1556/2099 [00:00<00:00, 2255.45it/s]static/val:  86%|████████▌ | 1808/2099 [00:00<00:00, 2328.98it/s]static/val:  98%|█████████▊| 2053/2099 [00:00<00:00, 1874.28it/s]static/val: 100%|██████████| 2099/2099 [00:01<00:00, 2043.68it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/val_static.csv: rows=2099 features=34
+static/test:   0%|          | 0/2099 [00:00<?, ?it/s]static/test:   8%|▊         | 163/2099 [00:00<00:01, 1623.41it/s]static/test:  16%|█▌        | 326/2099 [00:00<00:01, 1402.17it/s]static/test:  26%|██▌       | 546/2099 [00:00<00:00, 1736.85it/s]static/test:  48%|████▊     | 1011/2099 [00:00<00:00, 2827.43it/s]static/test:  62%|██████▏   | 1302/2099 [00:00<00:00, 2178.42it/s]static/test:  74%|███████▎  | 1546/2099 [00:00<00:00, 2249.29it/s]static/test:  86%|████████▌ | 1801/2099 [00:00<00:00, 2329.81it/s]static/test:  98%|█████████▊| 2047/2099 [00:01<00:00, 1898.17it/s]static/test: 100%|██████████| 2099/2099 [00:01<00:00, 2011.86it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/test_static.csv: rows=2099 features=34
+static/ood_onestop:   0%|          | 0/565 [00:00<?, ?it/s]static/ood_onestop:   8%|▊         | 46/565 [00:00<00:01, 456.90it/s]static/ood_onestop:  16%|█▋        | 92/565 [00:00<00:01, 445.38it/s]static/ood_onestop:  24%|██▍       | 137/565 [00:00<00:00, 443.48it/s]static/ood_onestop:  32%|███▏      | 182/565 [00:00<00:01, 374.96it/s]static/ood_onestop:  39%|███▉      | 221/565 [00:00<00:01, 314.14it/s]static/ood_onestop:  45%|████▌     | 255/565 [00:00<00:01, 291.54it/s]static/ood_onestop:  51%|█████     | 286/565 [00:00<00:00, 279.79it/s]static/ood_onestop:  56%|█████▌    | 315/565 [00:00<00:00, 271.62it/s]static/ood_onestop:  62%|██████▏   | 348/565 [00:01<00:00, 285.12it/s]static/ood_onestop:  67%|██████▋   | 381/565 [00:01<00:00, 297.30it/s]static/ood_onestop:  73%|███████▎  | 414/565 [00:01<00:00, 305.44it/s]static/ood_onestop:  79%|███████▉  | 447/565 [00:01<00:00, 310.86it/s]static/ood_onestop:  85%|████████▌ | 483/565 [00:01<00:00, 322.90it/s]static/ood_onestop:  91%|█████████▏| 516/565 [00:01<00:00, 324.65it/s]static/ood_onestop:  97%|█████████▋| 549/565 [00:01<00:00, 319.63it/s]static/ood_onestop: 100%|██████████| 565/565 [00:01<00:00, 320.49it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_onestop_static.csv: rows=565 features=34
+static/ood_race-middle:   0%|          | 0/500 [00:00<?, ?it/s]static/ood_race-middle:  25%|██▍       | 123/500 [00:00<00:00, 1220.51it/s]static/ood_race-middle:  52%|█████▏    | 262/500 [00:00<00:00, 1316.66it/s]static/ood_race-middle:  80%|████████  | 401/500 [00:00<00:00, 1344.72it/s]static/ood_race-middle: 100%|██████████| 500/500 [00:00<00:00, 1316.61it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_race-middle_static.csv: rows=500 features=34
+static/ood_race-high:   0%|          | 0/500 [00:00<?, ?it/s]static/ood_race-high:  16%|█▌        | 79/500 [00:00<00:00, 786.93it/s]static/ood_race-high:  32%|███▏      | 158/500 [00:00<00:00, 764.79it/s]static/ood_race-high:  48%|████▊     | 239/500 [00:00<00:00, 784.42it/s]static/ood_race-high:  64%|██████▎   | 318/500 [00:00<00:00, 781.54it/s]static/ood_race-high:  79%|███████▉  | 397/500 [00:00<00:00, 778.28it/s]static/ood_race-high:  95%|█████████▌| 477/500 [00:00<00:00, 780.68it/s]static/ood_race-high: 100%|██████████| 500/500 [00:00<00:00, 783.85it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_race-high_static.csv: rows=500 features=34
+[step3d] wrote feature_names.json (34 names)
+[run] (3/7) LLM-as-judge with Llama-3.1-8B (~30-90 min GPU)
+[codecarbon WARNING @ 22:28:37] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 22:28:37] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 22:28:38] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 22:28:38] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 22:28:38] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 22:28:38] No CPU tracking mode found. Falling back on CPU load mode.
+[step3f] loading judge model meta-llama/Llama-3.1-8B-Instruct
+INFO 05-12 22:28:48 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 2048, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'model': 'meta-llama/Llama-3.1-8B-Instruct'}
+INFO 05-12 22:28:49 [model.py:555] Resolved architecture: LlamaForCausalLM
+INFO 05-12 22:28:49 [model.py:1680] Using max model len 2048
+INFO 05-12 22:28:49 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-12 22:28:49 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-12 22:28:49 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=1251393) INFO 05-12 22:28:51 [core.py:109] Initializing a V1 LLM engine (v0.20.1) with config: model='meta-llama/Llama-3.1-8B-Instruct', speculative_config=None, tokenizer='meta-llama/Llama-3.1-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=meta-llama/Llama-3.1-8B-Instruct, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=1251393) INFO 05-12 22:28:51 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=1251393) WARNING 05-12 22:28:51 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=1251393) WARNING 05-12 22:28:51 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=1251393) INFO 05-12 22:28:51 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.110.41.163:40299 backend=nccl
+(EngineCore pid=1251393) INFO 05-12 22:28:51 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136] EngineCore failed to start.
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136] Traceback (most recent call last):
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1110, in run_engine_core
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 876, in __init__
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     super().__init__(
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ~~~~~~~~~~~~~~~~^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]         vllm_config,
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]         ^^^^^^^^^^^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ...<3 lines>...
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]         internal_dp_balancing,
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]         ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     )
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 118, in __init__
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/executor/abstract.py", line 109, in __init__
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     self._init_executor()
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/executor/uniproc_executor.py", line 47, in _init_executor
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     self.driver_worker.init_device()
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/worker_base.py", line 317, in init_device
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     self.worker.init_device()  # type: ignore
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     raise ValueError(
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     ...<7 lines>...
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136]     )
+(EngineCore pid=1251393) ERROR 05-12 22:28:52 [core.py:1136] ValueError: Free memory on device cuda:0 (12.76/47.37 GiB) on startup is less than desired GPU memory utilization (0.9, 42.63 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+(EngineCore pid=1251393) Process EngineCore:
+(EngineCore pid=1251393) Traceback (most recent call last):
+(EngineCore pid=1251393)   File "/home/tanmayv/anaconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+(EngineCore pid=1251393)     self.run()
+(EngineCore pid=1251393)     ~~~~~~~~^^
+(EngineCore pid=1251393)   File "/home/tanmayv/anaconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+(EngineCore pid=1251393)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=1251393)     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1140, in run_engine_core
+(EngineCore pid=1251393)     raise e
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1110, in run_engine_core
+(EngineCore pid=1251393)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393)     return func(*args, **kwargs)
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 876, in __init__
+(EngineCore pid=1251393)     super().__init__(
+(EngineCore pid=1251393)     ~~~~~~~~~~~~~~~~^
+(EngineCore pid=1251393)         vllm_config,
+(EngineCore pid=1251393)         ^^^^^^^^^^^^
+(EngineCore pid=1251393)     ...<3 lines>...
+(EngineCore pid=1251393)         internal_dp_balancing,
+(EngineCore pid=1251393)         ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=1251393)     )
+(EngineCore pid=1251393)     ^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 118, in __init__
+(EngineCore pid=1251393)     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=1251393)                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393)     return func(*args, **kwargs)
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/executor/abstract.py", line 109, in __init__
+(EngineCore pid=1251393)     self._init_executor()
+(EngineCore pid=1251393)     ~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/executor/uniproc_executor.py", line 47, in _init_executor
+(EngineCore pid=1251393)     self.driver_worker.init_device()
+(EngineCore pid=1251393)     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/worker_base.py", line 317, in init_device
+(EngineCore pid=1251393)     self.worker.init_device()  # type: ignore
+(EngineCore pid=1251393)     ~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=1251393)     return func(*args, **kwargs)
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=1251393)     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=1251393)                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=1251393)   File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=1251393)     raise ValueError(
+(EngineCore pid=1251393)     ...<7 lines>...
+(EngineCore pid=1251393)     )
+(EngineCore pid=1251393) ValueError: Free memory on device cuda:0 (12.76/47.37 GiB) on startup is less than desired GPU memory utilization (0.9, 42.63 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+Traceback (most recent call last):
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/scripts/step3f_llm_judge.py", line 156, in <module>
+    main()
+    ~~~~^^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/scripts/step3f_llm_judge.py", line 87, in main
+    llm = LLM(model=JUDGE_MODEL, dtype='bfloat16',
+              enable_prefix_caching=True,
+              gpu_memory_utilization=args.gpu_mem_frac,
+              max_model_len=args.max_model_len,
+              trust_remote_code=True)
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/entrypoints/llm.py", line 381, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        engine_args=engine_args, usage_context=UsageContext.LLM_CLASS
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/llm_engine.py", line 170, in from_engine_args
+    return cls(
+        vllm_config=vllm_config,
+    ...<4 lines>...
+        multiprocess_mode=enable_multiprocessing,
+    )
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/llm_engine.py", line 104, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        multiprocess_mode=multiprocess_mode,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        log_stats=self.log_stats,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core_client.py", line 101, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core_client.py", line 723, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        asyncio_mode=False,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        log_stats=log_stats,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/core_client.py", line 535, in __init__
+    with launch_core_engines(
+         ~~~~~~~~~~~~~~~~~~~^
+        vllm_config, executor_class, log_stats, addresses
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as (engine_manager, coordinator, addresses, tensor_queue):
+    ^
+  File "/home/tanmayv/anaconda3/lib/python3.13/contextlib.py", line 148, in __exit__
+    next(self.gen)
+    ~~~~^^^^^^^^^^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1119, in launch_core_engines
+    wait_for_engine_startup(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        handshake_socket,
+        ^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        coordinator.proc if coordinator else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/.venv/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1178, in wait_for_engine_startup
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

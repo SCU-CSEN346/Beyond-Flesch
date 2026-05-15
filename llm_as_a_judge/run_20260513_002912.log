@@ -1,0 +1,274 @@
+[run] (1/7) Pull OneStop out of train/val/test -> outputs/splits/
+[codecarbon WARNING @ 00:29:12] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:29:12] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:29:13] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:29:13] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:29:13] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:29:13] No CPU tracking mode found. Falling back on CPU load mode.
+[step3e] train: 17306 -> 16849 kept, 457 -> onestop
+[step3e] val: 2153 -> 2099 kept, 54 -> onestop
+[step3e] test: 2153 -> 2099 kept, 54 -> onestop
+[step3e] ood_onestop.csv rows=565 label_dist={'high': 189, 'middle': 189, 'elementary': 187}
+[step3e] ood_race-middle: passed through, rows=500
+[step3e] ood_race-high: passed through, rows=500
+[run] (2/7) Static features for all 6 splits (~5 min CPU)
+[codecarbon WARNING @ 00:29:18] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:29:18] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:29:19] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:29:19] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:29:19] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:29:19] No CPU tracking mode found. Falling back on CPU load mode.
+static/train:   0%|          | 0/16849 [00:00<?, ?it/s]static/train:   0%|          | 1/16849 [00:00<1:03:10,  4.44it/s]static/train:   1%|          | 197/16849 [00:00<00:21, 762.99it/s]static/train:   2%|▏         | 383/16849 [00:00<00:14, 1153.89it/s]static/train:   3%|▎         | 572/16849 [00:00<00:11, 1400.30it/s]static/train:   5%|▍         | 763/16849 [00:00<00:10, 1564.78it/s]static/train:   6%|▌         | 937/16849 [00:00<00:09, 1595.14it/s]static/train:   7%|▋         | 1108/16849 [00:00<00:10, 1533.80it/s]static/train:   8%|▊         | 1270/16849 [00:00<00:10, 1526.01it/s]static/train:   8%|▊         | 1428/16849 [00:01<00:10, 1493.08it/s]static/train:   9%|▉         | 1582/16849 [00:01<00:10, 1485.44it/s]static/train:  10%|█         | 1751/16849 [00:01<00:09, 1544.07it/s]static/train:  12%|█▏        | 1943/16849 [00:01<00:09, 1652.03it/s]static/train:  13%|█▎        | 2120/16849 [00:01<00:08, 1682.90it/s]static/train:  14%|█▎        | 2291/16849 [00:01<00:08, 1689.43it/s]static/train:  15%|█▍        | 2461/16849 [00:01<00:08, 1649.26it/s]static/train:  16%|█▌        | 2627/16849 [00:02<00:15, 919.54it/s] static/train:  16%|█▋        | 2757/16849 [00:02<00:17, 786.26it/s]static/train:  17%|█▋        | 2864/16849 [00:02<00:17, 781.72it/s]static/train:  18%|█▊        | 2962/16849 [00:02<00:18, 765.28it/s]static/train:  23%|██▎       | 3822/16849 [00:02<00:05, 2351.04it/s]static/train:  27%|██▋       | 4488/16849 [00:02<00:03, 3317.31it/s]static/train:  33%|███▎      | 5638/16849 [00:02<00:02, 5302.00it/s]static/train:  39%|███▉      | 6541/16849 [00:02<00:01, 6260.01it/s]static/train:  43%|████▎     | 7321/16849 [00:03<00:01, 6665.32it/s]static/train:  48%|████▊     | 8058/16849 [00:03<00:02, 3507.24it/s]static/train:  51%|█████     | 8624/16849 [00:03<00:03, 2641.69it/s]static/train:  54%|█████▍    | 9065/16849 [00:04<00:03, 2280.78it/s]static/train:  56%|█████▌    | 9420/16849 [00:04<00:03, 2071.83it/s]static/train:  58%|█████▊    | 9714/16849 [00:04<00:03, 1947.13it/s]static/train:  59%|█████▉    | 9966/16849 [00:04<00:03, 1845.22it/s]static/train:  60%|██████    | 10188/16849 [00:04<00:03, 1770.52it/s]static/train:  62%|██████▏   | 10389/16849 [00:05<00:03, 1781.26it/s]static/train:  63%|██████▎   | 10585/16849 [00:05<00:03, 1811.22it/s]static/train:  64%|██████▍   | 10780/16849 [00:05<00:03, 1744.73it/s]static/train:  65%|██████▌   | 10963/16849 [00:05<00:03, 1691.28it/s]static/train:  66%|██████▌   | 11138/16849 [00:05<00:03, 1671.43it/s]static/train:  67%|██████▋   | 11309/16849 [00:05<00:03, 1655.59it/s]static/train:  69%|██████▉   | 11700/16849 [00:05<00:02, 2245.65it/s]static/train:  72%|███████▏  | 12200/16849 [00:05<00:01, 2993.06it/s]static/train:  74%|███████▍  | 12514/16849 [00:05<00:01, 2858.80it/s]static/train:  76%|███████▌  | 12811/16849 [00:06<00:01, 2760.67it/s]static/train:  79%|███████▉  | 13329/16849 [00:06<00:01, 3417.23it/s]static/train:  81%|████████  | 13683/16849 [00:06<00:01, 2877.38it/s]static/train:  83%|████████▎ | 13993/16849 [00:06<00:01, 2608.91it/s]static/train:  85%|████████▍ | 14272/16849 [00:06<00:01, 2456.70it/s]static/train:  86%|████████▌ | 14531/16849 [00:06<00:01, 2224.01it/s]static/train:  88%|████████▊ | 14764/16849 [00:06<00:01, 1871.73it/s]static/train:  89%|████████▉ | 14965/16849 [00:07<00:01, 1676.58it/s]static/train:  90%|████████▉ | 15143/16849 [00:07<00:01, 1559.92it/s]static/train:  91%|█████████ | 15306/16849 [00:07<00:01, 1490.47it/s]static/train:  92%|█████████▏| 15459/16849 [00:07<00:00, 1394.24it/s]static/train:  93%|█████████▎| 15601/16849 [00:07<00:00, 1374.72it/s]static/train:  93%|█████████▎| 15740/16849 [00:07<00:00, 1361.60it/s]static/train:  94%|█████████▍| 15877/16849 [00:07<00:00, 1361.48it/s]static/train:  95%|█████████▌| 16028/16849 [00:07<00:00, 1401.09it/s]static/train:  96%|█████████▌| 16171/16849 [00:07<00:00, 1406.85it/s]static/train:  97%|█████████▋| 16313/16849 [00:08<00:00, 1406.89it/s]static/train:  98%|█████████▊| 16464/16849 [00:08<00:00, 1432.91it/s]static/train:  99%|█████████▊| 16613/16849 [00:08<00:00, 1446.91it/s]static/train:  99%|█████████▉| 16763/16849 [00:08<00:00, 1462.43it/s]static/train: 100%|██████████| 16849/16849 [00:08<00:00, 1991.09it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/train_static.csv: rows=16849 features=34
+static/val:   0%|          | 0/2099 [00:00<?, ?it/s]static/val:   8%|▊         | 164/2099 [00:00<00:01, 1633.25it/s]static/val:  16%|█▌        | 328/2099 [00:00<00:01, 1422.59it/s]static/val:  35%|███▌      | 745/2099 [00:00<00:00, 2580.31it/s]static/val:  49%|████▉     | 1034/2099 [00:00<00:00, 2692.82it/s]static/val:  62%|██████▏   | 1311/2099 [00:00<00:00, 2106.83it/s]static/val:  74%|███████▍  | 1549/2099 [00:00<00:00, 2181.65it/s]static/val:  86%|████████▌ | 1802/2099 [00:00<00:00, 2276.38it/s]static/val:  97%|█████████▋| 2042/2099 [00:00<00:00, 1845.40it/s]static/val: 100%|██████████| 2099/2099 [00:01<00:00, 2018.33it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/val_static.csv: rows=2099 features=34
+static/test:   0%|          | 0/2099 [00:00<?, ?it/s]static/test:   8%|▊         | 166/2099 [00:00<00:01, 1656.59it/s]static/test:  16%|█▌        | 332/2099 [00:00<00:01, 1337.43it/s]static/test:  37%|███▋      | 770/2099 [00:00<00:00, 2565.12it/s]static/test:  50%|████▉     | 1045/2099 [00:00<00:00, 2609.59it/s]static/test:  63%|██████▎   | 1318/2099 [00:00<00:00, 2122.95it/s]static/test:  75%|███████▍  | 1569/2099 [00:00<00:00, 2229.19it/s]static/test:  87%|████████▋ | 1817/2099 [00:00<00:00, 2297.74it/s]static/test:  98%|█████████▊| 2058/2099 [00:00<00:00, 1891.77it/s]static/test: 100%|██████████| 2099/2099 [00:01<00:00, 2042.78it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/test_static.csv: rows=2099 features=34
+static/ood_onestop:   0%|          | 0/565 [00:00<?, ?it/s]static/ood_onestop:   8%|▊         | 46/565 [00:00<00:01, 454.12it/s]static/ood_onestop:  16%|█▋        | 92/565 [00:00<00:01, 443.91it/s]static/ood_onestop:  24%|██▍       | 137/565 [00:00<00:00, 439.32it/s]static/ood_onestop:  32%|███▏      | 181/565 [00:00<00:01, 369.36it/s]static/ood_onestop:  39%|███▉      | 220/565 [00:00<00:01, 307.40it/s]static/ood_onestop:  45%|████▍     | 253/565 [00:00<00:01, 285.51it/s]static/ood_onestop:  50%|█████     | 283/565 [00:00<00:01, 275.06it/s]static/ood_onestop:  55%|█████▌    | 312/565 [00:01<00:00, 266.91it/s]static/ood_onestop:  61%|██████    | 345/565 [00:01<00:00, 282.37it/s]static/ood_onestop:  67%|██████▋   | 378/565 [00:01<00:00, 293.90it/s]static/ood_onestop:  73%|███████▎  | 411/565 [00:01<00:00, 301.23it/s]static/ood_onestop:  78%|███████▊  | 442/565 [00:01<00:00, 303.36it/s]static/ood_onestop:  85%|████████▍ | 479/565 [00:01<00:00, 320.51it/s]static/ood_onestop:  91%|█████████ | 512/565 [00:01<00:00, 312.36it/s]static/ood_onestop:  96%|█████████▋| 545/565 [00:01<00:00, 315.91it/s]static/ood_onestop: 100%|██████████| 565/565 [00:01<00:00, 316.12it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_onestop_static.csv: rows=565 features=34
+static/ood_race-middle:   0%|          | 0/500 [00:00<?, ?it/s]static/ood_race-middle:  24%|██▍       | 121/500 [00:00<00:00, 1199.13it/s]static/ood_race-middle:  52%|█████▏    | 258/500 [00:00<00:00, 1292.28it/s]static/ood_race-middle:  79%|███████▉  | 397/500 [00:00<00:00, 1335.00it/s]static/ood_race-middle: 100%|██████████| 500/500 [00:00<00:00, 1300.20it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_race-middle_static.csv: rows=500 features=34
+static/ood_race-high:   0%|          | 0/500 [00:00<?, ?it/s]static/ood_race-high:  15%|█▌        | 76/500 [00:00<00:00, 756.29it/s]static/ood_race-high:  30%|███       | 152/500 [00:00<00:00, 742.20it/s]static/ood_race-high:  47%|████▋     | 234/500 [00:00<00:00, 774.26it/s]static/ood_race-high:  62%|██████▏   | 312/500 [00:00<00:00, 764.40it/s]static/ood_race-high:  78%|███████▊  | 389/500 [00:00<00:00, 759.34it/s]static/ood_race-high:  94%|█████████▍| 471/500 [00:00<00:00, 778.81it/s]static/ood_race-high: 100%|██████████| 500/500 [00:00<00:00, 770.33it/s]
+[step3d] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/static_features/ood_race-high_static.csv: rows=500 features=34
+[step3d] wrote feature_names.json (34 names)
+[run] (3/7) LLM-as-judge with Llama-3.1-8B (~30-90 min GPU)
+[codecarbon WARNING @ 00:29:38] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:29:38] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:29:39] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:29:39] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:29:39] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:29:39] No CPU tracking mode found. Falling back on CPU load mode.
+[step3f] loading judge model meta-llama/Llama-3.1-8B-Instruct
+INFO 05-13 00:29:46 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 2048, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'model': 'meta-llama/Llama-3.1-8B-Instruct'}
+INFO 05-13 00:29:47 [model.py:555] Resolved architecture: LlamaForCausalLM
+INFO 05-13 00:29:47 [model.py:1680] Using max model len 2048
+INFO 05-13 00:29:47 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-13 00:29:47 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-13 00:29:47 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=1322214) INFO 05-13 00:29:49 [core.py:109] Initializing a V1 LLM engine (v0.20.1) with config: model='meta-llama/Llama-3.1-8B-Instruct', speculative_config=None, tokenizer='meta-llama/Llama-3.1-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=meta-llama/Llama-3.1-8B-Instruct, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=1322214) INFO 05-13 00:29:49 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=1322214) WARNING 05-13 00:29:49 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=1322214) WARNING 05-13 00:29:49 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=1322214) INFO 05-13 00:29:49 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.110.41.163:50829 backend=nccl
+(EngineCore pid=1322214) INFO 05-13 00:29:49 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=1322214) INFO 05-13 00:29:50 [gpu_model_runner.py:4777] Starting to load model meta-llama/Llama-3.1-8B-Instruct...
+(EngineCore pid=1322214) INFO 05-13 00:29:50 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=1322214) INFO 05-13 00:29:50 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=1322214) INFO 05-13 00:29:51 [weight_utils.py:904] Filesystem type for checkpoints: EXT4. Checkpoint size: 14.96 GiB. Available RAM: 100.88 GiB.
+(EngineCore pid=1322214) INFO 05-13 00:29:51 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=1322214) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=1322214) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.76it/s]
+(EngineCore pid=1322214) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.59it/s]
+(EngineCore pid=1322214) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.56it/s]
+(EngineCore pid=1322214) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  2.15it/s]
+(EngineCore pid=1322214) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.92it/s]
+(EngineCore pid=1322214) 
+(EngineCore pid=1322214) INFO 05-13 00:29:53 [default_loader.py:384] Loading weights took 2.10 seconds
+(EngineCore pid=1322214) INFO 05-13 00:29:53 [gpu_model_runner.py:4879] Model loading took 14.99 GiB memory and 3.023941 seconds
+(EngineCore pid=1322214) INFO 05-13 00:29:55 [backends.py:1069] Using cache directory: /home/tanmayv/.cache/vllm/torch_compile_cache/1c707d479b/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=1322214) INFO 05-13 00:29:55 [backends.py:1128] Dynamo bytecode transform time: 1.15 s
+(EngineCore pid=1322214) INFO 05-13 00:29:55 [backends.py:290] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 0.508 s
+(EngineCore pid=1322214) INFO 05-13 00:29:55 [decorators.py:305] Directly load AOT compilation from path /home/tanmayv/.cache/vllm/torch_compile_cache/torch_aot_compile/93aaf906e1bcb7252ef9a412d0f15d02a9e87caeab062fec307f6c224954c175/rank_0_0/model
+(EngineCore pid=1322214) INFO 05-13 00:29:55 [monitor.py:53] torch.compile took 1.79 s in total
+(EngineCore pid=1322214) INFO 05-13 00:29:56 [monitor.py:81] Initial profiling/warmup run took 0.07 s
+(EngineCore pid=1322214) INFO 05-13 00:29:57 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=1322214) INFO 05-13 00:29:58 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.53 GiB total
+(EngineCore pid=1322214) INFO 05-13 00:29:58 [gpu_worker.py:440] Available KV cache memory: 26.16 GiB
+(EngineCore pid=1322214) INFO 05-13 00:29:58 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8889 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9111. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=1322214) INFO 05-13 00:29:58 [kv_cache_utils.py:1708] GPU KV cache size: 214,320 tokens
+(EngineCore pid=1322214) INFO 05-13 00:29:58 [kv_cache_utils.py:1709] Maximum concurrency for 2,048 tokens per request: 104.65x
+(EngineCore pid=1322214) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:03, 15.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:03, 12.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:03, 12.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:03, 12.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:03, 13.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:02, 13.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:01<00:02, 14.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:01<00:02, 15.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 19/51 [00:01<00:01, 17.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:01<00:01, 19.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 25/51 [00:01<00:01, 20.58it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:01<00:01, 22.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 31/51 [00:01<00:00, 23.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [00:01<00:00, 25.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:01<00:00, 28.49it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [00:02<00:00, 29.81it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 47/51 [00:02<00:00, 31.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 32.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 21.87it/s]
+(EngineCore pid=1322214) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 26.70it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 25.24it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:01, 24.33it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:00, 25.04it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 25.68it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▍    | 19/35 [00:00<00:00, 28.49it/s]Capturing CUDA graphs (decode, FULL):  66%|██████▌   | 23/35 [00:00<00:00, 31.04it/s]Capturing CUDA graphs (decode, FULL):  77%|███████▋  | 27/35 [00:00<00:00, 33.57it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████▏| 32/35 [00:01<00:00, 36.27it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 31.64it/s]
+(EngineCore pid=1322214) INFO 05-13 00:30:02 [gpu_model_runner.py:6133] Graph capturing finished in 4 secs, took 0.48 GiB
+(EngineCore pid=1322214) INFO 05-13 00:30:02 [gpu_worker.py:599] CUDA graph pool memory: 0.48 GiB (actual), 0.53 GiB (estimated), difference: 0.05 GiB (9.8%).
+(EngineCore pid=1322214) INFO 05-13 00:30:02 [core.py:299] init engine (profile, create kv cache, warmup model) took 8.52 s (compilation: 1.79 s)
+(EngineCore pid=1322214) INFO 05-13 00:30:02 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=1322214) INFO 05-13 00:30:03 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=1322214) INFO 05-13 00:30:03 [core.py:1261] Shutdown complete
+[step3f] chat-template overhead=114 -> max_text_tokens=1918
+[step3f] train: already complete (16849 rows), skipping
+[step3f] val: already complete (2099 rows), skipping
+[step3f] test: already complete (2099 rows), skipping
+[step3f] ood_onestop: already complete (565 rows), skipping
+[step3f] ood_race-middle: already complete (500 rows), skipping
+[step3f] ood_race-high: already complete (500 rows), skipping
+[run] (4/8) Diagnose label disagreement -> Fig 1 data
+[codecarbon WARNING @ 00:30:05] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:30:05] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:30:06] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:30:06] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:30:06] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:30:06] No CPU tracking mode found. Falling back on CPU load mode.
+[step3g] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/eval_reports/label_disagreement_by_corpus.csv
+[step3g] overall original-vs-judge agreement: 0.504
+       source_dataset  n_rows  agreement
+agentlans-readability    3000   0.739000
+             cefr-elg     706   0.572238
+          cefr-readme    2301   0.458496
+              cefr-sp    3000   0.425667
+       cefr-synthetic     300   0.583333
+                clear    3461   0.522103
+english-cefr-explorer    1500   0.615333
+   finrad-readability     750   0.393333
+          grade-aware    1029   0.474247
+              onestop     565   0.408850
+           openbookqa     500   0.064000
+            race-high     500   0.312000
+          race-middle     500   0.914000
+            scienceqa    4500   0.418889
+[run] (5/8) Build share-ready clean dataset (original + judge labels)
+[codecarbon WARNING @ 00:30:11] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:30:11] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:30:12] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:30:12] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:30:12] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:30:12] No CPU tracking mode found. Falling back on CPU load mode.
+[step3h] ood_onestop: 565 rows, original-vs-judge agreement=0.409, judge_dist={'high': np.int64(388), 'middle': np.int64(177)}
+[step3h] ood_race-high: 500 rows, original-vs-judge agreement=0.312, judge_dist={'middle': np.int64(344), 'high': np.int64(156)}
+[step3h] ood_race-middle: 500 rows, original-vs-judge agreement=0.914, judge_dist={'middle': np.int64(457), 'elementary': np.int64(37), 'high': np.int64(6)}
+[step3h] test: 2099 rows, original-vs-judge agreement=0.490, judge_dist={'middle': np.int64(1392), 'high': np.int64(525), 'elementary': np.int64(182)}
+[step3h] train: 16849 rows, original-vs-judge agreement=0.504, judge_dist={'middle': np.int64(11026), 'high': np.int64(4330), 'elementary': np.int64(1493)}
+[step3h] val: 2099 rows, original-vs-judge agreement=0.494, judge_dist={'middle': np.int64(1390), 'high': np.int64(516), 'elementary': np.int64(193)}
+[step3h] all_rows.csv: 22612 rows
+[step3h] wrote manifest.json + README.md to /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/clean_dataset
+[run] (6/8) Train COMBO classifier in 4 sweep cells (~3-5 hr GPU):
+[codecarbon WARNING @ 00:30:18] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:30:18] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:30:20] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:30:20] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:30:20] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:30:20] No CPU tracking mode found. Falling back on CPU load mode.
+
+[step8l] config=all_llms label=llm_judge llm=ALL llms_for_X=['qwen2.5-7b', 'mistral-7b', 'gemma-7b', 'llama2-7b']
+[step8l] dim=286  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] all_llms__llm_judge__all__seed42  val=0.870  test=0.849  ood: ood_onestop=0.525 ood_race-middle=0.664 ood_race-high=0.496
+[step8l] all_llms__llm_judge__all__seed7  val=0.866  test=0.840  ood: ood_onestop=0.494 ood_race-middle=0.632 ood_race-high=0.498
+[step8l] all_llms__llm_judge__all__seed13  val=0.863  test=0.843  ood: ood_onestop=0.492 ood_race-middle=0.602 ood_race-high=0.497
+[codecarbon WARNING @ 00:30:36] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:30:36] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:30:37] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:30:37] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:30:37] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:30:37] No CPU tracking mode found. Falling back on CPU load mode.
+
+[step8l] config=all_llms label=original llm=ALL llms_for_X=['qwen2.5-7b', 'mistral-7b', 'gemma-7b', 'llama2-7b']
+[step8l] dim=286  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] all_llms__original__all__seed42  val=0.825  test=0.837  ood: ood_onestop=0.292 ood_race-middle=0.191 ood_race-high=0.181
+[step8l] all_llms__original__all__seed7  val=0.825  test=0.840  ood: ood_onestop=0.221 ood_race-middle=0.170 ood_race-high=0.199
+[step8l] all_llms__original__all__seed13  val=0.824  test=0.827  ood: ood_onestop=0.251 ood_race-middle=0.174 ood_race-high=0.198
+[codecarbon WARNING @ 00:30:56] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:30:56] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:30:57] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:30:57] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:30:57] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:30:57] No CPU tracking mode found. Falling back on CPU load mode.
+
+[step8l] config=per_llm label=llm_judge llm=qwen2.5-7b llms_for_X=['qwen2.5-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__llm_judge__qwen2.5-7b__seed42  val=0.867  test=0.841  ood: ood_onestop=0.523 ood_race-middle=0.613 ood_race-high=0.496
+[step8l] per_llm__llm_judge__qwen2.5-7b__seed7  val=0.874  test=0.836  ood: ood_onestop=0.449 ood_race-middle=0.537 ood_race-high=0.473
+[step8l] per_llm__llm_judge__qwen2.5-7b__seed13  val=0.871  test=0.834  ood: ood_onestop=0.493 ood_race-middle=0.581 ood_race-high=0.493
+
+[step8l] config=per_llm label=llm_judge llm=mistral-7b llms_for_X=['mistral-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__llm_judge__mistral-7b__seed42  val=0.847  test=0.841  ood: ood_onestop=0.489 ood_race-middle=0.607 ood_race-high=0.509
+[step8l] per_llm__llm_judge__mistral-7b__seed7  val=0.850  test=0.832  ood: ood_onestop=0.488 ood_race-middle=0.576 ood_race-high=0.507
+[step8l] per_llm__llm_judge__mistral-7b__seed13  val=0.850  test=0.836  ood: ood_onestop=0.472 ood_race-middle=0.577 ood_race-high=0.488
+
+[step8l] config=per_llm label=llm_judge llm=gemma-7b llms_for_X=['gemma-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__llm_judge__gemma-7b__seed42  val=0.806  test=0.811  ood: ood_onestop=0.475 ood_race-middle=0.453 ood_race-high=0.495
+[step8l] per_llm__llm_judge__gemma-7b__seed7  val=0.811  test=0.805  ood: ood_onestop=0.440 ood_race-middle=0.458 ood_race-high=0.469
+[step8l] per_llm__llm_judge__gemma-7b__seed13  val=0.807  test=0.812  ood: ood_onestop=0.484 ood_race-middle=0.463 ood_race-high=0.504
+
+[step8l] config=per_llm label=llm_judge llm=llama2-7b llms_for_X=['llama2-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__llm_judge__llama2-7b__seed42  val=0.820  test=0.813  ood: ood_onestop=0.475 ood_race-middle=0.476 ood_race-high=0.494
+[step8l] per_llm__llm_judge__llama2-7b__seed7  val=0.826  test=0.811  ood: ood_onestop=0.451 ood_race-middle=0.455 ood_race-high=0.468
+[step8l] per_llm__llm_judge__llama2-7b__seed13  val=0.821  test=0.817  ood: ood_onestop=0.483 ood_race-middle=0.507 ood_race-high=0.483
+[codecarbon WARNING @ 00:31:48] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:31:48] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:31:49] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:31:49] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:31:49] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:31:49] No CPU tracking mode found. Falling back on CPU load mode.
+
+[step8l] config=per_llm label=original llm=qwen2.5-7b llms_for_X=['qwen2.5-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__original__qwen2.5-7b__seed42  val=0.835  test=0.838  ood: ood_onestop=0.286 ood_race-middle=0.206 ood_race-high=0.178
+[step8l] per_llm__original__qwen2.5-7b__seed7  val=0.835  test=0.847  ood: ood_onestop=0.333 ood_race-middle=0.200 ood_race-high=0.162
+[step8l] per_llm__original__qwen2.5-7b__seed13  val=0.837  test=0.839  ood: ood_onestop=0.256 ood_race-middle=0.209 ood_race-high=0.201
+
+[step8l] config=per_llm label=original llm=mistral-7b llms_for_X=['mistral-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__original__mistral-7b__seed42  val=0.827  test=0.844  ood: ood_onestop=0.305 ood_race-middle=0.188 ood_race-high=0.189
+[step8l] per_llm__original__mistral-7b__seed7  val=0.832  test=0.840  ood: ood_onestop=0.288 ood_race-middle=0.199 ood_race-high=0.184
+[step8l] per_llm__original__mistral-7b__seed13  val=0.830  test=0.845  ood: ood_onestop=0.262 ood_race-middle=0.199 ood_race-high=0.196
+
+[step8l] config=per_llm label=original llm=gemma-7b llms_for_X=['gemma-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__original__gemma-7b__seed42  val=0.827  test=0.827  ood: ood_onestop=0.266 ood_race-middle=0.208 ood_race-high=0.147
+[step8l] per_llm__original__gemma-7b__seed7  val=0.827  test=0.831  ood: ood_onestop=0.238 ood_race-middle=0.204 ood_race-high=0.185
+[step8l] per_llm__original__gemma-7b__seed13  val=0.826  test=0.829  ood: ood_onestop=0.228 ood_race-middle=0.206 ood_race-high=0.200
+
+[step8l] config=per_llm label=original llm=llama2-7b llms_for_X=['llama2-7b']
+[step8l] dim=97  train=16849 val=2099 test=2099 ood_sizes={'ood_onestop': 565, 'ood_race-middle': 500, 'ood_race-high': 500}
+[step8l] per_llm__original__llama2-7b__seed42  val=0.829  test=0.838  ood: ood_onestop=0.304 ood_race-middle=0.200 ood_race-high=0.186
+[step8l] per_llm__original__llama2-7b__seed7  val=0.832  test=0.840  ood: ood_onestop=0.237 ood_race-middle=0.190 ood_race-high=0.193
+[step8l] per_llm__original__llama2-7b__seed13  val=0.834  test=0.833  ood: ood_onestop=0.274 ood_race-middle=0.196 ood_race-high=0.170
+[run] (7/8) K-shot per-corpus calibration
+[codecarbon WARNING @ 00:32:58] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 00:32:58] 	RAPL - Permission denied reading RAPL file /sys/class/powercap/intel-rapl/subsystem/intel-rapl/intel-rapl:0/energy_uj. You can grant read permission with: sudo chmod -R a+r /sys/class/powercap/*
+[codecarbon WARNING @ 00:32:59] We saw that you have a Intel(R) Core(TM) i9-14900K but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:32:59] We will use the default power consumption of 4 W per thread for your 32 CPU, so 128W.
+[codecarbon WARNING @ 00:32:59] No CPU tracking mode found. Falling back on estimation based on TDP for CPU. 
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon WARNING @ 00:32:59] No CPU tracking mode found. Falling back on CPU load mode.
+[step9f] picked bundle /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/models/all_llms__llm_judge__all__seed42.pkl  val_f1=0.870
+
+[step9f] ood_onestop  n=565  class_dist=[0, 177, 388]
+  K=0         mean_f1=0.5245724599088704  std=0.0  n_resamples=1
+  K=10        mean_f1=0.46676400639317955  std=0.05068551454988621  n_resamples=5
+  K=50        mean_f1=0.5208781604543521  std=0.006208026981898591  n_resamples=5
+  K=100       mean_f1=0.5192707351865455  std=0.004794660982035373  n_resamples=5
+  K=full_80pct_oracle  mean_f1=0.5275624206330899  std=0.020099180780472778  n_resamples=5
+
+[step9f] ood_race-middle  n=500  class_dist=[37, 457, 6]
+  K=0         mean_f1=0.6643492515904286  std=0.0  n_resamples=1
+  K=10        mean_f1=0.5024621831612237  std=0.027130926013140183  n_resamples=3
+  K=50        mean_f1=0.5064704964924294  std=0.11754422903414186  n_resamples=5
+  K=100       mean_f1=0.5582427601473682  std=0.07497631201353712  n_resamples=5
+  K=full_80pct_oracle  mean_f1=0.5616091311447348  std=0.03423129904102891  n_resamples=5
+
+[step9f] ood_race-high  n=500  class_dist=[0, 344, 156]
+  K=0         mean_f1=0.4958879942593297  std=0.0  n_resamples=1
+  K=10        mean_f1=0.4460969398843698  std=0.02968543057864984  n_resamples=5
+  K=50        mean_f1=0.47492362960415513  std=0.023676240040908923  n_resamples=5
+  K=100       mean_f1=0.4892008120470387  std=0.02100063307986172  n_resamples=5
+  K=full_80pct_oracle  mean_f1=0.4959952700991451  std=0.03199844864677791  n_resamples=5
+
+[step9f] wrote /home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/eval_reports/calibration_sweep.json
+[run] (8/8) Generate Figs 1-4
+Traceback (most recent call last):
+  File "/home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/scripts/plot_results.py", line 18, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
