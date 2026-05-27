@@ -1,0 +1,7 @@
+# gen_v2/ — only the NEW packages we need on top of the existing .venv.
+# Existing venv already has: torch, transformers, peft, vllm, sklearn,
+# pandas, numpy, matplotlib, gradio, codecarbon, textstat.
+#
+# New packages for gen_v2:
+sentence-transformers>=3.0     # encoders for Pillar A (MiniLM, BGE, Nomic)
+einops>=0.8                    # required by some HF model implementations

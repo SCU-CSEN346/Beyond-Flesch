@@ -1,0 +1,100 @@
+source,orig_idx,text,gold_label,llama_label,category,judge_letter,judge_label,judge_raw
+adv_concept,0,What is mitosis?,high,,surface_easy_concept_hard,M,middle,"Mitosis is a biological process typically introduced in middle school life science, where students learn about cell division and growth. The concept aligns with middle school standards (e.g., NGSS MS-LS1). Even though the question is short, the underlying concept is grade-appropriate for middle school.
+
+M"
+adv_concept,1,Define angular momentum.,high,,surface_easy_concept_hard,H,high,"The concept of angular momentum involves understanding rotational motion, moment of inertia, and vector direction, which is typically introduced in high school physics (grades 11-12) as part of mechanics.
+
+H"
+adv_concept,2,What is fertilization?,middle,,surface_easy_concept_hard,M,middle,"Fertilization is a basic biological concept typically introduced in middle school life science, where students learn about sexual reproduction and the union of sperm and egg. It aligns with middle school standards.
+
+M"
+adv_concept,3,Calculate the derivative of x squared.,high,,surface_easy_concept_hard,H,high,"The concept here is differentiation, specifically finding the derivative of a polynomial function. This is a fundamental topic in calculus, which is typically taught in high school (grades 11-12) as part of a pre-calculus or calculus course.
+
+H"
+adv_concept,4,What is photosynthesis?,middle,,surface_easy_concept_hard,M,middle,"Photosynthesis is a biological process typically introduced in elementary school (e.g., plants use sunlight to make food) but formally taught with its chemical details and cellular context in middle school. The concept here is basic identification, aligning with middle school life science standards.
+
+M"
+adv_concept,5,Solve the quadratic equation x squared minus 5x plus 6 equals zero.,high,,surface_easy_concept_hard,H,high,"The concept here is solving a quadratic equation, which typically involves factoring, using the quadratic formula, or completing the square. This is a standard Algebra I topic, usually taught in high school (grades 9-12).
+
+H"
+adv_concept,6,What are ions?,high,,surface_easy_concept_hard,M,middle,"Ions are atoms or molecules that have gained or lost electrons, resulting in a net electrical charge. This concept is typically introduced in middle school physical science when students learn about atomic structure, electron configurations, and the basics of chemical bonding.
+
+M"
+adv_concept,7,What is the speed of light?,high,,surface_easy_concept_hard,M,middle,"The concept of the speed of light is typically introduced in middle school physical science when discussing light, waves, or the electromagnetic spectrum. It is not an elementary concept (which would focus on basic properties of light like shadows or reflection), nor is it high school level (which would involve deeper physics like special relativity or calculations with the constant).
+
+M"
+adv_concept,8,Explain the Krebs cycle.,high,,surface_easy_concept_hard,H,high,"The Krebs cycle is a fundamental concept in cellular respiration, typically introduced in high school biology as part of understanding how cells produce energy at the molecular level. It involves detailed biochemical pathways, enzyme reactions, and energy transfer (ATP, NADH, FADH2), which align with high school standards.
+
+H"
+adv_concept,9,What is a derivative?,high,,surface_easy_concept_hard,H,high,"The concept of a derivative is a foundational idea in calculus, which is typically introduced in high school (grades 11-12) as part of advanced algebra or precalculus/calculus courses. It involves understanding limits, rates of change, and instantaneous slope, which are beyond middle school standards.
+
+H"
+adv_concept,10,Define entropy.,high,,surface_easy_concept_hard,H,high,"Entropy is a concept from thermodynamics and statistical mechanics, typically introduced in high school chemistry or physics. It involves understanding disorder, energy dispersal, and the second law of thermodynamics, which goes beyond middle school standards.
+
+H"
+adv_concept,11,What is DNA?,middle,,surface_easy_concept_hard,M,middle,"The concept of DNA is typically introduced in middle school biology, where students learn about the basic structure and function of DNA as the molecule that carries genetic information. While the question is short, the underlying concept aligns with middle school standards.
+
+M"
+adv_concept,12,Find the integral of x.,high,,surface_easy_concept_hard,H,high,"The concept of finding an integral of a function like x is an introduction to calculus, which is typically taught in high school (grades 11-12) or early college. Even though the expression is short, the underlying concept of integration is beyond middle school standards.
+
+H"
+adv_concept,13,What are tectonic plates?,middle,,surface_easy_concept_hard,M,middle,"Tectonic plates are a concept in Earth science typically introduced in middle school, as it involves understanding Earth's structure, plate movements, and related phenomena like earthquakes and volcanoes. This aligns with middle school (grades 6-8) curriculum standards.
+
+M"
+adv_concept,14,What is a chemical bond?,high,,surface_easy_concept_hard,M,middle,"The concept of a chemical bond is typically introduced in middle school physical science, where students learn about atoms combining to form molecules through bonds. It aligns with middle school standards (e.g., MS-PS1-1).
+
+M"
+adv_concept,15,Use Cramer's rule.,high,,surface_easy_concept_hard,H,high,"Cramer's rule is a method for solving systems of linear equations using determinants, which is typically introduced in high school algebra or precalculus courses. The concept of determinants and matrix algebra is beyond middle school standards.
+
+H"
+adv_concept,16,Apply the chain rule.,high,,surface_easy_concept_hard,H,high,"The concept of applying the chain rule is a fundamental topic in calculus, which is typically taught in high school (grades 11-12) as part of AP Calculus or similar advanced math courses. It requires understanding derivatives and function composition, which are beyond middle school standards.
+
+H"
+adv_concept,17,Factor x squared minus 9.,high,,surface_easy_concept_hard,H,high,"This requires understanding the difference of squares factoring pattern, which is typically introduced in Algebra 1, a high school course in the US.
+
+H"
+adv_concept,18,Compute sine of pi over 6.,high,,surface_easy_concept_hard,H,high,"The concept involves computing the sine of a specific angle (π/6) in radians, which requires understanding of the unit circle and trigonometric functions. This is typically introduced in high school (grades 9-12) as part of trigonometry standards.
+
+H"
+adv_concept,19,Find the limit as x goes to zero of sin x over x.,high,,surface_easy_concept_hard,H,high,"This question involves evaluating a limit of a trigonometric function, specifically the well-known limit of sin(x)/x as x approaches 0. This concept is typically introduced in high school calculus, often in grades 11 or 12, as part of understanding derivatives of trigonometric functions and limits.
+
+H"
+adv_concept,20,"The small brown dog ran across the bright green grass in the sunny park while his happy owner cheerfully waved at him from the wooden bench under the tall leafy tree, and then the dog stopped suddenly because he saw a beautiful red ball lying on the soft grass nearby.",elementary,,surface_hard_concept_easy,E,elementary,"This text describes a simple sequence of events involving a dog, its owner, and a ball in a park. The underlying concept is basic narrative comprehension and observation of everyday actions and settings. There is no abstract reasoning, scientific concept, or complex analysis required. This aligns with early elementary reading and comprehension standards.
+
+E"
+adv_concept,21,"Yesterday afternoon during the bright sunny weather, the curious little girl named Sarah carefully picked up the colorful round apple from the green wicker basket on the wooden kitchen table and then thoughtfully placed it inside her favorite blue lunchbox before walking quietly out the front door of her cozy white house.",elementary,,surface_hard_concept_easy,E,elementary,"The underlying concept here is a simple sequence of everyday actions (picking up an apple, placing it in a lunchbox, walking out the door) with descriptive details about weather, colors, and objects. There is no abstract or discipline-specific concept—just basic narrative comprehension appropriate for early elementary grades.
+
+E"
+adv_concept,22,The fluffy orange cat with the long whiskers and the bright green eyes sat comfortably on the soft warm rug in the middle of the bright sunny living room next to the wide open window and watched the colorful birds flying happily through the clear blue sky.,elementary,,surface_hard_concept_easy,E,elementary,"This text describes a cat sitting on a rug, watching birds. The underlying concept is a simple narrative scene with no specialized academic content—no science, math, history, or abstract reasoning. It aligns with early elementary reading comprehension and descriptive language.
+
+E"
+adv_concept,23,"During the wonderful springtime morning when the cheerful birds were singing their sweet melodious songs and the gentle warm breeze was softly blowing through the tall green trees, the young curious children eagerly ran outside to happily play their favorite games in the beautiful flower-filled meadow.",elementary,,surface_hard_concept_easy,E,elementary,"This text describes a simple, pleasant scene with no academic concepts—just everyday experiences like spring, birds, children playing, and a meadow. There is no scientific, mathematical, historical, or other subject-specific concept that would require any particular grade level to understand. It is purely descriptive and accessible to even the youngest students.
+
+E"
+adv_concept,24,"Inside the cozy old wooden barn that stood proudly at the back of the large green farm, the friendly brown horses with their long flowing manes happily munched their crunchy yellow hay while gently swishing their long tails to chase away the buzzing summer flies.",elementary,,surface_hard_concept_easy,E,elementary,"The underlying concept here is simply a descriptive scene of animals on a farm—no scientific, mathematical, or abstract reasoning is required. This aligns with early elementary reading comprehension and observation skills.
+
+E"
+adv_concept,25,The bright yellow school bus with the loud honking horn slowly drove down the long winding road past the tall leafy trees and the colorful flower gardens until it finally stopped at the corner where the cheerful smiling children were patiently waiting with their heavy backpacks.,elementary,,surface_hard_concept_easy,E,elementary,"The text describes a simple, everyday scene with no abstract concepts, scientific principles, or complex reasoning. It is purely descriptive and accessible to young children. The underlying concept is basic narrative comprehension, which aligns with elementary school standards.
+
+E"
+adv_concept,26,Plants need water and sunlight to grow.,elementary,,surface_matches_concept,E,elementary,"This text presents a basic biological concept about plant needs, which is typically introduced in early elementary school (grades 1-2) as part of life science standards. The underlying concept is foundational and does not require abstract reasoning or prior knowledge beyond simple observation.
+
+E"
+adv_concept,27,"During photosynthesis, plants convert carbon dioxide and water into glucose using sunlight, with chlorophyll absorbing light primarily in the red and blue wavelengths.",middle,,surface_matches_concept,M,middle,"The concept involves photosynthesis, the conversion of carbon dioxide and water into glucose using sunlight, and the specific role of chlorophyll absorbing red and blue wavelengths. This aligns with middle school life science standards (typically grades 6-8), where students learn the basic process of photosynthesis and the role of light energy.
+
+M"
+adv_concept,28,"Photosynthesis involves the light-dependent reactions in the thylakoid membrane, where photosystems II and I drive electron transport to generate ATP and NADPH, which are subsequently consumed by the Calvin-Benson cycle in the stroma to fix CO2 into G3P.",high,,surface_matches_concept,H,high,"This text describes the detailed molecular mechanisms of photosynthesis, including specific structures (thylakoid membrane, stroma), components (photosystems II and I, ATP, NADPH), and processes (electron transport chain, Calvin-Benson cycle, carbon fixation into G3P). These concepts are typically taught in high school biology, often in AP or honors-level courses, as they go beyond the middle school understanding of photosynthesis as a simple process of plants making food from sunlight, water, and carbon dioxide.
+
+H"
+adv_concept,29,Two plus two equals four.,elementary,,surface_matches_concept,E,elementary,"The concept is basic addition, which is taught in early elementary school.
+
+E"
+adv_concept,30,Solve for x: 3x + 7 = 22.,middle,,surface_matches_concept,M,middle,"This problem requires understanding of basic algebraic equations, specifically solving a two-step linear equation. This concept is typically introduced and mastered in middle school (grades 6-8) under expressions and equations standards.
+
+M"
+adv_concept,31,"Find the eigenvalues of the matrix [[2, 1], [1, 2]].",high,,surface_matches_concept,H,high,"The concept of eigenvalues is typically introduced in high school, often in advanced algebra or precalculus courses, and is a standard topic in linear algebra, which is generally taught at the high school level (grades 9-12) or early college. This requires understanding of determinants, characteristic polynomials, and solving quadratic equations in a matrix context, which goes beyond middle school standards.
+
+H"
+adv_concept,32,The cat sat on the mat.,elementary,,surface_matches_concept,E,elementary,"The concept here is simply a cat sitting on a mat—no abstract ideas, no scientific or mathematical principles, just a basic observation suitable for early elementary understanding.
+
+E"

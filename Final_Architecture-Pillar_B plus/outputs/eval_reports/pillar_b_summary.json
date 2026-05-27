@@ -1,0 +1,79 @@
+{
+  "kind": "pillar_b_summary",
+  "n_candidates": 3,
+  "winner_by_synthetic_vs_gen": {
+    "name": "pillar_b__phi-3.5-mini-instruct",
+    "f1_synthetic_vs_gen": 0.8850846371498459
+  },
+  "candidates": [
+    {
+      "name": "pillar_b__qwen-2.5-3b-instruct",
+      "backbone_short": "qwen-2.5-3b-instruct",
+      "n_params_total": 3085938688,
+      "n_params_trainable_lora": 0,
+      "train_sec": 801.8,
+      "val_f1": 0.8801349766865963,
+      "test_f1": 0.8570046059298475,
+      "balanced_test_f1_mean": 0.8344939260215971,
+      "synthetic_judge_f1": 0.8600997021219969,
+      "synthetic_gen_f1": 0.8787629994526546,
+      "race_middle_f1": 0.523930214158319,
+      "race_high_f1": 0.5365079365079365,
+      "onestop_f1": 0.5181771447579303,
+      "adv_concept_overall": 0.66,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.7419354838709677,
+        "surface_hard_concept_easy": 0.0,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "latency_median_ms": 32.73931937292218,
+      "error": null
+    },
+    {
+      "name": "pillar_b__phi-3.5-mini-instruct",
+      "backbone_short": "phi-3.5-mini-instruct",
+      "n_params_total": 3821079552,
+      "n_params_trainable_lora": 0,
+      "train_sec": 860.1,
+      "val_f1": 0.9013431013431014,
+      "test_f1": 0.8565155632411067,
+      "balanced_test_f1_mean": 0.8541997082554467,
+      "synthetic_judge_f1": 0.8627382526813266,
+      "synthetic_gen_f1": 0.8850846371498459,
+      "race_middle_f1": 0.6732334374940198,
+      "race_high_f1": 0.5293502090524691,
+      "onestop_f1": 0.4364980282583279,
+      "adv_concept_overall": 0.68,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.6451612903225806,
+        "surface_hard_concept_easy": 0.6666666666666666,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "latency_median_ms": 34.28587131202221,
+      "error": null
+    },
+    {
+      "name": "pillar_b__gemma-2-2b-it",
+      "backbone_short": "gemma-2-2b-it",
+      "n_params_total": 2614341888,
+      "n_params_trainable_lora": 0,
+      "train_sec": 658.2,
+      "val_f1": 0.8702506761166083,
+      "test_f1": 0.8555208407789779,
+      "balanced_test_f1_mean": 0.8271030783319523,
+      "synthetic_judge_f1": 0.8562489042715032,
+      "synthetic_gen_f1": 0.8262461569143466,
+      "race_middle_f1": 0.49231003818989594,
+      "race_high_f1": 0.520549601705035,
+      "onestop_f1": 0.4932343660027844,
+      "adv_concept_overall": 0.62,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.5806451612903226,
+        "surface_hard_concept_easy": 0.5,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "latency_median_ms": 27.932268101722002,
+      "error": null
+    }
+  ]
+}

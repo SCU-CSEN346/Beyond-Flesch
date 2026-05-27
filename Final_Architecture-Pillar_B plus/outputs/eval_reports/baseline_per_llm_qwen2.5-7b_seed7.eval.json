@@ -1,0 +1,657 @@
+{
+  "kind": "baseline",
+  "name": "per_llm__llm_judge__qwen2.5-7b__seed7_gradereg.pkl",
+  "model_meta": {
+    "pkl": "text_difficulty_classifier/generalization_final/outputs/models/per_llm__llm_judge__qwen2.5-7b__seed7_gradereg.pkl",
+    "feature_dim": 97,
+    "n_params": 58500,
+    "best_val_f1_macro": 0.8801560234341066,
+    "kind_detail": "per_llm Qwen-7B + 34 static + 63 prompts \u2192 MLP-256-128"
+  },
+  "per_split": {
+    "test": {
+      "f1_macro": 0.8399586598777353,
+      "f1_per_class": [
+        0.8085106382978723,
+        0.9032258064516129,
+        0.8081395348837209
+      ],
+      "accuracy": 0.8713673177703668,
+      "qwk": 0.7932150996433724,
+      "conf_matrix": [
+        [
+          152,
+          30,
+          0
+        ],
+        [
+          42,
+          1260,
+          90
+        ],
+        [
+          0,
+          108,
+          417
+        ]
+      ],
+      "pred_counts": [
+        194,
+        1398,
+        507
+      ],
+      "n": 2099
+    },
+    "balanced_test": {
+      "f1_macro_mean": 0.8564398210963109,
+      "f1_macro_std": 0.007951302755419923,
+      "f1_macro_per_seed": [
+        0.8632247220590915,
+        0.8617845117845118,
+        0.8632247220590915,
+        0.8498636840742105,
+        0.8441014655046496
+      ],
+      "n_resamples": 5,
+      "per_class_n": 50
+    },
+    "ood_synthetic": {
+      "f1_macro": 0.9183289119296895,
+      "f1_per_class": [
+        0.9473684210526315,
+        0.8695652173913043,
+        0.9380530973451328
+      ],
+      "accuracy": 0.92,
+      "qwk": 0.94200657258844,
+      "conf_matrix": [
+        [
+          45,
+          1,
+          0
+        ],
+        [
+          4,
+          40,
+          5
+        ],
+        [
+          0,
+          2,
+          53
+        ]
+      ],
+      "pred_counts": [
+        49,
+        43,
+        58
+      ],
+      "n": 150
+    },
+    "ood_race-middle": {
+      "f1_macro": 0.5953054836933078,
+      "f1_per_class": [
+        0.6593406593406593,
+        0.9447576099210823,
+        0.18181818181818182
+      ],
+      "accuracy": 0.902,
+      "qwk": 0.5475029550827424,
+      "conf_matrix": [
+        [
+          30,
+          7,
+          0
+        ],
+        [
+          24,
+          419,
+          14
+        ],
+        [
+          0,
+          4,
+          2
+        ]
+      ],
+      "pred_counts": [
+        54,
+        430,
+        16
+      ],
+      "n": 500
+    },
+    "ood_race-high": {
+      "f1_macro": 0.47926140278351936,
+      "f1_per_class": [
+        0.0,
+        0.7694915254237288,
+        0.6682926829268293
+      ],
+      "accuracy": 0.728,
+      "qwk": 0.45925313315096383,
+      "conf_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          227,
+          117
+        ],
+        [
+          0,
+          19,
+          137
+        ]
+      ],
+      "pred_counts": [
+        0,
+        246,
+        254
+      ],
+      "n": 500
+    },
+    "ood_onestop": {
+      "f1_macro": 0.41472283980856917,
+      "f1_per_class": [
+        0.0,
+        0.40336134453781514,
+        0.8408071748878924
+      ],
+      "accuracy": 0.7486725663716814,
+      "qwk": 0.2892200290584358,
+      "conf_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          48,
+          129
+        ],
+        [
+          0,
+          13,
+          375
+        ]
+      ],
+      "pred_counts": [
+        0,
+        61,
+        504
+      ],
+      "n": 565
+    },
+    "ood_synthetic_vs_gen": {
+      "f1_macro": 0.9396835740921762,
+      "f1_per_class": [
+        0.98989898989899,
+        0.9032258064516129,
+        0.9259259259259259
+      ],
+      "accuracy": 0.94,
+      "qwk": 0.9565217391304348,
+      "conf_matrix": [
+        [
+          49,
+          1,
+          0
+        ],
+        [
+          0,
+          42,
+          8
+        ],
+        [
+          0,
+          0,
+          50
+        ]
+      ],
+      "pred_counts": [
+        49,
+        43,
+        58
+      ],
+      "n": 150
+    }
+  },
+  "adv_concept": {
+    "overall_accuracy": 0.6,
+    "overall_f1_macro": 0.5336438923395445,
+    "per_category_accuracy": {
+      "surface_easy_concept_hard": 0.6774193548387096,
+      "surface_hard_concept_easy": 0.0,
+      "surface_matches_concept": 0.6923076923076923
+    },
+    "conf_matrix": [
+      [
+        2,
+        10,
+        0
+      ],
+      [
+        0,
+        13,
+        1
+      ],
+      [
+        0,
+        9,
+        15
+      ]
+    ],
+    "pred_counts": [
+      2,
+      32,
+      16
+    ],
+    "per_row": [
+      {
+        "idx": 0,
+        "text": "What is mitosis?",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 1,
+        "text": "Define angular momentum.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 2,
+        "text": "What is fertilization?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 3,
+        "text": "Calculate the derivative of x squared.",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 4,
+        "text": "What is photosynthesis?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 5,
+        "text": "Solve the quadratic equation x squared minus 5x plus 6 equals zero.",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 6,
+        "text": "What are ions?",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 7,
+        "text": "What is the speed of light?",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 8,
+        "text": "Explain the Krebs cycle.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 9,
+        "text": "What is a derivative?",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 10,
+        "text": "Define entropy.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 11,
+        "text": "What is DNA?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 12,
+        "text": "Find the integral of x.",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 13,
+        "text": "What are tectonic plates?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 14,
+        "text": "What is a chemical bond?",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 15,
+        "text": "Use Cramer's rule.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 16,
+        "text": "Apply the chain rule.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 17,
+        "text": "Factor x squared minus 9.",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 18,
+        "text": "Compute sine of pi over 6.",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 19,
+        "text": "Find the limit as x goes to zero of sin x over x.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 20,
+        "text": "The small brown dog ran across the bright green grass in the sunny park while his happy owner cheerfully waved at him from the wooden bench under the tall leafy tree, and then the dog stopped suddenly because he saw a beautiful red ball lying on the soft grass nearby.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 21,
+        "text": "Yesterday afternoon during the bright sunny weather, the curious little girl named Sarah carefully picked up the colorful round apple from the green wicker basket on the wooden kitchen table and then thoughtfully placed it inside her favorite blue lunchbox before walking quietly out the front door of her cozy white house.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 22,
+        "text": "The fluffy orange cat with the long whiskers and the bright green eyes sat comfortably on the soft warm rug in the middle of the bright sunny living room next to the wide open window and watched the colorful birds flying happily through the clear blue sky.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 23,
+        "text": "During the wonderful springtime morning when the cheerful birds were singing their sweet melodious songs and the gentle warm breeze was softly blowing through the tall green trees, the young curious children eagerly ran outside to happily play their favorite games in the beautiful flower-filled meadow.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 24,
+        "text": "Inside the cozy old wooden barn that stood proudly at the back of the large green farm, the friendly brown horses with their long flowing manes happily munched their crunchy yellow hay while gently swishing their long tails to chase away the buzzing summer flies.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 25,
+        "text": "The bright yellow school bus with the loud honking horn slowly drove down the long winding road past the tall leafy trees and the colorful flower gardens until it finally stopped at the corner where the cheerful smiling children were patiently waiting with their heavy backpacks.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_hard_concept_easy",
+        "correct": false
+      },
+      {
+        "idx": 26,
+        "text": "Plants need water and sunlight to grow.",
+        "true_level": "elementary",
+        "predicted_level": "elementary",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 27,
+        "text": "During photosynthesis, plants convert carbon dioxide and water into glucose using sunlight, with chlorophyll absorbing light primarily in the red and blue wavelengths.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 28,
+        "text": "Photosynthesis involves the light-dependent reactions in the thylakoid membrane, where photosystems II and I drive electron transport to generate ATP and NADPH, which are subsequently consumed by the Calvin-Benson cycle in the stroma to fix CO2 into G3P.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 29,
+        "text": "Two plus two equals four.",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": false
+      },
+      {
+        "idx": 30,
+        "text": "Solve for x: 3x + 7 = 22.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 31,
+        "text": "Find the eigenvalues of the matrix [[2, 1], [1, 2]].",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 32,
+        "text": "The cat sat on the mat.",
+        "true_level": "elementary",
+        "predicted_level": "elementary",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 33,
+        "text": "Atoms are made of protons, neutrons, and electrons.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 34,
+        "text": "Define enthalpy in the context of a closed thermodynamic system.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 35,
+        "text": "What is gravity?",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": false
+      },
+      {
+        "idx": 36,
+        "text": "What is the gravitational constant?",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 37,
+        "text": "What causes earthquakes?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 38,
+        "text": "Define oxidation.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 39,
+        "text": "What is a fraction?",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": false
+      },
+      {
+        "idx": 40,
+        "text": "Find the derivative of e to the x.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 41,
+        "text": "What is osmosis?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 42,
+        "text": "Explain Newton's third law.",
+        "true_level": "middle",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 43,
+        "text": "Convert 100 degrees Fahrenheit to Celsius.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": true
+      },
+      {
+        "idx": 44,
+        "text": "What is a sonnet?",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 45,
+        "text": "Define mitochondria.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 46,
+        "text": "Compute the volume of a sphere with radius 5.",
+        "true_level": "middle",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 47,
+        "text": "Apply L'Hopital's rule.",
+        "true_level": "high",
+        "predicted_level": "high",
+        "category": "surface_easy_concept_hard",
+        "correct": true
+      },
+      {
+        "idx": 48,
+        "text": "Why is the sky blue?",
+        "true_level": "high",
+        "predicted_level": "middle",
+        "category": "surface_easy_concept_hard",
+        "correct": false
+      },
+      {
+        "idx": 49,
+        "text": "What is a verb?",
+        "true_level": "elementary",
+        "predicted_level": "middle",
+        "category": "surface_matches_concept",
+        "correct": false
+      }
+    ]
+  }
+}

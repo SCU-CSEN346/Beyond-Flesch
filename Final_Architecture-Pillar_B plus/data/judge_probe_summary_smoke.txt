@@ -1,0 +1,25 @@
+PROBE SUMMARY (deepseek-ai/deepseek-v4-flash)
+============================================================
+Token usage: 2,647 in / 587 out  ~$0.00
+
+(1) Judge vs AdvConcept-50 curriculum gold
+    agreement: 0.800  (4/5 parseable; 0 unparseable)
+      surface_easy_concept_hard     : 0.800  (4/5)
+
+(2) Judge vs Llama-3.1-8B on 5 train rows (0 unparseable)
+    agreement:    0.800  (4/5)
+    disagreement: 0.200  (0/5)
+
+    Confusion (rows = Llama label, cols = Judge label):
+                Judge:         E      M      H
+      Llama=elementary      0      0      0
+      Llama=middle          1      0      0
+      Llama=high            0      0      4
+
+============================================================
+DECISION
+============================================================
+  Judge trustworthy (adv-agreement >= 0.85)?      0.800  ->  NO
+  Re-label motivated (llama-disagreement > 0.15)? 0.200  ->  YES
+
+  ==> STOP. The judge itself doesn't agree with the curriculum gold reliably enough; this judge isn't trustworthy for the task. Try a different judge or different prompt.
