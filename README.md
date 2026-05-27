@@ -1,187 +1,358 @@
 # Beyond-Flesch
 
-Cross-subject generalization of transformer-based difficulty classification for educational texts.
+Cross-corpus, concept-aware K-12 text difficulty classification for educational
+texts.
 
 **Team:** Beyond Flesch
-**Course project — Submission 2**
 
----
+**Project path:** ACL paper reproduction and extension without released code
 
-## Project option
+**Final submission status:** Rooein reproduction, generalization tests using transformers, DANNs, synthetic dataset generation, LLM-as-a-judge relabeling, and final Pillar B+ model are included.
 
-**Option 1** — We're reproducing a paper whose code was not publicly released: *Beyond Flesch-Kincaid: Prompt-based Metrics Improve Difficulty Classification of Educational Texts* (Rooein et al., 2024, BEA Workshop). As an extension we're also adapting the architecture of Gombert et al. (2024), whose code [is available on GitHub](https://github.com/SGombert/edutec-bea-shared-task-2024) — we build on that reference implementation rather than reimplement it. Rooein remains the primary reproduction target and the primary baseline for our results.
+## Project Overview
 
----
+This project starts from Rooein et al. (2024), *Beyond Flesch-Kincaid:
+Prompt-based Metrics Improve Difficulty Classification of Educational Texts*.
+The paper classifies educational text into three curriculum levels:
 
-## What this is
+- `elementary`
+- `middle`
+- `high`
 
-Rooein et al. (2024) classify educational texts into three grade buckets — elementary, middle, high — using a mix of static readability metrics and prompt-based metrics derived from LLMs. Their results on ScienceQA are strong (0.95 macro-F1 with the combined pipeline), but they flag generalizability as an open problem: the same classifier might not hold up on topics or subjects it wasn't trained on, and ScienceQA is the only dataset of its kind they could evaluate on.
+Rooein et al. combine static readability features with prompt-based LLM features:
+instead of asking an LLM to directly classify a passage, they ask many yes/no
+questions about the passage and use the answers as features for a classifier.
+Their code was not released, so the first part of this repository is a
+from-scratch reproduction of that pipeline.
 
-That's where we're going. On top of the reproduction, we're adapting the scalar-mixed transformer with rational regression heads from Gombert et al. (2024) — originally built for biomedical item difficulty — to this task, and testing how well it holds up when we hold out entire ScienceQA subjects from training. S1 covers the intro, related work, and the data + metrics pipeline. The model work starts in S2.
+Our final research question goes beyond reproduction:
 
-**Links**
-- Paper (Overleaf): https://www.overleaf.com/project/69d7dc6cf65cac573d60c762
-- HF Dataset: https://huggingface.co/datasets/nlpscu/Beyond-Flesch
-- HF Model: In Progress
+> Can we build a K-12 text-difficulty classifier that generalizes across
+> corpora, distinguishes curriculum concept difficulty from surface readability,
+> and is cheap enough to deploy?
 
----
+The final answer in this repo is **Pillar B+**: a Phi-3.5-mini LoRA model that
+predicts curriculum level directly in one forward pass. It is faster and cheaper
+than the prompt-metric pipeline, and it fixes the main failure mode we found:
+surface-readable text with hard concepts, and wordy text with easy concepts.
 
-## Repository structure
+## Links
 
+- Paper draft: https://www.overleaf.com/project/69d7dc6cf65cac573d60c762
+- Hugging Face dataset: https://huggingface.co/datasets/nlpscu/Beyond-Flesch
+- Primary reproduction target: Rooein et al. (2024), BEA Workshop
+- Architecture inspiration: Gombert et al. (2024), BEA Workshop
+
+## Headline Results
+
+### Final Model: Pillar B+
+
+The final model lives in `Final_Architecture-Pillar_B plus/`.
+
+| Metric | Rooein-style baseline | Pillar B+ |
+|---|---:|---:|
+| In-distribution test macro-F1 | 0.840 | **0.872** |
+| Balanced-test macro-F1 | 0.856 | **0.869** |
+| OOD OneStop macro-F1 | 0.415 | **0.460** |
+| OOD RACE-high macro-F1 | 0.479 | **0.546** |
+| AdvConcept-50 overall score | 0.600 | **0.760** |
+| Surface-hard / concept-easy AdvConcept score | 0.000 | **1.000** |
+| Median inference latency | about 5,000 ms/text | **about 39 ms/text** |
+| Training energy | about 2.29 kWh estimated | **0.387 kWh measured** |
+
+Pillar B+ is a LoRA-fine-tuned `microsoft/Phi-3.5-mini-instruct` model:
+
+- 3.8B frozen base parameters
+- about 50M trainable LoRA parameters
+- LoRA rank `r=32`, alpha `64`, dropout `0.05`
+- trained for 2 epochs on 16,849 multi-corpus rows
+- class-weighted sampling to reduce majority-class bias
+- measured training wall time: about 66 minutes on one GPU
+
+The key result is not just the macro-F1 gain. The important finding is that the
+final model handles cases where surface readability and curriculum concept level
+disagree.
+
+### Rooein Reproduction: ScienceQA
+
+The original reproduction and feature pipeline live in `logistic-regression/`.
+The best ScienceQA COMBO result uses Mistral-7B prompt metrics.
+
+| Prompt metric source | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
+|---|---:|---:|---:|
+| Gemma-7B | 0.8005 | 0.6836 | 0.8290 |
+| Llama-2-7B | 0.8005 | 0.7045 | 0.8368 |
+| Mistral-7B | 0.8005 | 0.7431 | **0.8416** |
+| Llama-2-13B | 0.8005 | 0.7595 | 0.8405 |
+| Qwen2.5-7B | 0.8005 | **0.7634** | 0.8394 |
+
+For the Mistral run, COMBO vs STATIC was significant in the saved bootstrap test:
+`p = 0.031`, improvement `+0.0412` macro-F1.
+
+### Frozen OOD Transfer vs In-domain OOD Training
+
+The ScienceQA-trained Rooein-style model does not transfer cleanly to
+OneStopEnglish:
+
+| OneStopEnglish setting | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
+|---|---:|---:|---:|
+| Frozen ScienceQA model | 0.1802 | **0.2496** | 0.1707 |
+| Retrained on OneStop split | 0.9130 | 0.7829 | **0.9649** |
+
+This is one of the main motivations for the final project direction: in-domain
+scores can look strong, but label conventions and corpus style can dominate
+cross-corpus transfer.
+
+### LLM-as-a-Judge Generalization Pipeline
+
+The `llm_as_a_judge/` folder builds a cleaner multi-corpus experiment. It keeps
+both the original corpus labels and a unified Llama-3.1-8B judge label.
+
+| Label source | Test macro-F1 | OneStop OOD | RACE-middle OOD | RACE-high OOD |
+|---|---:|---:|---:|---:|
+| Original corpus labels | 0.8374 | 0.2923 | 0.1912 | 0.1815 |
+| LLM-judge labels | **0.8491** | **0.5246** | **0.6643** | **0.4959** |
+
+The judge labels are not perfect, but they make cross-corpus labels more
+consistent. The saved clean dataset contains 22,612 rows and is available under
+`llm_as_a_judge/outputs/clean_dataset/`.
+
+### Other Experimental Branches
+
+- `transformers/` contains the Gombert-inspired transformer experiments,
+  including ELECTRA + ScalarMix and hierarchical classifiers. Saved
+  in-domain results reach about 0.89 macro-F1.
+- `DomainAdversialNN/` contains domain-adversarial ELECTRA experiments.
+  The saved result CSV reports macro-F1 of 0.8255 on CoQA OOD and 0.8797 on
+  CommonLit OOD.
+- `synthetic-data/` contains synthetic QA generation and train-on-synthetic
+  experiments. These were diagnostic: synthetic training often learned style
+  shortcuts and did not solve generalization by itself.
+
+## Repository Structure
+
+```text
+.
+|-- README.md
+|-- requirements.txt
+|-- logistic-regression/
+|   |-- notebooks/              # Rooein reproduction and Step*.ipynb pipelines
+|   |-- data/                   # ScienceQA train/test split
+|   |-- outputs/                # static metrics and prompt metrics
+|   |-- results/                # in-domain model results and artifacts
+|   `-- ood/                    # OneStopEnglish OOD prep/evaluation
+|-- llm_as_a_judge/
+|   |-- scripts/                # judge labeling, features, COMBO classifier
+|   `-- outputs/                # clean dataset, eval reports, figures, models
+|-- Final_Architecture-Pillar_B plus/
+|   |-- scripts/                # Pillar A, Pillar B, Pillar B+ experiments
+|   |-- data/                   # AdvConcept-50 and probe data
+|   |-- outputs/                # final eval reports, figures, emissions
+|   `-- demo/                   # Gradio demo for the final model
+|-- transformers/               # Gombert-style transformer adaptation experiments
+|-- DomainAdversialNN/          # domain-adversarial experiments
+`-- synthetic-data/             # synthetic data generation and evaluation
 ```
-logistic-regression/   Full Rooein et al. (2024) reproduction pipeline:
-                       dataset preprocessing, 46 static readability metrics,
-                       63 LLM-generated prompt metrics across multiple LLMs,
-                       and (in S2) the final logistic-regression classifier.
-
-transformers/          Our extension: Gombert et al. (2024) scalar-mixed
-                       transformer architecture adapted to ScienceQA,
-                       with LoRA (in progress).
-```
-
-Each approach has its own notebooks and outputs.
-
----
 
 ## Installation
+
+The original Rooein reproduction uses the top-level requirements:
 
 ```bash
 git clone <repo-url>
 cd Beyond-Flesch
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-We pinned the package versions from Appendix B of the Rooein paper so `textstat` and `nltk` don't drift on us between runs. Main ones: `nltk==3.8.1`, `pandas==2.2.0`, `textstat==0.7.3`, `spacy==3.7.4`, `scikit-learn==1.4.0`, `transformers==4.38.0`, `bitsandbytes==0.42.0`. Full list in `requirements.txt`.
+Additional folders have their own requirements:
 
-A GPU is needed for Step 5 (LLM inference). Everything else runs on CPU. We developed in Colab — if you're running locally, the Drive-mounting cells no-op and fall back to the current directory.
+```bash
+pip install -r "Final_Architecture-Pillar_B plus/requirements.txt"
+pip install -r llm_as_a_judge/requirements.txt
+```
 
----
+GPU notes:
 
-## How to run it
+- Rooein Step 5 prompt inference needs a GPU.
+- `llm_as_a_judge/scripts/step3f_llm_judge.py` needs a GPU for
+  Llama-3.1-8B inference.
+- Pillar B/Pillar B+ fine-tuning needs a CUDA GPU.
+- Some notebooks and scripts were developed in Colab or on a remote GPU box.
+  If rerunning them locally, update hardcoded local paths or virtualenv paths
+  before launching.
 
-Notebooks live in `logistic-regression/notebooks/`. Steps 1-5 generate features and prompt metrics; modeling/evaluation now uses split notebooks so Step 6 baselines and Step 7+ logistic runs can be rerun independently.
+## How to Run
 
-| Step | What it does | Runtime |
-|------|-------------|---------|
-| 1 | Environment setup, config constants pulled from the paper | ~5 min |
-| 2 | Load ScienceQA, filter image questions, bucket grades, dedupe, sample 1,516 per level, 80/20 split | ~5 min |
-| 3 | Static metric extraction (46 metrics from Appendix C) | ~10 min |
-| 4 | Prompt template generation (63 prompts from Appendix A) | ~1 min |
-| 5 | LLM inference — runs all 63 prompts against all 4,548 texts, one notebook per model | ~10 hours per model on A100 |
-| 6 | Zero-shot / few-shot baselines (model-selectable, 100-example eval subset) | ~20-40 min (GPU) |
-| 7 | Multinomial logistic regression (STATIC / PROMPT / COMBO) + SelectKBest tuning | ~5-10 min |
-| 8 | Evaluation: macro-F1, per-class report, 1,000-sample bootstrap significance tests | ~5-10 min |
-| 9 | Feature importance analysis (univariate F-tests) + ranking tables | ~2-5 min |
-| 10 | Out-of-domain generalization (OneStopEnglish, UniversalCEFR) | moved to S3 |
-| 11 | Reproduce paper-style result tables + save final artifacts | ~2-5 min |
+### 1. Rooein Reproduction
 
-Steps 1-4 all live in `step1_to_4_pipeline.ipynb`. Step 5 is templated across four LLMs (Llama-2-7B, Llama-2-13B, Mistral-7B, Gemma-7B) — one notebook each, meant to be run in parallel Colab tabs. It's set up to be resumable: if Colab disconnects (and it will), just re-run the cell and it picks up from the last checkpoint. Progress saves every 50 texts to `outputs/prompt_metrics/{model}_progress.csv`.
+Start with the notebooks in `logistic-regression/notebooks/`.
 
-For Part 2 execution:
-- `Step6_Baselines_ZeroShot_FewShot.ipynb` -> zero/few-shot baselines
-- `Step7_Modeling_Evaluation.ipynb` -> logistic regression, evaluation, feature analysis, and result packaging
+| Step | File or stage | Purpose |
+|---|---|---|
+| 1-4 | `step1_to_4_pipeline.ipynb` | setup, ScienceQA preprocessing, static metrics, prompt templates |
+| 5 | `step5_inference_gemma_7b.ipynb`, `Step5_Inference_Mistral_7b-2.ipynb`, `Step5_Inference_Llama2_7b-2.ipynb` | prompt-metric inference |
+| 6 | `Step6_Baselines_ZeroShot_FewShot.ipynb` | zero-shot and few-shot baselines |
+| 7 | `Step7_Modeling_Evaluation.ipynb` | logistic regression, feature selection, final ScienceQA evaluation |
+| 8+ | `Step8*`, `Step9*` notebooks | multi-corpus, OOD, and hybrid experiments |
 
----
+Main output locations:
 
-## What the outputs look like
+- `logistic-regression/data/train.csv`
+- `logistic-regression/data/test.csv`
+- `logistic-regression/outputs/static_metrics/`
+- `logistic-regression/outputs/prompt_metrics/`
+- `logistic-regression/results/by_prompt_model/{model}/`
 
-**After Step 2:**
-- `logistic-regression/data/train.csv` — 3,638 rows, balanced across the three grade buckets
-- `logistic-regression/data/test.csv` — 910 rows, same balance
-- Columns: `question`, `choices`, `solution`, `lecture`, `full_text`, `text_question`, `text_solution`, `text_lecture`, `education_level`, `grade`, `subject`, `topic`, `category`
+### 2. LLM-as-a-Judge Pipeline
 
-**After Step 3:**
-- `logistic-regression/outputs/static_metrics/{train,test}_static_metrics.csv` — 46 feature columns per Appendix C (readability scores, POS counts, syntactic features, WordNet polysemy)
-- `logistic-regression/outputs/static_metrics/static_metrics_distribution.png` — per-metric distribution plot
+The full pipeline is implemented as scripts under `llm_as_a_judge/scripts/`.
+The included `run.sh` documents the intended order, but it contains a
+machine-specific Python path. For a fresh checkout, either update `PY` in
+`run.sh` or run the scripts with your active environment:
 
-**After Step 4:**
-- `logistic-regression/outputs/prompt_metrics/prompt_questions.json` — the 63 prompts grouped by grade level
-- `logistic-regression/outputs/prompt_metrics/prompt_definitions.json` — metadata for each prompt
+```bash
+cd llm_as_a_judge
+python scripts/step3e_split_holdout.py
+python scripts/step3d_static_features.py --input-dir outputs/splits --splits train val test ood_onestop ood_race-middle ood_race-high
+python scripts/step3f_llm_judge.py
+python scripts/step3g_label_disagreement.py
+python scripts/step3h_build_clean_dataset.py
+python scripts/step8l_combo_classifier.py --config all_llms --label-source llm_judge
+python scripts/step9f_calibration_sweep.py
+python scripts/plot_results.py
+```
 
-**After Step 5 (per LLM):**
-- `logistic-regression/outputs/prompt_metrics/{train,test}_prompt_metrics_{model}.csv` — 63 prompt-metric columns, each a yes/no score from that LLM
-- `logistic-regression/outputs/prompt_metrics/{model}_progress.csv` — resumable progress state
+Main output locations:
 
-**After Modeling & Evaluation:**
-- Per prompt model run:
-  - `logistic-regression/results/by_prompt_model/{model}/final_results_{model}.json`
-  - `logistic-regression/results/by_prompt_model/{model}/confusion_matrices_{model}.png`
-  - `logistic-regression/results/by_prompt_model/{model}/feature_importance_{model}.png`
-  - `logistic-regression/results/by_prompt_model/{model}/artifacts/*_{model}.joblib`
-  - `logistic-regression/results/by_prompt_model/{model}/structured/{tables,figures,models,logs}/...`
-- Baselines:
-  - `logistic-regression/results/baselines/by_model/{model}/baseline_{model}.json`
+- `llm_as_a_judge/outputs/clean_dataset/`
+- `llm_as_a_judge/outputs/eval_reports/`
+- `llm_as_a_judge/outputs/figures/`
+- `llm_as_a_judge/outputs/models/`
 
----
+### 3. Final Pillar B+ Architecture
 
-## What's done so far
+The final architecture and its saved reports are in
+`Final_Architecture-Pillar_B plus/`.
 
-| LLM | Status |
-|-----|--------|
-| Gemma-7B-IT | ✅ complete (all 4,548 texts) |
-| Mistral-7B-Instruct-v0.2 | ✅ complete (all 4,548 texts)|
-| Llama-2-7B-Chat | ✅ complete (all 4,548 texts) |
-| Llama-2-13B-Chat |✅ complete (all 4,548 texts)|
+Useful entry points:
 
----
+```bash
+cd "Final_Architecture-Pillar_B plus"
+python scripts/build_adv_concept.py
+python scripts/pillar_a_lean_combo.py
+python scripts/pillar_b_tiny_teacher.py --backbones qwen-2.5-3b-instruct phi-3.5-mini-instruct gemma-2-2b-it --train-subset 5000 --epochs 1
+python scripts/pillar_b_plus.py --epochs 2 --target-per-class 3500 --lora-r 32
+python scripts/compare_carbon.py
+```
 
-## Part 2 status (Modeling, Evaluation, Analysis)
+Saved final reports:
 
-- Baselines:
-  - Zero/few-shot runs are model-specific and saved under `results/baselines/by_model/{model}/`.
-- Logistic regression + feature selection (ScienceQA in-domain, latest per prompt-metric source):
+- `Final_Architecture-Pillar_B plus/PILLAR_B_PLUS.md`
+- `Final_Architecture-Pillar_B plus/outputs/eval_reports/comparison_table.md`
+- `Final_Architecture-Pillar_B plus/outputs/eval_reports/pillar_b_plus__phi-3.5-mini-instruct.eval.json`
+- `Final_Architecture-Pillar_B plus/outputs/emissions/emissions.csv`
+- `Final_Architecture-Pillar_B plus/outputs/figures/`
 
-| Prompt metric source | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
-|---|---:|---:|---:|
-| Gemma-7B | **0.8005** | 0.6836 | 0.8290 |
-| Llama-2-7B | **0.8005** | 0.7045 | 0.8368 |
-| Mistral-7B | **0.8005** | 0.7431 | **0.8416** |
-| Llama-2-13B | **0.8005** | **0.7595** | 0.8405 |
-| Qwen2.5-7B | **0.8005** | 0.7634 | 0.8394 |
+## Data and Artifacts
 
-- Best ScienceQA COMBO so far: **Mistral-7B prompt metrics -> 0.8416 macro-F1**.
-- OOD generalization (frozen ScienceQA-trained models -> OneStopEnglish, Mistral artifacts):
+Important datasets and generated artifacts:
 
-| OOD setting (OneStopEnglish, n=567) | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
-|---|---:|---:|---:|
-| Frozen transfer eval | 0.1802 | **0.2496** | 0.1707 |
+- `logistic-regression/data/train.csv` and `test.csv`: balanced ScienceQA
+  split with 4,548 total examples.
+- `logistic-regression/outputs/static_metrics/`: 46 static readability and
+  linguistic features.
+- `logistic-regression/outputs/prompt_metrics/`: 63 prompt metrics per LLM.
+- `llm_as_a_judge/outputs/clean_dataset/`: multi-corpus dataset with both
+  original labels and judge labels.
+- `synthetic-data/synthetic_{claude,deepseek,mistral}_qa.csv`: synthetic
+  QA datasets generated to test whether LLM-created examples improve
+  generalization.
+- `Final_Architecture-Pillar_B plus/data/adv_concept.csv`: AdvConcept-50.
+- `Final_Architecture-Pillar_B plus/outputs/eval_reports/`: final model
+  comparison reports.
 
-- In-domain OOD training (train/test split on OneStopEnglish features, n=453/114, Mistral features):
+Large model weights are not stored directly in this repository. The final model
+uses the Hugging Face base model `microsoft/Phi-3.5-mini-instruct` plus the
+LoRA adapter produced by the Pillar B+ script.
 
-| In-domain OOD setting (OneStopEnglish test split) | STATIC macro-F1 | PROMPT macro-F1 | COMBO macro-F1 |
-|---|---:|---:|---:|
-| Re-train on OOD train split | 0.9130 | 0.7829 | **0.9649** |
+## Team Contributions
 
-- OneStopEnglish in-domain takeaway:
-  - Re-training on OneStopEnglish with the same Step 7 configuration gives a major jump over frozen transfer and yields the current **best overall COMBO score: 0.9649 macro-F1** (test split).
+### Shrishti Srivastava
 
-- Qwen run summary:
-  - ScienceQA in-domain (Step 7): STATIC **0.8005**, PROMPT **0.7634**, COMBO **0.8394**
-- Final artifacts are organized per model under `logistic-regression/results/by_prompt_model/{model}/`.
+Shrishti's work includes:
 
----
+- `Final_Architecture-Pillar_B plus/`
+  - Built the final Pillar B+ direction, focused on curriculum concept
+    difficulty instead of only surface readability.
+  - Created AdvConcept-50 and organized the final comparison reports, figures,
+    emissions, and model-card documentation.
+- `llm_as_a_judge/`
+  - Built the LLM-as-a-judge pipeline, produced the clean dataset with original
+    and judge labels, and evaluated judge-label vs original-label performance.
+- `logistic-regression/`
+  - Implemented the Rooein reproduction through LLM inference: ScienceQA
+    preprocessing, static metrics, prompt definitions, and Step 5 prompt-metric
+    inference.
+  - Worked on later generalization/OOD Step notebooks, including multi-corpus
+    loading, generic feature extraction, newer-model prompt inference, DeBERTa
+    and hybrid variants, and per-corpus OOD breakdowns.
 
-## Who did what
+### Maneesha Prasanna
 
-**Shrishti — Rooein pipeline reproduction (`logistic-regression/`, Steps 1–5)**
-Got the environment set up with the pinned versions from Appendix B. Built the full ScienceQA preprocessing pipeline: pulling from `derek-thomas/ScienceQA`, dropping image-based items, collapsing the 12 K-12 grades into three buckets per Section 4.1, deduplicating, sampling 1,516 per level with seed 42 to get the 4,548-text balanced subset, and doing the 80/20 stratified split. Implemented the 46 static metrics from Appendix C and generated the 63 prompt templates from Appendix A. Ran Step 5 for Gemma-7B-IT, Mistral-7B-Instruct-v0.2, and Llama-2-7B-Chat (all 4,548 texts each), with 8-bit quantization and resumable progress saving. Smruthi ran Llama-2-13B-Chat. All four LLM inference runs from the paper are now complete.
+TODO: Add final contribution summary here.
 
-**Smruthi — Gombert transformer adaptation (`transformers/`)**
-Identified that the allennlp and rational_activations packages are incompatible with modern PyTorch versions and cannot be installed. To resolve this, extracted the ScalarMix module directly from the AllenNLP repository and refactored it into a standalone, dependency-free module for our project. Also adapted the codebase from Gombert et al., which was originally designed for USMLE-style regression tasks, to work with the ScienceQA dataset. This involved writing data parsing and preprocessing code for ScienceQA including grade-level labeling and class balancing, converting the model from regression to classification by replacing MSE loss with cross-entropy loss, simplifying the architecture from two regression heads with two ScalarMix modules down to a single classification head with one ScalarMix, and replacing the Rational activation function with ReLU since the original Rational implementation was unavailable.
 
-**Maneesha — Modeling, Evaluation & Analysis (`logistic-regression/`, Steps 6–11)**
-Built the full modeling and evaluation pipeline on top of the Step 1-5 feature matrices. Implemented multinomial logistic regression with `SelectKBest` feature selection across three configurations (STATIC/PROMPT/COMBO), ran macro-F1 and per-class evaluation, and added 1,000-sample bootstrap significance testing. Expanded runs across prompt metrics from Gemma-7B, Llama-2-7B, Llama-2-13B, Mistral-7B, and Qwen2.5-7B. Added model-specific output packaging (`results/by_prompt_model/{model}/...`) plus separate Step 6 and Step 7+ notebooks for easier reruns. Also ran OOD transfer evaluation on OneStopEnglish with frozen ScienceQA artifacts and built an in-domain OOD train/test workflow, producing **COMBO macro-F1 = 0.9649** on the OneStopEnglish in-domain test split.
+### Smruthi Danda
 
----
+TODO: Add final contribution summary here.
+
+- `synthetic-data/`
+  - Created synthetic QA datasets with Claude, DeepSeek, and Mistral.
+  - Evaluated train-on-synthetic/test-on-real behavior to test whether generated
+    data alone could improve OOD generalization.
+
+## Caveats and Future Work
+
+- `AdvConcept-50` is intentionally diagnostic but small. A stronger version
+  should scale it to `AdvConcept-500` and validate labels with K-12 teachers.
+- The LLM-as-a-judge pipeline currently depends on one judge model. A
+  multi-judge panel would reduce single-model label bias.
+- Some OOD sets have different label definitions and class distributions, so
+  macro-F1 comparisons should be interpreted as generalization evidence rather
+  than direct leaderboard scores.
+- A promising next step is to keep the same lightweight model direction while
+  adding domain-adversarial training. The DANN experiments performed well on
+  held-out CoQA and CommonLit, so combining Pillar B+ efficiency with
+  domain-invariant representations is worth testing.
+- Several scripts were run on remote GPU infrastructure. Saved artifacts are
+  included, but fresh reruns may require path cleanup and model downloads.
+
+
 
 ## References
 
-- Rooein, D., Röttger, P., Shaitarova, A., & Hovy, D. (2024). *Beyond Flesch-Kincaid: Prompt-based Metrics Improve Difficulty Classification of Educational Texts.* BEA Workshop, ACL 2024.
-- Gombert, S., Menzel, L., Di Mitri, D., & Drachsler, H. (2024). *Predicting Item Difficulty and Item Response Time with Scalar-mixed Transformer Encoder Models and Rational Network Regression Heads.* BEA Workshop, ACL 2024. [Code on GitHub](https://github.com/SGombert/edutec-bea-shared-task-2024)
-
-## License
-
-TBD — leaning toward Apache 2.0 to match the Gombert reference code.
+- Rooein, D., Rottger, P., Shaitarova, A., & Hovy, D. (2024). *Beyond
+  Flesch-Kincaid: Prompt-based Metrics Improve Difficulty Classification of
+  Educational Texts.* BEA Workshop, ACL 2024.
+- Gombert, S., Menzel, L., Di Mitri, D., & Drachsler, H. (2024). *Predicting
+  Item Difficulty and Item Response Time with Scalar-mixed Transformer Encoder
+  Models and Rational Network Regression Heads.* BEA Workshop, ACL 2024.
+- Hu, E. J., et al. (2021). *LoRA: Low-Rank Adaptation of Large Language
+  Models.* arXiv:2106.09685.
+- Lacoste, A., Luccioni, A., Schmidt, V., & Dandres, T. (2019). *Quantifying
+  the carbon emissions of machine learning.* arXiv:1910.09700.
+- Lu, P., Mishra, S., Xia, T., Qiu, L., Chang, K.-W., Zhu, S.-C., Tafjord, O.,
+  Clark, P., & Kalyan, A. (2022). *Learn to explain: Multimodal reasoning via
+  thought chains for science question answering.* NeurIPS.
+- Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). *BERT:
+  Pre-training of deep bidirectional transformers for language understanding.*
+  NAACL.
+- Vajjala, S., & Lucic, I. (2018). *OneStopEnglish corpus: A new corpus for
+  automatic readability assessment and text simplification.* BEA Workshop.
+- Anthropic. (2025). *Claude Code documentation.*
+  https://docs.anthropic.com/en/docs/claude-code/overview
+- OpenAI. (2025). *Codex.*
+  https://openai.com/codex
