@@ -307,8 +307,15 @@ TODO: Add final contribution summary here.
 
 ### Smruthi Danda
 
-TODO: Add final contribution summary here.
+Smruthi's work includes:
 
+- `transformers/`
+  - Implemented transformer-based difficulty classification on ScienceQA: text
+    preprocessing and class balancing, a ScalarMix-pooled ScoringModel with a
+    learnable Rational-activation head variant, and a hierarchical two-stage
+    (elementary-vs-rest, then middle-vs-high) classifier on DeBERTa-v3-large.
+  - Tested on different models like deberta, but only attached the code that
+    produced the best results.
 - `synthetic-data/`
   - Created synthetic QA datasets with Claude, DeepSeek, and Mistral.
   - Evaluated train-on-synthetic/test-on-real behavior to test whether generated
