@@ -206,7 +206,30 @@ Main output locations:
 - `logistic-regression/outputs/prompt_metrics/`
 - `logistic-regression/results/by_prompt_model/{model}/`
 
-### 2. LLM-as-a-Judge Pipeline
+
+## 2. Train-on-Synthetic / Test-on-Real (Multi-LLM)
+
+Generates synthetic grade-level Q/A training data from three LLM APIs (Claude, DeepSeek, Mistral), then trains a classifier on each synthetic set and evaluates it against three real corpora. The generation scripts live under `synthetic_data/`; the cross-corpus training and evaluation runs from `TrainOnSynthetic_TestOnReal_MultiLLM.ipynb`.
+
+First generate one synthetic dataset per LLM. Each script splits the work across several API calls (rotating through five subject areas to reduce overlap), balances samples across the three grade levels, deduplicates on question text, and writes a CSV. Set the relevant API key as an environment variable (or paste it into `API_KEY`) before running:
+
+```
+cd synthetic_generation
+export ANTHROPIC_API_KEY="sk-..."   && python claude-generation.py     # -> synthetic_claude_qa.csv
+export DEEPSEEK_API_KEY="sk-..."    && python deepseek-generation.py   # -> synthetic_deepseek_qa.csv
+export MISTRAL_API_KEY="..."        && python mistral-generation.py    # -> synthetic_mistral_qa.csv
+```
+
+Then open and run `TrainOnSynthetic_TestOnReal_MultiLLM.ipynb` (Colab/GPU). For each synthetic dataset it trains an ELECTRA-large scalar-mix classifier (80/20 stratified split for held-in monitoring, 3 epochs), then evaluates the trained model against three real corpora — ScienceQA, OneStopEnglish, and RACE (middle + high) — writing per-epoch losses and per-corpus classification reports to a log per run.
+
+Main inputs/outputs:
+
+* Synthetic CSVs: `synthetic_{claude,deepseek,mistral}_qa.csv`
+* Real test corpora: ScienceQA and OneStopEnglish (loaded from HuggingFace), RACE (`ood_race-middle.csv`, `ood_race-high.csv`)
+* Per-run logs: `electra_<llm>_full_log.txt` and a per-tag results CSV
+
+
+### 3. LLM-as-a-Judge Pipeline
 
 The full pipeline is implemented as scripts under `llm_as_a_judge/scripts/`.
 The included `run.sh` documents the intended order, but it contains a
@@ -232,7 +255,7 @@ Main output locations:
 - `llm_as_a_judge/outputs/figures/`
 - `llm_as_a_judge/outputs/models/`
 
-### 3. Final Pillar B+ Architecture
+### 4. Final Pillar B+ Architecture
 
 The final architecture and its saved reports are in
 `Final_Architecture-Pillar_B plus/`.
