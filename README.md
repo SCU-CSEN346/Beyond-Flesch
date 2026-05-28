@@ -178,7 +178,7 @@ For the domain-adversarial ELECTRA notebooks:
 
 ```bash
 pip install transformers scikit-learn torch pandas matplotlib seaborn tqdm textstat joblib
-
+```
 GPU notes:
 
 - Rooein Step 5 prompt inference needs a GPU.
@@ -288,23 +288,11 @@ training data from multiple datasets with more similar formatting and label styl
 The main DANN setup therefore trains on a mixed set of corpora and evaluates on
 held-out corpora.
 
-Main training corpora used in the strongest DANN setup:
+Training corpora explored across DANN experiments: ScienceQA, OneStopEnglish, RACE-middle, RACE-high, CNN/DailyMail, CLEAR, OpenBookQA, CEFR-SP, CEFR-ELG, CEFR-ReadMe, English-CEFR-Explorer, Grade-Aware, FinRAD-Readability, and AgentLans-Readability.
 
-- ScienceQA-style clean training data
-- OneStopEnglish
-- RACE-middle
-- RACE-high
-- CNN/DailyMail
+Held-out OOD evaluation corpora: CoQA, CommonLit, WeeBit, and XSum.
 
-Held-out OOD evaluation corpora:
-
-- CoQA
-- CommonLit
-- XSum
-- WeeBit
-
-The main notebook is:
-
+Main notebook: `DomainAdversialNN/Electra_Static_DANN_OSE_RACE_MultiOOD.ipynb`.
 - `DomainAdversialNN/Electra_Static_DANN_OSE_RACE_MultiOOD.ipynb`
 
 It uses ELECTRA-large, ScalarMix pooling over hidden layers, readability/statistical
