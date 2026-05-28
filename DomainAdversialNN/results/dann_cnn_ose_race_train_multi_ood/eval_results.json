@@ -1,0 +1,81 @@
+{
+  "history": [
+    {
+      "phase": "phase1_frozen_encoder",
+      "epoch": 1,
+      "val_macro_f1": 0.8651504208739055,
+      "val_acc": 0.8970938542162935
+    },
+    {
+      "phase": "phase1_frozen_encoder",
+      "epoch": 2,
+      "val_macro_f1": 0.8770397313742464,
+      "val_acc": 0.9061457837065269
+    },
+    {
+      "phase": "phase2_dann",
+      "epoch": 1,
+      "val_macro_f1": 0.869073401981005,
+      "val_acc": 0.9009051929490234
+    }
+  ],
+  "evaluations": [
+    {
+      "checkpoint": "phase1_best_val",
+      "corpus": "xsum_ood",
+      "n": 2000,
+      "macro_f1_3class": 0.5250416780307264,
+      "macro_f1_present": 0.7875625170460896
+    },
+    {
+      "checkpoint": "phase1_best_val",
+      "corpus": "coqa_ood",
+      "n": 2000,
+      "macro_f1_3class": 0.8255481493385327,
+      "macro_f1_present": 0.8255481493385327
+    },
+    {
+      "checkpoint": "phase1_best_val",
+      "corpus": "weebit_ood",
+      "n": 500,
+      "macro_f1_3class": 0.3228911185432925,
+      "macro_f1_present": 0.3228911185432925
+    },
+    {
+      "checkpoint": "phase1_best_val",
+      "corpus": "commonlit_ood",
+      "n": 500,
+      "macro_f1_3class": 0.8958532432580876,
+      "macro_f1_present": 0.8958532432580876
+    },
+    {
+      "checkpoint": "phase2_dann_final",
+      "corpus": "xsum_ood",
+      "n": 2000,
+      "macro_f1_3class": 0.520272344388737,
+      "macro_f1_present": 0.7804085165831056
+    },
+    {
+      "checkpoint": "phase2_dann_final",
+      "corpus": "coqa_ood",
+      "n": 2000,
+      "macro_f1_3class": 0.8355659026925694,
+      "macro_f1_present": 0.8355659026925694
+    },
+    {
+      "checkpoint": "phase2_dann_final",
+      "corpus": "weebit_ood",
+      "n": 500,
+      "macro_f1_3class": 0.3136194723151245,
+      "macro_f1_present": 0.3136194723151245
+    },
+    {
+      "checkpoint": "phase2_dann_final",
+      "corpus": "commonlit_ood",
+      "n": 500,
+      "macro_f1_3class": 0.8887801978726829,
+      "macro_f1_present": 0.8887801978726829
+    }
+  ],
+  "best_val_f1": 0.8770397313742464
+}

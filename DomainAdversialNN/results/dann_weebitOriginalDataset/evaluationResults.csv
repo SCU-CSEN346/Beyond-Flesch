@@ -1,0 +1,4 @@
+checkpoint,corpus,n,accuracy,macro_f1_3class,macro_f1_present,gold_classes
+phase2_dann_final,coqa_test,2000,0.776,0.712639339,0.712639339,"[0, 1, 2]"
+phase2_dann_final,ood_race-middle,500,0.924,0.538895455,0.538895455,"[0, 1, 2]"
+phase2_dann_final,ood_race-high,500,0.826,0.53272428,0.799086421,"[1, 2]"

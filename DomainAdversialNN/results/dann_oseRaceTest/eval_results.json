@@ -1,0 +1,121 @@
+{
+  "config": {
+    "model": "google/electra-large-discriminator",
+    "dann": true,
+    "label_col": "education_level_judge",
+    "domain_col": "source_dataset",
+    "num_domains": 11,
+    "domain2id": {
+      "agentlans-readability": 0,
+      "cefr-elg": 1,
+      "cefr-readme": 2,
+      "cefr-sp": 3,
+      "cefr-synthetic": 4,
+      "clear": 5,
+      "english-cefr-explorer": 6,
+      "finrad-readability": 7,
+      "grade-aware": 8,
+      "openbookqa": 9,
+      "scienceqa": 10
+    },
+    "grl_lambda_max": 0.15,
+    "domain_loss_alpha": 0.1,
+    "phase1_epochs": 2,
+    "phase2_epochs": 1,
+    "best_val_macro_f1": 0.870217672537421,
+    "train_history": [
+      {
+        "phase": "phase1_frozen_encoder",
+        "epoch": 1,
+        "grl_on": false,
+        "grl_lambda": 0.0,
+        "train_diff_loss": 0.5363828508157276,
+        "train_dom_loss": 0.3106922175541573,
+        "train_total_loss": 0.5674520725737607,
+        "val_macro_f1": 0.8616132357647018,
+        "val_acc": 0.894235350166746,
+        "val_domain_acc": 0.9352072415435921
+      },
+      {
+        "phase": "phase1_frozen_encoder",
+        "epoch": 2,
+        "grl_on": false,
+        "grl_lambda": 0.0,
+        "train_diff_loss": 0.47379192958923916,
+        "train_dom_loss": 0.13764177355471202,
+        "train_total_loss": 0.48755610678871086,
+        "val_macro_f1": 0.870217672537421,
+        "val_acc": 0.9009051929490234,
+        "val_domain_acc": 0.9480705097665555
+      },
+      {
+        "phase": "phase2_dann",
+        "epoch": 1,
+        "grl_on": true,
+        "grl_lambda": 0.14998638063938927,
+        "train_diff_loss": 0.4970799094207944,
+        "train_dom_loss": 17.518183657283018,
+        "train_total_loss": 2.248898306984871,
+        "val_macro_f1": 0.8649465542023934,
+        "val_acc": 0.8966174368747022,
+        "val_domain_acc": 0.1095759885659838
+      }
+    ]
+  },
+  "evaluations": [
+    {
+      "corpus": "in_domain_test",
+      "n": 2099,
+      "accuracy": 0.8866126727012863,
+      "macro_f1_3class": 0.8492880992269555,
+      "macro_f1_present": 0.8492880992269555,
+      "gold_classes": [
+        0,
+        1,
+        2
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n  elementary       0.85      0.77      0.81       182\n      middle       0.89      0.95      0.92      1392\n        high       0.90      0.76      0.82       525\n\n    accuracy                           0.89      2099\n   macro avg       0.88      0.83      0.85      2099\nweighted avg       0.89      0.89      0.88      2099\n",
+      "confusion_matrix_png": "/content/drive/MyDrive/BeyondFK/trail/electra_llm_judge_dann/confusion_matrices/cm_in_domain_test.png"
+    },
+    {
+      "corpus": "ood_onestop",
+      "n": 565,
+      "accuracy": 0.7504424778761062,
+      "macro_f1_3class": 0.4897400790412007,
+      "macro_f1_present": 0.734610118561801,
+      "gold_classes": [
+        1,
+        2
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n  elementary       0.00      0.00      0.00         0\n      middle       0.57      0.81      0.67       177\n        high       0.89      0.72      0.80       388\n\n    accuracy                           0.75       565\n   macro avg       0.49      0.51      0.49       565\nweighted avg       0.79      0.75      0.76       565\n",
+      "confusion_matrix_png": "/content/drive/MyDrive/BeyondFK/trail/electra_llm_judge_dann/confusion_matrices/cm_ood_onestop.png"
+    },
+    {
+      "corpus": "ood_race-middle",
+      "n": 500,
+      "accuracy": 0.94,
+      "macro_f1_3class": 0.550510262584566,
+      "macro_f1_present": 0.550510262584566,
+      "gold_classes": [
+        0,
+        1,
+        2
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n  elementary       0.67      0.70      0.68        37\n      middle       0.96      0.97      0.97       457\n        high       0.00      0.00      0.00         6\n\n    accuracy                           0.94       500\n   macro avg       0.54      0.56      0.55       500\nweighted avg       0.93      0.94      0.93       500\n",
+      "confusion_matrix_png": "/content/drive/MyDrive/BeyondFK/trail/electra_llm_judge_dann/confusion_matrices/cm_ood_race-middle.png"
+    },
+    {
+      "corpus": "ood_race-high",
+      "n": 500,
+      "accuracy": 0.814,
+      "macro_f1_3class": 0.5214805239814724,
+      "macro_f1_present": 0.7822207859722086,
+      "gold_classes": [
+        1,
+        2
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n  elementary       0.00      0.00      0.00         0\n      middle       0.86      0.87      0.87       344\n        high       0.71      0.69      0.70       156\n\n    accuracy                           0.81       500\n   macro avg       0.52      0.52      0.52       500\nweighted avg       0.81      0.81      0.81       500\n",
+      "confusion_matrix_png": "/content/drive/MyDrive/BeyondFK/trail/electra_llm_judge_dann/confusion_matrices/cm_ood_race-high.png"
+    }
+  ]
+}

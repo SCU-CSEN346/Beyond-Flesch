@@ -1,0 +1,196 @@
+{
+  "static_features": [
+    "stat_automated_readability_index",
+    "stat_avg_sent_len",
+    "stat_avg_word_len",
+    "stat_char_count",
+    "stat_coleman_liau_index",
+    "stat_dale_chall_readability_score",
+    "stat_difficult_words",
+    "stat_flesch_kincaid_grade",
+    "stat_flesch_reading_ease",
+    "stat_gunning_fog",
+    "stat_has_because",
+    "stat_has_example",
+    "stat_has_multiple_choice",
+    "stat_has_therefore",
+    "stat_linsear_write_formula",
+    "stat_long_word_ratio",
+    "stat_max_sent_len",
+    "stat_mcalpine_eflaw",
+    "stat_n_comma",
+    "stat_n_exclaim",
+    "stat_n_newlines",
+    "stat_n_paragraphs",
+    "stat_n_paren",
+    "stat_n_question",
+    "stat_n_quote",
+    "stat_n_semicolon",
+    "stat_sentence_count",
+    "stat_smog_index",
+    "stat_spache_readability",
+    "stat_text_standard",
+    "stat_ttr",
+    "stat_unique_words",
+    "stat_word_count",
+    "stat_word_entropy"
+  ],
+  "prompt_features": [
+    "prompt_0",
+    "prompt_1",
+    "prompt_2",
+    "prompt_3",
+    "prompt_4",
+    "prompt_5",
+    "prompt_6",
+    "prompt_7",
+    "prompt_8",
+    "prompt_9",
+    "prompt_10",
+    "prompt_11",
+    "prompt_12",
+    "prompt_13",
+    "prompt_14",
+    "prompt_15",
+    "prompt_16",
+    "prompt_17",
+    "prompt_18",
+    "prompt_19",
+    "prompt_20",
+    "prompt_21",
+    "prompt_22",
+    "prompt_23",
+    "prompt_24",
+    "prompt_25",
+    "prompt_26",
+    "prompt_27",
+    "prompt_28",
+    "prompt_29",
+    "prompt_30",
+    "prompt_31",
+    "prompt_32",
+    "prompt_33",
+    "prompt_34",
+    "prompt_35",
+    "prompt_36",
+    "prompt_37",
+    "prompt_38",
+    "prompt_39",
+    "prompt_40",
+    "prompt_41",
+    "prompt_42",
+    "prompt_43",
+    "prompt_44",
+    "prompt_45",
+    "prompt_46",
+    "prompt_47",
+    "prompt_48",
+    "prompt_49",
+    "prompt_50",
+    "prompt_51",
+    "prompt_52",
+    "prompt_53",
+    "prompt_54",
+    "prompt_55",
+    "prompt_56",
+    "prompt_57",
+    "prompt_58",
+    "prompt_59",
+    "prompt_60",
+    "prompt_61",
+    "prompt_62"
+  ],
+  "prompt_model": "qwen2.5-7b",
+  "real_prompt_rows_train": 0,
+  "real_prompt_rows_val": 0,
+  "real_prompt_rows_ood": {
+    "xsum_ood": 0,
+    "coqa_ood": 0,
+    "weebit_ood": 0,
+    "commonlit_ood": 0
+  },
+  "prompt_coverage_train": [
+    {
+      "split_key": "train",
+      "rows": 16849,
+      "used": false,
+      "reason": "row mismatch: prompt rows=3638, data rows=16849",
+      "path": "/content/drive/MyDrive/BeyondFK/prompt_metrics/train_prompt_metrics_qwen2.5-7b.csv"
+    },
+    {
+      "split_key": "ood_onestop",
+      "rows": 565,
+      "used": false,
+      "reason": "missing prompt CSV",
+      "path": null
+    },
+    {
+      "split_key": "ood_race-middle",
+      "rows": 500,
+      "used": false,
+      "reason": "missing prompt CSV",
+      "path": null
+    },
+    {
+      "split_key": "ood_race-high",
+      "rows": 500,
+      "used": false,
+      "reason": "missing prompt CSV",
+      "path": null
+    },
+    {
+      "split_key": "nan",
+      "rows": 2000,
+      "used": false,
+      "reason": "missing prompt CSV",
+      "path": null
+    }
+  ],
+  "prompt_coverage_val": [
+    {
+      "split_key": "val",
+      "rows": 2099,
+      "used": false,
+      "reason": "missing prompt CSV",
+      "path": null
+    }
+  ],
+  "prompt_coverage_ood": {
+    "xsum_ood": [
+      {
+        "split_key": "nan",
+        "rows": 2000,
+        "used": false,
+        "reason": "missing prompt CSV",
+        "path": null
+      }
+    ],
+    "coqa_ood": [
+      {
+        "split_key": "nan",
+        "rows": 2000,
+        "used": false,
+        "reason": "missing prompt CSV",
+        "path": null
+      }
+    ],
+    "weebit_ood": [
+      {
+        "split_key": "nan",
+        "rows": 500,
+        "used": false,
+        "reason": "missing prompt CSV",
+        "path": null
+      }
+    ],
+    "commonlit_ood": [
+      {
+        "split_key": "nan",
+        "rows": 500,
+        "used": false,
+        "reason": "missing prompt CSV",
+        "path": null
+      }
+    ]
+  }
+}

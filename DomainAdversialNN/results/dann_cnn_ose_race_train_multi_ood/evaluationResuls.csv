@@ -1,0 +1,5 @@
+checkpoint,corpus,n,macro_f1_3class,macro_f1_present
+phase2_dann_final,xsum_ood,2000,0.520272344,0.780408517
+phase2_dann_final,coqa_ood,2000,0.835565903,0.835565903
+phase2_dann_final,weebit_ood,500,0.313619472,0.313619472
+phase2_dann_final,commonlit_ood,500,0.888780198,0.888780198

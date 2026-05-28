@@ -1,0 +1,4 @@
+checkpoint,corpus,n,accuracy,macro_f1_3class,macro_f1_present,gold
+phase2_dann_final,weebit_train,2491,0.5700521878763549,0.24993676303373238,0.24993676303373238,weebit_original
+phase2_dann_final,weebit_val,308,0.551948051948052,0.25712025316455694,0.25712025316455694,weebit_original
+phase2_dann_final,weebit_test,315,0.580952380952381,0.2625293476050506,0.2625293476050506,weebit_original

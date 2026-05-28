@@ -1,0 +1,6 @@
+checkpoint,corpus,n,accuracy,macro_f1_3class,macro_f1_present,gold_classes
+phase2_dann_final,xsum_ood,2000,0.807,0.537750418,0.806625627,"[1, 2]"
+phase2_dann_final,coqa_ood,2000,0.8325,0.828400031,0.828400031,"[0, 1, 2]"
+phase2_dann_final,weebit_ood,500,0.844,0.305133767,0.305133767,"[0, 1, 2]"
+phase2_dann_final,commonlit_ood,500,0.826,0.879677555,0.879677555,"[0, 1, 2]"
+phase2_dann_final,adv_concept_ood,50,0.54,0.48832506,0.48832506,"[0, 1, 2]"
