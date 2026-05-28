@@ -207,7 +207,19 @@ Main output locations:
 - `logistic-regression/results/by_prompt_model/{model}/`
 
 
-## 2. Train-on-Synthetic / Test-on-Real (Multi-LLM)
+### 2. Transformer Difficulty Classifiers (ScienceQA)
+
+Trains transformer encoders to classify ScienceQA questions into three difficulty levels — elementary, middle, and high. All three variants share a data pipeline (format each question, its choices, answer, and explanation into one text block; class-balance to ~1,516 per level) and a `ScoringModel` that runs a pretrained encoder's hidden layers through a learnable `ScalarMix` (`scalar_mix.py`), mean-pools, and classifies through a feed-forward head, logging per-epoch loss and macro-F1 each run.
+
+* **`TransformerForClassification.ipynb`** — Baseline 3-class model on ELECTRA-large with a ReLU head (3 epochs, AdamW, cosine schedule).
+* **`TransformerForClassification-Rational.ipynb`** — Same setup, but swaps the head's ReLU for a learnable Rational activation `P(x)/(1+|Q(x)|)`, sweeping six initializations (leaky_relu, relu, gelu, swish, tanh, sigmoid).
+* **`Hierarchical_Grade_Binary_Classifier.ipynb`** — Two-stage cascade on DeBERTa-v3-large: Stage 1 (elementary vs. not), Stage 2 (middle vs. high), combined into final 3-class predictions.
+
+To run: open a notebook on a GPU runtime with `scalar_mix.py` importable as `allennlp.modules.scalar_mix`, then run all cells. Dataset is `tasksource/ScienceQA_text_only` (HuggingFace).
+
+
+
+### 3. Train-on-Synthetic / Test-on-Real (Multi-LLM)
 
 Generates synthetic grade-level Q/A training data from three LLM APIs (Claude, DeepSeek, Mistral), then trains a classifier on each synthetic set and evaluates it against three real corpora. The generation scripts live under `synthetic_data/`; the cross-corpus training and evaluation runs from `TrainOnSynthetic_TestOnReal_MultiLLM.ipynb`.
 
@@ -229,7 +241,7 @@ Main inputs/outputs:
 * Per-run logs: `electra_<llm>_full_log.txt` and a per-tag results CSV
 
 
-### 3. LLM-as-a-Judge Pipeline
+### 4. LLM-as-a-Judge Pipeline
 
 The full pipeline is implemented as scripts under `llm_as_a_judge/scripts/`.
 The included `run.sh` documents the intended order, but it contains a
@@ -255,7 +267,7 @@ Main output locations:
 - `llm_as_a_judge/outputs/figures/`
 - `llm_as_a_judge/outputs/models/`
 
-### 4. Final Pillar B+ Architecture
+### 5. Final Pillar B+ Architecture
 
 The final architecture and its saved reports are in
 `Final_Architecture-Pillar_B plus/`.
