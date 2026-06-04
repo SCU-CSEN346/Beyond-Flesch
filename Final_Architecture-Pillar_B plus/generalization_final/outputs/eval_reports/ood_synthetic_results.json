@@ -1,0 +1,82 @@
+{
+  "pkl": "/home/tanmayv/my_repos/text_difficulty_classifier/generalization_final/outputs/models/per_llm__llm_judge__qwen2.5-7b__seed7_gradereg.pkl",
+  "n_synthetic": 150,
+  "feature_dim": 97,
+  "gen_label_dist": {
+    "elementary": 50,
+    "middle": 50,
+    "high": 50
+  },
+  "judge_label_dist": {
+    "elementary": 46,
+    "middle": 49,
+    "high": 55
+  },
+  "gen_vs_judge_agreement": 0.94,
+  "vs_gen_label": {
+    "f1_macro": 0.9396835740921762,
+    "f1_per_class": [
+      0.98989898989899,
+      0.9032258064516129,
+      0.9259259259259259
+    ],
+    "accuracy": 0.94,
+    "qwk": 0.9565217391304348,
+    "conf_matrix": [
+      [
+        49,
+        1,
+        0
+      ],
+      [
+        0,
+        42,
+        8
+      ],
+      [
+        0,
+        0,
+        50
+      ]
+    ],
+    "pred_counts": [
+      49,
+      43,
+      58
+    ],
+    "n": 150
+  },
+  "vs_judge_label": {
+    "f1_macro": 0.9183289119296895,
+    "f1_per_class": [
+      0.9473684210526315,
+      0.8695652173913043,
+      0.9380530973451328
+    ],
+    "accuracy": 0.92,
+    "qwk": 0.94200657258844,
+    "conf_matrix": [
+      [
+        45,
+        1,
+        0
+      ],
+      [
+        4,
+        40,
+        5
+      ],
+      [
+        0,
+        2,
+        53
+      ]
+    ],
+    "pred_counts": [
+      49,
+      43,
+      58
+    ],
+    "n": 150
+  }
+}

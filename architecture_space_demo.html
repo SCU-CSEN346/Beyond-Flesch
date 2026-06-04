@@ -1,0 +1,1981 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond Flesch Architecture Space Demo</title>
+  <style>
+    :root {
+      --bg: #03040a;
+      --panel: rgba(12, 15, 23, 0.86);
+      --panel-strong: rgba(16, 20, 30, 0.94);
+      --line: rgba(164, 178, 203, 0.25);
+      --text: #f4f7fb;
+      --muted: #a8b1c1;
+      --soft: #717d90;
+      --accent: #6ee7d8;
+      --accent-2: #ffd166;
+      --warning: #ff8b6a;
+      --violet: #b894ff;
+      --blue: #79b8ff;
+      --ok: #8ff0a4;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.42);
+      --radius: 8px;
+      --font-ui: "Rajdhani", "Oxanium", "Exo 2", "Avenir Next Condensed", "Segoe UI", system-ui, sans-serif;
+      --font-display: "Orbitron", "Rajdhani", "Share Tech Mono", "Avenir Next Condensed", "Segoe UI", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: auto;
+      color: var(--text);
+      background:
+        linear-gradient(145deg, rgba(7, 26, 38, 0.74), transparent 42%),
+        linear-gradient(35deg, rgba(49, 17, 31, 0.58), transparent 48%),
+        #03040a;
+      font-family: var(--font-ui);
+      letter-spacing: 0;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      content: "";
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.14));
+      animation: gridDrift 24s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      to {
+        background-position: 58px 58px, 58px 58px;
+      }
+    }
+
+    #starfield {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      background: #020308;
+    }
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 7px
+      );
+      mix-blend-mode: screen;
+      animation: scanDrift 8s linear infinite;
+    }
+
+    @keyframes scanDrift {
+      to {
+        background-position: 0 56px;
+      }
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      font-family: var(--font-display);
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 16px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(7, 10, 17, 0.72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      min-width: 205px;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 0.64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      margin-bottom: 0;
+      font-size: 1.18rem;
+      line-height: 1.15;
+    }
+
+    .topbar-copy {
+      max-width: 620px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.32;
+    }
+
+    .mission-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(84px, 1fr));
+      gap: 7px;
+      min-width: 190px;
+    }
+
+    .meta-cell {
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .meta-cell span {
+      display: block;
+      color: var(--soft);
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .meta-cell strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.82rem;
+      line-height: 1.2;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: minmax(92px, 112px) minmax(780px, 1fr) minmax(215px, 255px);
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .demo-grid.is-focus {
+      grid-template-columns: minmax(92px, 112px) minmax(840px, 1fr);
+    }
+
+    .demo-grid.is-focus .detail-panel {
+      display: none;
+    }
+
+    .mission-rail,
+    .stage-panel,
+    .detail-panel {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .mission-rail {
+      display: flex;
+      flex-direction: column;
+      min-height: 620px;
+      padding: 9px;
+    }
+
+    .rail-header,
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .rail-header h2,
+    .panel-header h2 {
+      margin: 0;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+    }
+
+    .mission-rail .status-chip {
+      display: none;
+    }
+
+    .status-chip {
+      min-width: 54px;
+      padding: 5px 8px;
+      border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+      border-radius: 999px;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 11%, transparent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .mission-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mission-button {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      gap: 7px;
+      width: 100%;
+      min-height: 70px;
+      padding: 8px 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.046);
+      text-align: center;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .mission-button::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 3px;
+      content: "";
+      background: var(--arch-color, var(--accent));
+      transform: scaleX(var(--mission-progress, 0));
+      transform-origin: left;
+      transition: transform 240ms ease;
+    }
+
+    .mission-button:hover,
+    .mission-button:focus-visible {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--arch-color, var(--accent)) 55%, rgba(255, 255, 255, 0.12));
+      outline: none;
+    }
+
+    .mission-button.is-active {
+      border-color: color-mix(in srgb, var(--arch-color, var(--accent)) 65%, transparent);
+      background: color-mix(in srgb, var(--arch-color, var(--accent)) 12%, rgba(255, 255, 255, 0.045));
+    }
+
+    .mission-index {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid color-mix(in srgb, var(--arch-color, var(--accent)) 48%, transparent);
+      border-radius: var(--radius);
+      color: var(--arch-color, var(--accent));
+      font-size: 0.72rem;
+      font-weight: 900;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .mission-copy {
+      min-width: 0;
+    }
+
+    .mission-copy strong {
+      font-family: var(--font-display);
+      display: block;
+      margin-bottom: 0;
+      font-size: 0.72rem;
+      line-height: 1.2;
+    }
+
+    .mission-copy small {
+      display: none;
+      color: var(--muted);
+      font-size: 0.73rem;
+      line-height: 1.35;
+    }
+
+    .mission-state {
+      display: none;
+    }
+
+    .control-bank {
+      display: grid;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .control-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .control-btn {
+      min-height: 34px;
+      padding: 7px 6px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 800;
+      transition: border-color 170ms ease, background 170ms ease, transform 170ms ease;
+    }
+
+    .control-btn.primary {
+      border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+      background: color-mix(in srgb, var(--accent) 14%, rgba(255, 255, 255, 0.04));
+      color: var(--text);
+    }
+
+    .control-btn:hover,
+    .control-btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .control-btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.55;
+      transform: none;
+    }
+
+    .stage-panel {
+      min-height: 620px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .stage-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stage-title {
+      min-width: 0;
+    }
+
+    .stage-title .eyebrow {
+      margin-bottom: 7px;
+    }
+
+    .stage-title h2 {
+      font-family: var(--font-display);
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .stage-title p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .step-readout {
+      min-width: 116px;
+      padding: 9px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(0, 0, 0, 0.22);
+      text-align: right;
+    }
+
+    .step-readout span {
+      display: block;
+      color: var(--soft);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .step-readout strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .stage-scroll {
+      overflow: auto;
+    }
+
+    .stage-frame {
+      position: relative;
+      min-width: 780px;
+      min-height: 520px;
+      height: 100%;
+      overflow: hidden;
+      background:
+        repeating-linear-gradient(115deg, rgba(110, 231, 216, 0.045) 0 1px, transparent 1px 34px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 26%, rgba(255, 255, 255, 0.018)),
+        rgba(0, 0, 0, 0.16);
+      background-size: 240px 240px, 100% 100%, auto;
+      animation: stageCurrent 18s linear infinite;
+    }
+
+    @keyframes stageCurrent {
+      to {
+        background-position: 240px -240px, 0 0, 0 0;
+      }
+    }
+
+    .stage-frame::before,
+    .stage-frame::after {
+      position: absolute;
+      inset: 24px;
+      content: "";
+      border: 1px solid rgba(255, 255, 255, 0.055);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .stage-frame::after {
+      inset: 84px 68px;
+      border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+
+    .orbit-field {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(74%, 760px);
+      aspect-ratio: 1.8 / 1;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      opacity: 0.2;
+      transition: opacity 260ms ease;
+    }
+
+    .orbit-field.is-live {
+      opacity: 0.88;
+    }
+
+    .orbit-field span {
+      position: absolute;
+      inset: 0;
+      border: 1px solid color-mix(in srgb, var(--accent) 36%, transparent);
+      border-radius: 50%;
+      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 42%, transparent));
+      transform-origin: center;
+      animation: orbitSpin 9s linear infinite;
+    }
+
+    .orbit-field span:nth-child(2) {
+      inset: 13%;
+      border-color: color-mix(in srgb, var(--accent-2) 40%, transparent);
+      animation-duration: 13s;
+      animation-direction: reverse;
+      transform: rotate(23deg);
+    }
+
+    .orbit-field span:nth-child(3) {
+      inset: 24%;
+      border-style: dashed;
+      border-color: color-mix(in srgb, var(--warning) 34%, transparent);
+      animation-duration: 17s;
+      transform: rotate(-18deg);
+    }
+
+    @keyframes orbitSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .link-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .link-layer path {
+      fill: none;
+      vector-effect: non-scaling-stroke;
+      stroke-linecap: round;
+    }
+
+    .link-layer .wire-base {
+      stroke: color-mix(in srgb, var(--accent) 64%, white);
+      stroke-width: 1.65;
+      filter: drop-shadow(0 0 9px color-mix(in srgb, var(--accent) 60%, transparent));
+      stroke-dasharray: 420;
+      stroke-dashoffset: 420;
+      animation: drawLine 700ms ease forwards;
+    }
+
+    .link-layer .wire-pulse {
+      stroke: color-mix(in srgb, var(--accent-2) 76%, white);
+      stroke-width: 3.1;
+      stroke-dasharray: 7 32;
+      stroke-dashoffset: 0;
+      opacity: 0.86;
+      filter:
+        drop-shadow(0 0 6px color-mix(in srgb, var(--accent-2) 90%, transparent))
+        drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 52%, transparent));
+      animation: electricFlow 900ms linear infinite;
+    }
+
+    .link-layer .wire-pulse.secondary {
+      stroke: color-mix(in srgb, var(--warning) 78%, white);
+      stroke-width: 1.6;
+      stroke-dasharray: 3 24;
+      opacity: 0.68;
+      animation-duration: 1250ms;
+      animation-direction: reverse;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes electricFlow {
+      to {
+        stroke-dashoffset: -78;
+      }
+    }
+
+    .module-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .module-card {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      display: grid;
+      gap: 6px;
+      width: 148px;
+      min-height: 78px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(8, 11, 18, 0.9);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      text-align: left;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, calc(-50% + 18px)) scale(0.96);
+      transition:
+        opacity 260ms ease,
+        transform 260ms ease,
+        border-color 160ms ease,
+        background 160ms ease;
+    }
+
+    .module-card.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .module-card.is-active,
+    .module-card:hover,
+    .module-card:focus-visible {
+      border-color: color-mix(in srgb, var(--accent) 70%, white);
+      background: color-mix(in srgb, var(--accent) 12%, rgba(8, 11, 18, 0.92));
+      outline: none;
+    }
+
+    .module-kicker {
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .module-label {
+      display: block;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 0.86rem;
+      font-weight: 900;
+      line-height: 1.18;
+    }
+
+    .module-body {
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.32;
+    }
+
+    .launch-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: grid;
+      place-items: center;
+      width: 230px;
+      min-height: 170px;
+      padding: 20px;
+      border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+      border-radius: var(--radius);
+      background: rgba(7, 10, 18, 0.86);
+      box-shadow: 0 0 60px color-mix(in srgb, var(--accent) 16%, transparent);
+      text-align: center;
+      transform: translate(-50%, -50%);
+      transition: opacity 220ms ease, transform 220ms ease;
+      animation: launchPulse 2.6s ease-in-out infinite;
+    }
+
+    .launch-core.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.94);
+    }
+
+    .launch-mark {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 13px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      color: var(--accent);
+      font-weight: 900;
+      box-shadow: inset 0 0 24px color-mix(in srgb, var(--accent) 22%, transparent);
+      animation: markSpin 7s linear infinite;
+    }
+
+    @keyframes launchPulse {
+      0%,
+      100% {
+        box-shadow: 0 0 44px color-mix(in srgb, var(--accent) 13%, transparent);
+        border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      }
+
+      50% {
+        box-shadow:
+          0 0 74px color-mix(in srgb, var(--accent) 24%, transparent),
+          inset 0 0 30px rgba(255, 255, 255, 0.035);
+        border-color: color-mix(in srgb, var(--accent) 58%, transparent);
+      }
+    }
+
+    @keyframes markSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .launch-core strong {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .launch-core small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    .stage-footer {
+      display: grid;
+      gap: 10px;
+      padding: 13px 16px 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .progress-labels {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .progress-track {
+      height: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .progress-fill {
+      display: block;
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--warning));
+      transition: width 240ms ease;
+    }
+
+    .completion-banner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 5;
+      width: min(430px, 64%);
+      padding: 18px;
+      border: 1px solid color-mix(in srgb, var(--accent-2) 58%, transparent);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, rgba(8, 11, 18, 0.94)), rgba(8, 11, 18, 0.92)),
+        rgba(8, 11, 18, 0.94);
+      box-shadow:
+        0 0 46px color-mix(in srgb, var(--accent) 28%, transparent),
+        0 22px 70px rgba(0, 0, 0, 0.48);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.92);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .completion-banner.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+      animation: completeGlow 1.8s ease-in-out infinite;
+    }
+
+    .completion-banner span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .completion-banner strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      line-height: 1.16;
+      text-transform: uppercase;
+    }
+
+    .completion-banner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+
+    @keyframes completeGlow {
+      0%,
+      100% {
+        box-shadow:
+          0 0 44px color-mix(in srgb, var(--accent) 24%, transparent),
+          0 22px 70px rgba(0, 0, 0, 0.48);
+      }
+
+      50% {
+        box-shadow:
+          0 0 82px color-mix(in srgb, var(--accent-2) 34%, transparent),
+          0 22px 70px rgba(0, 0, 0, 0.48);
+      }
+    }
+
+    .detail-panel {
+      min-height: 620px;
+      padding: 12px;
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      gap: 10px;
+      align-content: start;
+      overflow: auto;
+    }
+
+    .detail-title h2 {
+      font-family: var(--font-display);
+      margin-bottom: 6px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .detail-title p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.38;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .node-readout {
+      padding: 10px;
+      border: 1px solid color-mix(in srgb, var(--accent) 32%, rgba(255, 255, 255, 0.08));
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--accent) 8%, rgba(255, 255, 255, 0.035));
+    }
+
+    .node-readout span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .node-readout strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+      font-family: var(--font-display);
+      line-height: 1.25;
+    }
+
+    .node-readout p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.38;
+    }
+
+    .detail-disclosure {
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+    }
+
+    .detail-disclosure summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 38px;
+      padding: 9px 10px;
+      color: var(--text);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .detail-disclosure summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-disclosure summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border: 1px solid color-mix(in srgb, var(--accent) 44%, transparent);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.82rem;
+      line-height: 1;
+    }
+
+    .detail-disclosure[open] summary::after {
+      content: "-";
+    }
+
+    .script-list {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      overflow: auto;
+      min-height: 0;
+      max-height: 190px;
+      padding: 0 10px 10px;
+    }
+
+    .script-item {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .script-dot {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.66rem;
+      font-weight: 900;
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .script-item p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.34;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 0 10px 10px;
+    }
+
+    .metric {
+      min-height: 0;
+      padding: 8px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--soft);
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      line-height: 1.2;
+    }
+
+    .learn-more {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(7, 10, 17, 0.72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .learn-more summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 10px 14px;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .learn-more summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .learn-more summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+      border-radius: 50%;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .learn-more[open] summary::after {
+      content: "-";
+    }
+
+    .learn-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 0 14px 14px;
+    }
+
+    .learn-link {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+      padding: 11px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 170ms ease, background 170ms ease, transform 170ms ease;
+    }
+
+    .learn-link:hover,
+    .learn-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+      background: color-mix(in srgb, var(--accent) 10%, rgba(255, 255, 255, 0.04));
+      outline: none;
+    }
+
+    .learn-link strong {
+      font-family: var(--font-display);
+      font-size: 0.84rem;
+      line-height: 1.2;
+    }
+
+    .learn-link span {
+      overflow-wrap: anywhere;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.25;
+    }
+
+    @media (max-width: 1180px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mission-meta {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-rail,
+      .stage-panel,
+      .detail-panel {
+        min-height: auto;
+      }
+
+      .mission-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .control-bank {
+        margin-top: 14px;
+      }
+
+      .stage-frame {
+        height: 560px;
+      }
+
+      .detail-panel {
+        grid-template-rows: auto;
+      }
+
+      .learn-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .app-shell {
+        padding: 10px;
+      }
+
+      .topbar,
+      .mission-rail,
+      .stage-panel,
+      .detail-panel {
+        border-radius: 8px;
+      }
+
+      .mission-meta,
+      .mission-list,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stage-top {
+        flex-direction: column;
+      }
+
+      .step-readout {
+        width: 100%;
+        text-align: left;
+      }
+
+      .module-card {
+        width: 152px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <p class="eyebrow">Beyond Flesch</p>
+        <h1>Architecture Map</h1>
+      </div>
+      <p class="topbar-copy">
+        Rooein -> DANN -> LoRA-Phi-3.5, revealed as live signal flows.
+      </p>
+      <div class="mission-meta" aria-label="Demo summary">
+        <div class="meta-cell">
+          <span>Architectures</span>
+          <strong>3 systems</strong>
+        </div>
+        <div class="meta-cell">
+          <span>Output</span>
+          <strong>E / M / H</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="demo-grid">
+      <aside class="mission-rail" aria-label="Architecture missions">
+        <div class="rail-header">
+          <h2>Missions</h2>
+          <span class="status-chip" id="tourState">Idle</span>
+        </div>
+        <div class="mission-list" id="missionList"></div>
+        <div class="control-bank">
+          <button class="control-btn primary" type="button" data-action="advance" id="advanceButton">Launch</button>
+          <div class="control-row">
+            <button class="control-btn" type="button" data-action="auto" id="autoButton">Auto</button>
+            <button class="control-btn" type="button" data-action="all">All</button>
+          </div>
+          <div class="control-row">
+            <button class="control-btn" type="button" data-action="focus" id="focusButton">Focus</button>
+            <button class="control-btn" type="button" data-action="reset">Reset</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="stage-panel" aria-label="Interactive architecture diagram">
+        <div class="stage-top">
+          <div class="stage-title">
+            <p class="eyebrow" id="stageEyebrow">Mission 01</p>
+            <h2 id="stageTitle">Rooein Original</h2>
+            <p id="stageSummary"></p>
+          </div>
+          <div class="step-readout">
+            <span>Sequence</span>
+            <strong id="stepReadout">0 / 22</strong>
+          </div>
+        </div>
+        <div class="stage-scroll">
+          <div class="stage-frame" id="stageFrame">
+            <div class="orbit-field" id="orbitField" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <svg class="link-layer" id="linkLayer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <div class="module-layer" id="moduleLayer"></div>
+            <div class="launch-core" id="launchCore">
+              <div class="launch-mark">BF</div>
+              <strong>System architecture sequence</strong>
+              <small>Rooein original, DANN, and LoRA-Phi-3.5 open as connected model flows.</small>
+            </div>
+            <div class="completion-banner" id="completionBanner" aria-live="polite">
+              <span>Flight path complete</span>
+              <strong>Yay, mission complete!</strong>
+              <p>You decoded Rooein, DANN, and LoRA-Phi-3.5 architectures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="stage-footer">
+          <div class="progress-labels">
+            <span id="progressLabel">Awaiting signal</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span class="progress-fill" id="progressFill"></span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="detail-panel" aria-label="Architecture explanation">
+        <div class="panel-header">
+          <h2>Briefing</h2>
+          <span class="status-chip" id="activeBadge">Rooein</span>
+        </div>
+        <div class="detail-title">
+          <p class="eyebrow" id="detailEyebrow">Architecture 01</p>
+          <h2 id="detailTitle">Rooein Original</h2>
+          <p id="detailSummary"></p>
+        </div>
+        <div class="node-readout" id="nodeReadout">
+          <span>Selected module</span>
+          <strong id="nodeTitle">Mission locked</strong>
+          <p id="nodeBody">Launch the reveal to begin the walkthrough.</p>
+        </div>
+        <details class="detail-disclosure" id="notesDisclosure">
+          <summary>Talk Track</summary>
+          <div class="script-list" id="scriptList"></div>
+        </details>
+        <details class="detail-disclosure" id="metricsDisclosure">
+          <summary>Metrics</summary>
+          <div class="metric-grid" id="metricGrid"></div>
+        </details>
+      </aside>
+    </section>
+    <details class="learn-more">
+      <summary>Learn more</summary>
+      <div class="learn-links">
+        <a class="learn-link" href="https://github.com/SCU-CSEN346/Beyond-Flesch" target="_blank" rel="noopener noreferrer">
+          <strong>GitHub Repository</strong>
+          <span>https://github.com/SCU-CSEN346/Beyond-Flesch</span>
+        </a>
+        <a class="learn-link" href="https://huggingface.co/datasets/nlpscu/Beyond-Flesch" target="_blank" rel="noopener noreferrer">
+          <strong>Hugging Face Dataset</strong>
+          <span>https://huggingface.co/datasets/nlpscu/Beyond-Flesch</span>
+        </a>
+      </div>
+    </details>
+  </main>
+
+  <script>
+    const architectures = [
+      {
+        id: "rooein",
+        index: "01",
+        short: "Rooein",
+        title: "Rooein Original",
+        subtitle: "Static and prompt-based metrics plus logistic regression",
+        accent: "#6ee7d8",
+        accent2: "#ffd166",
+        summary: "The reproduction follows Rooein et al.: compute 46 static readability features and 63 LLM-derived binary prompt metrics, then classify ScienceQA text difficulty with SelectKBest feature selection and multinomial logistic regression.",
+        sideSummary: "Static + prompt features feed logistic regression.",
+        metrics: [
+          ["Features", "46 static + 63 prompt"],
+          ["Backbones", "5 open-source LLMs"],
+          ["Model", "Multinomial LogReg"],
+          ["Best setting", "Mistral COMBO"],
+          ["ScienceQA", "0.8416 macro-F1"],
+          ["Significance", "p = 0.031"]
+        ],
+        script: [
+          "Compute 46 static readability features.",
+          "Ask 63 yes/no prompt questions.",
+          "Fit STATIC, PROMPT, and COMBO logistic models."
+        ],
+        nodes: [
+          {
+            id: "input",
+            label: "Input Text",
+            kicker: "Corpus",
+            body: "ScienceQA text enters the E/M/H pipeline.",
+            x: 13,
+            y: 50
+          },
+          {
+            id: "static",
+            label: "Static Features",
+            kicker: "46 signals",
+            body: "Readability, lexical, syntax, and WordNet signals.",
+            x: 33,
+            y: 25
+          },
+          {
+            id: "prompt",
+            label: "Prompt Metrics",
+            kicker: "63 binaries",
+            body: "Five LLMs answer yes/no questions as 1 or 0.",
+            x: 33,
+            y: 75
+          },
+          {
+            id: "modes",
+            label: "Feature Modes",
+            kicker: "Ablation",
+            body: "Compare STATIC, PROMPT, and COMBO features.",
+            x: 53,
+            y: 50
+          },
+          {
+            id: "select",
+            label: "SelectKBest",
+            kicker: "Filtering",
+            body: "F-tests tune k before the classifier.",
+            x: 72,
+            y: 30
+          },
+          {
+            id: "logreg",
+            label: "Logistic Regression",
+            kicker: "Classifier",
+            body: "Maps selected features to E, M, or H.",
+            x: 72,
+            y: 70
+          },
+          {
+            id: "output",
+            label: "Difficulty Label",
+            kicker: "Prediction",
+            body: "Transparent output; prompt extraction is costly.",
+            x: 84,
+            y: 50
+          }
+        ],
+        edges: [
+          ["input", "static"],
+          ["input", "prompt"],
+          ["static", "modes"],
+          ["prompt", "modes"],
+          ["modes", "select"],
+          ["modes", "logreg"],
+          ["select", "output"],
+          ["logreg", "output"]
+        ]
+      },
+      {
+        id: "dann",
+        index: "02",
+        short: "DANN",
+        title: "Domain-Adversarial ELECTRA",
+        subtitle: "ScalarMix ELECTRA with gradient reversal",
+        accent: "#79b8ff",
+        accent2: "#ff8b6a",
+        summary: "The paper's DANN model uses the same scalar-mixed ELECTRA encoder, then splits into a difficulty head and a domain head. A Gradient Reversal Layer makes the shared representation less recoverable by source corpus while preserving the grade-level task signal.",
+        sideSummary: "ELECTRA predicts grade while hiding corpus identity.",
+        metrics: [
+          ["Backbone", "ELECTRA-large, 24 layers"],
+          ["Pooling", "ScalarMix + mean pool"],
+          ["Loss", "Ldiff + 0.1 * Ldom"],
+          ["Lambda", "sigmoid ramp to 0.15"],
+          ["Phase 2", "top 8 layers unfrozen"],
+          ["OOD macro-F1", "CoQA 0.83 / CommonLit 0.88"]
+        ],
+        script: [
+          "ScalarMix pools ELECTRA hidden states.",
+          "Difficulty head predicts E/M/H.",
+          "Domain head predicts source corpus.",
+          "GRL reverses domain gradients in phase 2."
+        ],
+        nodes: [
+          {
+            id: "input",
+            label: "LLM-Judge Splits",
+            kicker: "Sources",
+            body: "20,414 texts from 15 corpora.",
+            x: 13,
+            y: 50
+          },
+          {
+            id: "electra",
+            label: "ELECTRA Encoder",
+            kicker: "Backbone",
+            body: "24-layer encoder exposes all hidden states.",
+            x: 30,
+            y: 50
+          },
+          {
+            id: "mix",
+            label: "ScalarMix Pooling",
+            kicker: "Layer blend",
+            body: "Learns a weighted hidden-state blend.",
+            x: 47,
+            y: 28
+          },
+          {
+            id: "shared",
+            label: "Shared Representation",
+            kicker: "Invariant",
+            body: "One vector feeds both heads.",
+            x: 47,
+            y: 72
+          },
+          {
+            id: "difficulty",
+            label: "Difficulty Head",
+            kicker: "Task",
+            body: "Normal gradients predict E/M/H.",
+            x: 65,
+            y: 33
+          },
+          {
+            id: "grl",
+            label: "Gradient Reversal",
+            kicker: "GRL",
+            body: "Identity forward; reversed domain gradient backward.",
+            x: 65,
+            y: 67
+          },
+          {
+            id: "domain",
+            label: "Domain Head",
+            kicker: "Source",
+            body: "Predicts source corpus as the adversary.",
+            x: 83,
+            y: 67
+          },
+          {
+            id: "output",
+            label: "Phase2 OOD Results",
+            kicker: "Generalize",
+            body: "phase2_final: CoQA 0.83, CommonLit 0.88.",
+            x: 83,
+            y: 33
+          }
+        ],
+        edges: [
+          ["input", "electra"],
+          ["electra", "mix"],
+          ["electra", "shared"],
+          ["mix", "difficulty"],
+          ["shared", "difficulty"],
+          ["shared", "grl"],
+          ["grl", "domain"],
+          ["difficulty", "output"]
+        ]
+      },
+      {
+        id: "lora",
+        index: "03",
+        short: "LoRA-Phi",
+        title: "LoRA-Phi-3.5 Model",
+        subtitle: "Pillar B+ final architecture",
+        accent: "#b894ff",
+        accent2: "#8ff0a4",
+        summary: "The final deployable model is Phi-3.5-mini-instruct adapted with LoRA. It reads the text once, follows a fixed curriculum-concept rubric, and selects the E, M, or H answer token with one forward pass.",
+        sideSummary: "One Phi-3.5 pass chooses the E/M/H token.",
+        metrics: [
+          ["Base", "Phi-3.5-mini 3.8B"],
+          ["Adapter", "LoRA r=32, 50M trainable"],
+          ["Training data", "16,849 judged examples"],
+          ["Latency", "39 ms/text, 127x faster"],
+          ["Final test", "0.872 macro-F1"],
+          ["Hard/easy", "6 / 6 correct"]
+        ],
+        script: [
+          "Prompt asks for concept difficulty.",
+          "LoRA trains about 50M parameters.",
+          "Argmax over E/M/H answer logits."
+        ],
+        nodes: [
+          {
+            id: "input",
+            label: "Input Text",
+            kicker: "Any passage",
+            body: "Raw text enters the classifier.",
+            x: 12,
+            y: 50
+          },
+          {
+            id: "prompt",
+            label: "Instruction Prompt",
+            kicker: "Rubric",
+            body: "Fixed rubric asks for concept difficulty.",
+            x: 30,
+            y: 50
+          },
+          {
+            id: "base",
+            label: "Phi-3.5 Base",
+            kicker: "Frozen",
+            body: "Frozen 3.8B instruction model.",
+            x: 48,
+            y: 50
+          },
+          {
+            id: "adapter",
+            label: "LoRA Adapter",
+            kicker: "r=32",
+            body: "Rank-32 adapters train about 50M params.",
+            x: 48,
+            y: 24
+          },
+          {
+            id: "logits",
+            label: "Answer Logits",
+            kicker: "Next token",
+            body: "Scores E, M, and H at Answer.",
+            x: 64,
+            y: 50
+          },
+          {
+            id: "argmax",
+            label: "Argmax E/M/H",
+            kicker: "Decision",
+            body: "Largest logit selects the label.",
+            x: 76,
+            y: 50
+          },
+          {
+            id: "output",
+            label: "Fast Classifier",
+            kicker: "Deploy",
+            body: "One pass replaces prompt extraction.",
+            x: 89,
+            y: 70
+          }
+        ],
+        edges: [
+          ["input", "prompt"],
+          ["prompt", "base"],
+          ["adapter", "base"],
+          ["base", "logits"],
+          ["logits", "argmax"],
+          ["argmax", "output"]
+        ]
+      }
+    ];
+
+    const missionList = document.getElementById("missionList");
+    const demoGrid = document.querySelector(".demo-grid");
+    const moduleLayer = document.getElementById("moduleLayer");
+    const linkLayer = document.getElementById("linkLayer");
+    const orbitField = document.getElementById("orbitField");
+    const stageFrame = document.getElementById("stageFrame");
+    const launchCore = document.getElementById("launchCore");
+    const completionBanner = document.getElementById("completionBanner");
+    const stageEyebrow = document.getElementById("stageEyebrow");
+    const stageTitle = document.getElementById("stageTitle");
+    const stageSummary = document.getElementById("stageSummary");
+    const stepReadout = document.getElementById("stepReadout");
+    const progressLabel = document.getElementById("progressLabel");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressFill = document.getElementById("progressFill");
+    const detailEyebrow = document.getElementById("detailEyebrow");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailSummary = document.getElementById("detailSummary");
+    const activeBadge = document.getElementById("activeBadge");
+    const nodeTitle = document.getElementById("nodeTitle");
+    const nodeBody = document.getElementById("nodeBody");
+    const scriptList = document.getElementById("scriptList");
+    const metricGrid = document.getElementById("metricGrid");
+    const tourState = document.getElementById("tourState");
+    const advanceButton = document.getElementById("advanceButton");
+    const autoButton = document.getElementById("autoButton");
+    const focusButton = document.getElementById("focusButton");
+
+    let activeArch = 0;
+    let revealed = architectures.map(() => 0);
+    let selectedNodeId = null;
+    let autoTimer = null;
+    let focusMode = false;
+
+    const totalNodes = architectures.reduce((sum, arch) => sum + arch.nodes.length, 0);
+
+    function htmlEscape(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function currentCount() {
+      return revealed.reduce((sum, count) => sum + count, 0);
+    }
+
+    function isComplete() {
+      return currentCount() >= totalNodes;
+    }
+
+    function setTheme(arch) {
+      document.documentElement.style.setProperty("--accent", arch.accent);
+      document.documentElement.style.setProperty("--accent-2", arch.accent2);
+      stageFrame.style.setProperty("--accent", arch.accent);
+    }
+
+    function selectedNode() {
+      const arch = architectures[activeArch];
+      const visibleNodes = arch.nodes.slice(0, revealed[activeArch]);
+      if (selectedNodeId) {
+        const found = visibleNodes.find((node) => node.id === selectedNodeId);
+        if (found) return found;
+      }
+      if (visibleNodes.length) return visibleNodes[visibleNodes.length - 1];
+      return null;
+    }
+
+    function renderMissions() {
+      missionList.innerHTML = architectures.map((arch, index) => {
+        const progress = arch.nodes.length ? revealed[index] / arch.nodes.length : 0;
+        const state = progress >= 1 ? "Complete" : progress > 0 ? "Live" : "Locked";
+        const activeClass = index === activeArch ? " is-active" : "";
+        return `
+          <button class="mission-button${activeClass}" type="button" data-arch="${index}" title="${htmlEscape(arch.title)} - ${htmlEscape(arch.subtitle)}" style="--arch-color: ${arch.accent}; --mission-progress: ${progress};">
+            <span class="mission-index">${arch.index}</span>
+            <span class="mission-copy">
+              <strong>${htmlEscape(arch.short)}</strong>
+              <small>${htmlEscape(arch.subtitle)}</small>
+              <span class="mission-state">${state}</span>
+            </span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function edgePath(from, to) {
+      const midX = (from.x + to.x) / 2;
+      const controlLift = Math.abs(from.y - to.y) > 20 ? 0 : 8;
+      const c1y = from.y - controlLift;
+      const c2y = to.y + controlLift;
+      return `M ${from.x} ${from.y} C ${midX} ${c1y}, ${midX} ${c2y}, ${to.x} ${to.y}`;
+    }
+
+    function renderLinks(arch, visibleIds) {
+      const byId = new Map(arch.nodes.map((node) => [node.id, node]));
+      linkLayer.innerHTML = arch.edges
+        .filter(([fromId, toId]) => visibleIds.has(fromId) && visibleIds.has(toId))
+        .map(([fromId, toId]) => {
+          const from = byId.get(fromId);
+          const to = byId.get(toId);
+          const d = edgePath(from, to);
+          return `
+            <path class="wire-base" d="${d}"></path>
+            <path class="wire-pulse" d="${d}"></path>
+            <path class="wire-pulse secondary" d="${d}"></path>
+          `;
+        })
+        .join("");
+    }
+
+    function renderModules(arch) {
+      const selected = selectedNode();
+      moduleLayer.innerHTML = arch.nodes.map((node, index) => {
+        const isVisible = index < revealed[activeArch];
+        const isActive = selected && selected.id === node.id;
+        return `
+          <button
+            class="module-card${isVisible ? " is-visible" : ""}${isActive ? " is-active" : ""}"
+            type="button"
+            data-node="${htmlEscape(node.id)}"
+            style="--x: ${node.x}%; --y: ${node.y}%;"
+            ${isVisible ? "" : "tabindex=\"-1\""}
+          >
+            <span class="module-kicker">${htmlEscape(node.kicker)}</span>
+            <span class="module-label">${htmlEscape(node.label)}</span>
+            <span class="module-body">${htmlEscape(node.body)}</span>
+          </button>
+        `;
+      }).join("");
+
+      const visibleIds = new Set(arch.nodes.slice(0, revealed[activeArch]).map((node) => node.id));
+      renderLinks(arch, visibleIds);
+      launchCore.classList.toggle("is-hidden", currentCount() > 0);
+      orbitField.classList.toggle("is-live", currentCount() > 0);
+      completionBanner.classList.toggle("is-visible", isComplete());
+    }
+
+    function renderDetail(arch) {
+      const node = selectedNode();
+      detailEyebrow.textContent = `Architecture ${arch.index}`;
+      detailTitle.textContent = arch.title;
+      detailSummary.textContent = arch.sideSummary || arch.summary;
+      activeBadge.textContent = arch.short;
+
+      if (node) {
+        nodeTitle.textContent = node.label;
+        nodeBody.textContent = node.body;
+      } else {
+        nodeTitle.textContent = "Mission locked";
+        nodeBody.textContent = "Launch the reveal to begin the walkthrough.";
+      }
+
+      scriptList.innerHTML = arch.script.map((item, index) => `
+        <div class="script-item">
+          <span class="script-dot">${index + 1}</span>
+          <p>${htmlEscape(item)}</p>
+        </div>
+      `).join("");
+
+      metricGrid.innerHTML = arch.metrics.map(([label, value]) => `
+        <div class="metric">
+          <span>${htmlEscape(label)}</span>
+          <strong>${htmlEscape(value)}</strong>
+        </div>
+      `).join("");
+    }
+
+    function renderProgress() {
+      const count = currentCount();
+      const percent = Math.round((count / totalNodes) * 100);
+      stepReadout.textContent = `${count} / ${totalNodes}`;
+      progressPercent.textContent = `${percent}%`;
+      progressFill.style.width = `${percent}%`;
+
+      if (count === 0) {
+        progressLabel.textContent = "Awaiting signal";
+        tourState.textContent = "Idle";
+        advanceButton.textContent = "Launch";
+      } else if (count >= totalNodes) {
+        progressLabel.textContent = "All systems open";
+        tourState.textContent = "Done";
+        advanceButton.textContent = "Replay";
+      } else {
+        progressLabel.textContent = `${architectures[activeArch].title} active`;
+        tourState.textContent = "Live";
+        advanceButton.textContent = "Next";
+      }
+    }
+
+    function render() {
+      const arch = architectures[activeArch];
+      setTheme(arch);
+      stageEyebrow.textContent = `Mission ${arch.index}`;
+      stageTitle.textContent = arch.title;
+      stageSummary.textContent = arch.summary;
+      renderMissions();
+      renderModules(arch);
+      renderDetail(arch);
+      renderProgress();
+    }
+
+    function nextAvailableArchitecture(startIndex) {
+      for (let i = startIndex; i < architectures.length; i += 1) {
+        if (revealed[i] < architectures[i].nodes.length) return i;
+      }
+      for (let i = 0; i < startIndex; i += 1) {
+        if (revealed[i] < architectures[i].nodes.length) return i;
+      }
+      return -1;
+    }
+
+    function advanceStep() {
+      if (isComplete()) {
+        resetSequence();
+        return true;
+      }
+
+      if (revealed[activeArch] >= architectures[activeArch].nodes.length) {
+        const nextArch = nextAvailableArchitecture(activeArch + 1);
+        if (nextArch >= 0) activeArch = nextArch;
+      }
+
+      const arch = architectures[activeArch];
+      const nextIndex = revealed[activeArch];
+      const node = arch.nodes[nextIndex];
+      if (!node) return false;
+      revealed[activeArch] += 1;
+      selectedNodeId = node.id;
+      render();
+      return true;
+    }
+
+    function resetSequence() {
+      stopAuto();
+      activeArch = 0;
+      revealed = architectures.map(() => 0);
+      selectedNodeId = null;
+      render();
+    }
+
+    function openAll() {
+      stopAuto();
+      revealed = architectures.map((arch) => arch.nodes.length);
+      activeArch = architectures.length - 1;
+      selectedNodeId = architectures[activeArch].nodes[architectures[activeArch].nodes.length - 1].id;
+      render();
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+      }
+      autoButton.textContent = "Auto";
+    }
+
+    function startAuto() {
+      if (autoTimer) {
+        stopAuto();
+        return;
+      }
+      autoButton.textContent = "Pause";
+      if (currentCount() === 0) advanceStep();
+      autoTimer = window.setInterval(() => {
+        if (isComplete()) {
+          stopAuto();
+          return;
+        }
+        advanceStep();
+      }, 1450);
+    }
+
+    function toggleFocus() {
+      focusMode = !focusMode;
+      demoGrid.classList.toggle("is-focus", focusMode);
+      focusButton.textContent = focusMode ? "Info" : "Focus";
+    }
+
+    document.addEventListener("click", (event) => {
+      const actionButton = event.target.closest("[data-action]");
+      if (actionButton) {
+        const action = actionButton.getAttribute("data-action");
+        if (action === "advance") advanceStep();
+        if (action === "auto") startAuto();
+        if (action === "all") openAll();
+        if (action === "focus") toggleFocus();
+        if (action === "reset") resetSequence();
+        return;
+      }
+
+      const missionButton = event.target.closest("[data-arch]");
+      if (missionButton) {
+        stopAuto();
+        activeArch = Number(missionButton.getAttribute("data-arch"));
+        if (revealed[activeArch] === 0) {
+          revealed[activeArch] = 1;
+          selectedNodeId = architectures[activeArch].nodes[0].id;
+        } else {
+          const arch = architectures[activeArch];
+          const lastVisible = arch.nodes[Math.max(0, revealed[activeArch] - 1)];
+          selectedNodeId = lastVisible ? lastVisible.id : null;
+        }
+        render();
+        return;
+      }
+
+      const nodeButton = event.target.closest("[data-node]");
+      if (nodeButton) {
+        selectedNodeId = nodeButton.getAttribute("data-node");
+        render();
+      }
+    });
+
+    function initStars() {
+      const canvas = document.getElementById("starfield");
+      const ctx = canvas.getContext("2d");
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let stars = [];
+
+      function buildStars() {
+        const count = Math.min(420, Math.max(190, Math.floor((width * height) / 4200)));
+        stars = Array.from({ length: count }, (_, index) => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.55 + 0.25,
+          speed: Math.random() * 0.18 + 0.04,
+          phase: Math.random() * Math.PI * 2,
+          tint: index % 9 === 0 ? "rgba(255, 210, 126," : index % 7 === 0 ? "rgba(126, 210, 255," : "rgba(245, 248, 255,"
+        }));
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildStars();
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, width, height);
+        for (const star of stars) {
+          star.y += star.speed;
+          star.x += Math.sin(time * 0.00018 + star.phase) * 0.03;
+          if (star.y > height + 4) {
+            star.y = -4;
+            star.x = Math.random() * width;
+          }
+          const alpha = 0.3 + Math.sin(time * 0.002 + star.phase) * 0.18 + star.radius * 0.12;
+          ctx.beginPath();
+          ctx.fillStyle = `${star.tint}${Math.max(0.18, Math.min(0.92, alpha))})`;
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      requestAnimationFrame(draw);
+    }
+
+    initStars();
+    render();
+  </script>
+</body>
+</html>

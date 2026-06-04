@@ -1,0 +1,13 @@
+codecarbon>=2.3
+textstat>=0.7
+torch>=2.0
+transformers>=4.40
+vllm>=0.5
+numpy
+pandas
+scikit-learn
+scipy
+matplotlib
+tqdm
+gradio>=4.0
+huggingface_hub

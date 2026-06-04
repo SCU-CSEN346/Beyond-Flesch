@@ -1,0 +1,110 @@
+{
+  "pkl": "/home/tanmayv/my_repos/text_difficulty_classifier/llm_as_a_judge/outputs/models/all_llms__llm_judge__all__seed42.pkl",
+  "config": "all_llms",
+  "label_source": "llm_judge",
+  "seed": 42,
+  "sweep_ks": [
+    0,
+    10,
+    50,
+    100
+  ],
+  "by_ood": {
+    "ood_onestop": [
+      {
+        "K": 0,
+        "mean_f1": 0.5245724599088704,
+        "std_f1": 0.0,
+        "n_resamples": 1
+      },
+      {
+        "K": 10,
+        "mean_f1": 0.46676400639317955,
+        "std_f1": 0.05068551454988621,
+        "n_resamples": 5
+      },
+      {
+        "K": 50,
+        "mean_f1": 0.5208781604543521,
+        "std_f1": 0.006208026981898591,
+        "n_resamples": 5
+      },
+      {
+        "K": 100,
+        "mean_f1": 0.5192707351865455,
+        "std_f1": 0.004794660982035373,
+        "n_resamples": 5
+      },
+      {
+        "K": "full_80pct_oracle",
+        "mean_f1": 0.5275624206330899,
+        "std_f1": 0.020099180780472778,
+        "n_resamples": 5
+      }
+    ],
+    "ood_race-middle": [
+      {
+        "K": 0,
+        "mean_f1": 0.6643492515904286,
+        "std_f1": 0.0,
+        "n_resamples": 1
+      },
+      {
+        "K": 10,
+        "mean_f1": 0.5024621831612237,
+        "std_f1": 0.027130926013140183,
+        "n_resamples": 3
+      },
+      {
+        "K": 50,
+        "mean_f1": 0.5064704964924294,
+        "std_f1": 0.11754422903414186,
+        "n_resamples": 5
+      },
+      {
+        "K": 100,
+        "mean_f1": 0.5582427601473682,
+        "std_f1": 0.07497631201353712,
+        "n_resamples": 5
+      },
+      {
+        "K": "full_80pct_oracle",
+        "mean_f1": 0.5616091311447348,
+        "std_f1": 0.03423129904102891,
+        "n_resamples": 5
+      }
+    ],
+    "ood_race-high": [
+      {
+        "K": 0,
+        "mean_f1": 0.4958879942593297,
+        "std_f1": 0.0,
+        "n_resamples": 1
+      },
+      {
+        "K": 10,
+        "mean_f1": 0.4460969398843698,
+        "std_f1": 0.02968543057864984,
+        "n_resamples": 5
+      },
+      {
+        "K": 50,
+        "mean_f1": 0.47492362960415513,
+        "std_f1": 0.023676240040908923,
+        "n_resamples": 5
+      },
+      {
+        "K": 100,
+        "mean_f1": 0.4892008120470387,
+        "std_f1": 0.02100063307986172,
+        "n_resamples": 5
+      },
+      {
+        "K": "full_80pct_oracle",
+        "mean_f1": 0.4959952700991451,
+        "std_f1": 0.03199844864677791,
+        "n_resamples": 5
+      }
+    ]
+  }
+}

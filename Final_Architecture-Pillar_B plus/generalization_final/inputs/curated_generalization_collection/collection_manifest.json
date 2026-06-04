@@ -1,0 +1,143 @@
+{
+  "step": "step2e_curated_generalization_collection",
+  "out_dir": "/content/drive/MyDrive/text-difficulty-classification/outputs/curated_generalization_collection",
+  "include": [
+    "scienceqa",
+    "clear",
+    "onestop",
+    "cefr-elg",
+    "cefr-sp",
+    "cefr-readme",
+    "openbookqa",
+    "mctest",
+    "agentlans-readability",
+    "finrad-readability",
+    "grade-aware",
+    "cefr-synthetic",
+    "english-cefr-explorer"
+  ],
+  "ood": [
+    "race-middle",
+    "race-high"
+  ],
+  "skipped_sources": {
+    "mctest": "RuntimeError('Dataset scripts are no longer supported, but found mctest.py')"
+  },
+  "caps": {
+    "max_per_level": 1500,
+    "single_class_train_cap": 500,
+    "silver_cap_per_level": 1000,
+    "cefr_cap_per_level": 1000,
+    "cefr_doc_cap_per_level": 1500,
+    "synthetic_cap_per_level": 500,
+    "finrad_cap_per_level": 250
+  },
+  "columns": [
+    "full_text",
+    "education_level",
+    "source_dataset",
+    "domain",
+    "label_source",
+    "subject",
+    "raw_label",
+    "raw_grade",
+    "source_tier",
+    "label_confidence",
+    "sample_weight",
+    "split_group",
+    "source_license",
+    "split"
+  ],
+  "source_meta": {
+    "scienceqa": {
+      "tier": "gold",
+      "label_confidence": 1.0,
+      "sample_weight": 1.0,
+      "license": "local/original"
+    },
+    "clear": {
+      "tier": "gold",
+      "label_confidence": 1.0,
+      "sample_weight": 1.0,
+      "license": "local/CLEAR"
+    },
+    "onestop": {
+      "tier": "gold",
+      "label_confidence": 0.95,
+      "sample_weight": 0.95,
+      "license": "SetFit/onestop_english"
+    },
+    "cefr-elg": {
+      "tier": "gold",
+      "label_confidence": 0.9,
+      "sample_weight": 0.9,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    "openbookqa": {
+      "tier": "silver",
+      "label_confidence": 0.75,
+      "sample_weight": 0.45,
+      "license": "allenai/openbookqa"
+    },
+    "mctest": {
+      "tier": "silver",
+      "label_confidence": 0.75,
+      "sample_weight": 0.45,
+      "license": "sagnikrayc/mctest"
+    },
+    "agentlans-readability": {
+      "tier": "silver",
+      "label_confidence": 0.7,
+      "sample_weight": 0.6,
+      "license": "agentlans/readability"
+    },
+    "cefr-sp": {
+      "tier": "silver",
+      "label_confidence": 0.8,
+      "sample_weight": 0.65,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    "cefr-readme": {
+      "tier": "silver",
+      "label_confidence": 0.8,
+      "sample_weight": 0.65,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    "finrad-readability": {
+      "tier": "silver",
+      "label_confidence": 0.65,
+      "sample_weight": 0.35,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    "grade-aware": {
+      "tier": "bronze",
+      "label_confidence": 0.55,
+      "sample_weight": 0.3,
+      "license": "synthetic"
+    },
+    "cefr-synthetic": {
+      "tier": "bronze",
+      "label_confidence": 0.55,
+      "sample_weight": 0.3,
+      "license": "cc-by-4.0/synthetic"
+    },
+    "english-cefr-explorer": {
+      "tier": "bronze",
+      "label_confidence": 0.55,
+      "sample_weight": 0.3,
+      "license": "synthetic"
+    },
+    "race-middle": {
+      "tier": "ood",
+      "label_confidence": 0.8,
+      "sample_weight": 1.0,
+      "license": "ehovy/race"
+    },
+    "race-high": {
+      "tier": "ood",
+      "label_confidence": 0.8,
+      "sample_weight": 1.0,
+      "license": "ehovy/race"
+    }
+  }
+}

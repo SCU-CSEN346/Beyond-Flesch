@@ -1,0 +1,261 @@
+{
+  "models": [
+    {
+      "kind": "baseline",
+      "name": "baseline_qwen2.5-7b",
+      "json_path": "gen_v2/outputs/eval_reports/baseline_per_llm_qwen2.5-7b_seed7.eval.json",
+      "n_params": 58500,
+      "test_f1": 0.8399586598777353,
+      "balanced_test_f1": 0.8564398210963109,
+      "synth_judge_f1": 0.9183289119296895,
+      "synth_gen_f1": 0.9396835740921762,
+      "race_mid_f1": 0.5953054836933078,
+      "race_high_f1": 0.47926140278351936,
+      "onestop_f1": 0.41472283980856917,
+      "adv_overall": 0.6,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.6774193548387096,
+        "surface_hard_concept_easy": 0.0,
+        "surface_matches_concept": 0.6923076923076923
+      },
+      "energy_kwh": null
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__all-MiniLM-L6-v2__emb_only",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__all-MiniLM-L6-v2__emb_only.eval.json",
+      "n_params": 384,
+      "n_params_encoder_m": null,
+      "latency_ms": 2.236072439700365,
+      "test_f1": 0.7823064148537883,
+      "balanced_test_f1": 0.7674415719765965,
+      "synth_judge_f1": 0.7698688271604938,
+      "synth_gen_f1": 0.7429892405520949,
+      "race_mid_f1": 0.4348484848484849,
+      "race_high_f1": 0.45782885746016194,
+      "onestop_f1": 0.39532091523446883,
+      "adv_overall": 0.44,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.41935483870967744,
+        "surface_hard_concept_easy": 0.5,
+        "surface_matches_concept": 0.46153846153846156
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__all-MiniLM-L6-v2__emb_plus_static5",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__all-MiniLM-L6-v2__emb_plus_static5.eval.json",
+      "n_params": 389,
+      "n_params_encoder_m": null,
+      "latency_ms": 2.9609431512653828,
+      "test_f1": 0.807930505977518,
+      "balanced_test_f1": 0.787195243462806,
+      "synth_judge_f1": 0.7032092800306776,
+      "synth_gen_f1": 0.6765877683308877,
+      "race_mid_f1": 0.4748214956783164,
+      "race_high_f1": 0.47426050155328436,
+      "onestop_f1": 0.4241042420866982,
+      "adv_overall": 0.36,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.41935483870967744,
+        "surface_hard_concept_easy": 0.0,
+        "surface_matches_concept": 0.38461538461538464
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__bge-base-en-v1.5__emb_only",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__bge-base-en-v1.5__emb_only.eval.json",
+      "n_params": 768,
+      "n_params_encoder_m": null,
+      "latency_ms": 4.303084686398506,
+      "test_f1": 0.8043315898344345,
+      "balanced_test_f1": 0.7998765903255687,
+      "synth_judge_f1": 0.7291925465838509,
+      "synth_gen_f1": 0.7491315767177836,
+      "race_mid_f1": 0.4679738562091503,
+      "race_high_f1": 0.48730481280231075,
+      "onestop_f1": 0.4552339652222617,
+      "adv_overall": 0.46,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.3548387096774194,
+        "surface_hard_concept_easy": 0.6666666666666666,
+        "surface_matches_concept": 0.6153846153846154
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__bge-base-en-v1.5__emb_plus_static5",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__bge-base-en-v1.5__emb_plus_static5.eval.json",
+      "n_params": 773,
+      "n_params_encoder_m": null,
+      "latency_ms": 4.304417874664068,
+      "test_f1": 0.8042619352180727,
+      "balanced_test_f1": 0.8010644273445984,
+      "synth_judge_f1": 0.8004451292586886,
+      "synth_gen_f1": 0.782833686174997,
+      "race_mid_f1": 0.5120475397396352,
+      "race_high_f1": 0.49532047646057853,
+      "onestop_f1": 0.45793687273310457,
+      "adv_overall": 0.4,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.3225806451612903,
+        "surface_hard_concept_easy": 0.3333333333333333,
+        "surface_matches_concept": 0.6153846153846154
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__bge-small-en-v1.5__emb_only",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__bge-small-en-v1.5__emb_only.eval.json",
+      "n_params": 384,
+      "n_params_encoder_m": null,
+      "latency_ms": 3.4408974461257458,
+      "test_f1": 0.7987112464169049,
+      "balanced_test_f1": 0.7896911070170044,
+      "synth_judge_f1": 0.7854874704189773,
+      "synth_gen_f1": 0.8054638393621444,
+      "race_mid_f1": 0.5017638784158608,
+      "race_high_f1": 0.47960516168834505,
+      "onestop_f1": 0.42145748684909573,
+      "adv_overall": 0.5,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.45161290322580644,
+        "surface_hard_concept_easy": 0.5,
+        "surface_matches_concept": 0.6153846153846154
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_a",
+      "name": "pillar_a__bge-small-en-v1.5__emb_plus_static5",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_a__bge-small-en-v1.5__emb_plus_static5.eval.json",
+      "n_params": 389,
+      "n_params_encoder_m": null,
+      "latency_ms": 3.5018809139728546,
+      "test_f1": 0.8063972004233869,
+      "balanced_test_f1": 0.8107190047734327,
+      "synth_judge_f1": 0.8011945542380325,
+      "synth_gen_f1": 0.8208067455121144,
+      "race_mid_f1": 0.5602706236852578,
+      "race_high_f1": 0.49913362000318523,
+      "onestop_f1": 0.48254673387533026,
+      "adv_overall": 0.52,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.5161290322580645,
+        "surface_hard_concept_easy": 0.16666666666666666,
+        "surface_matches_concept": 0.6923076923076923
+      },
+      "energy_kwh": 0.0282750752429446
+    },
+    {
+      "kind": "pillar_b",
+      "name": "pillar_b__gemma-2-2b-it",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_b__gemma-2-2b-it.eval.json",
+      "n_params": 2614341888,
+      "n_params_trainable_lora": 0,
+      "latency_ms": 27.932268101722002,
+      "train_sec": 658.2,
+      "test_f1": 0.8555208407789779,
+      "balanced_test_f1": 0.8271030783319523,
+      "synth_judge_f1": 0.8562489042715032,
+      "synth_gen_f1": 0.8262461569143466,
+      "race_mid_f1": 0.49231003818989594,
+      "race_high_f1": 0.520549601705035,
+      "onestop_f1": 0.4932343660027844,
+      "adv_overall": 0.62,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.5806451612903226,
+        "surface_hard_concept_easy": 0.5,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "energy_kwh": 0.26856772148115
+    },
+    {
+      "kind": "pillar_b",
+      "name": "pillar_b__phi-3.5-mini-instruct",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_b__phi-3.5-mini-instruct.eval.json",
+      "n_params": 3821079552,
+      "n_params_trainable_lora": 0,
+      "latency_ms": 34.28587131202221,
+      "train_sec": 860.1,
+      "test_f1": 0.8565155632411067,
+      "balanced_test_f1": 0.8541997082554467,
+      "synth_judge_f1": 0.8627382526813266,
+      "synth_gen_f1": 0.8850846371498459,
+      "race_mid_f1": 0.6732334374940198,
+      "race_high_f1": 0.5293502090524691,
+      "onestop_f1": 0.4364980282583279,
+      "adv_overall": 0.68,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.6451612903225806,
+        "surface_hard_concept_easy": 0.6666666666666666,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "energy_kwh": 0.26856772148115
+    },
+    {
+      "kind": "pillar_b",
+      "name": "pillar_b__qwen-2.5-3b-instruct",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_b__qwen-2.5-3b-instruct.eval.json",
+      "n_params": 3085938688,
+      "n_params_trainable_lora": 0,
+      "latency_ms": 32.73931937292218,
+      "train_sec": 801.8,
+      "test_f1": 0.8570046059298475,
+      "balanced_test_f1": 0.8344939260215971,
+      "synth_judge_f1": 0.8600997021219969,
+      "synth_gen_f1": 0.8787629994526546,
+      "race_mid_f1": 0.523930214158319,
+      "race_high_f1": 0.5365079365079365,
+      "onestop_f1": 0.5181771447579303,
+      "adv_overall": 0.66,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.7419354838709677,
+        "surface_hard_concept_easy": 0.0,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "energy_kwh": 0.26856772148115
+    },
+    {
+      "kind": "pillar_b_plus",
+      "name": "pillar_b_plus__phi-3.5-mini-instruct",
+      "json_path": "gen_v2/outputs/eval_reports/pillar_b_plus__phi-3.5-mini-instruct.eval.json",
+      "n_params": 3871411200,
+      "n_params_trainable_lora": 50331648,
+      "latency_ms": 68.05454799996369,
+      "train_sec": 2819.3,
+      "test_f1": 0.8713594260572469,
+      "balanced_test_f1": 0.8660284306369597,
+      "synth_judge_f1": 0.9176913886591306,
+      "synth_gen_f1": 0.8990313809901439,
+      "race_mid_f1": 0.5529616073685715,
+      "race_high_f1": 0.545874505783293,
+      "onestop_f1": 0.46068672117164905,
+      "adv_overall": 0.8,
+      "adv_per_category": {
+        "surface_easy_concept_hard": 0.7741935483870968,
+        "surface_hard_concept_easy": 1.0,
+        "surface_matches_concept": 0.7692307692307693
+      },
+      "energy_kwh": 0.8677404112160408
+    }
+  ],
+  "emissions_kwh": {
+    "build_adv_concept": 1.6694617426337894e-05,
+    "evaluate_all_baseline": 0.0031811175584204,
+    "pillar_a_lean_combo": 0.0282750752429446,
+    "pillar_b_tiny_teacher": 0.26856772148115,
+    "pillar_b_plus": 0.8677404112160408,
+    "pillar_b_clean": 0.3100774130968363,
+    "pillar_b_hybrid": 0.3923118816477923,
+    "zero_shot_baselines": 0.0443909440804533,
+    "generate_counterfactuals": 0.0212779237436799,
+    "pillar_b_plus_aug": 0.493752100373592,
+    "probe_judges": 0.027513510259948804
+  }
+}

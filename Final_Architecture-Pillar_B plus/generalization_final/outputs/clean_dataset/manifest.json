@@ -1,0 +1,84 @@
+{
+  "n_total": 22612,
+  "overall_agreement": 0.5042455333451265,
+  "splits": {
+    "ood_onestop": {
+      "n_rows": 565,
+      "original_dist": {
+        "high": "189",
+        "middle": "189",
+        "elementary": "187"
+      },
+      "judge_dist": {
+        "high": "388",
+        "middle": "177"
+      },
+      "agreement": 0.4088495575221239
+    },
+    "ood_race-high": {
+      "n_rows": 500,
+      "original_dist": {
+        "high": "500"
+      },
+      "judge_dist": {
+        "middle": "344",
+        "high": "156"
+      },
+      "agreement": 0.312
+    },
+    "ood_race-middle": {
+      "n_rows": 500,
+      "original_dist": {
+        "middle": "500"
+      },
+      "judge_dist": {
+        "middle": "457",
+        "elementary": "37",
+        "high": "6"
+      },
+      "agreement": 0.914
+    },
+    "test": {
+      "n_rows": 2099,
+      "original_dist": {
+        "middle": "734",
+        "elementary": "718",
+        "high": "647"
+      },
+      "judge_dist": {
+        "middle": "1392",
+        "high": "525",
+        "elementary": "182"
+      },
+      "agreement": 0.4902334444973797
+    },
+    "train": {
+      "n_rows": 16849,
+      "original_dist": {
+        "middle": "5888",
+        "elementary": "5762",
+        "high": "5199"
+      },
+      "judge_dist": {
+        "middle": "11026",
+        "high": "4330",
+        "elementary": "1493"
+      },
+      "agreement": 0.5040655231764496
+    },
+    "val": {
+      "n_rows": 2099,
+      "original_dist": {
+        "middle": "734",
+        "elementary": "718",
+        "high": "647"
+      },
+      "judge_dist": {
+        "middle": "1390",
+        "high": "516",
+        "elementary": "193"
+      },
+      "agreement": 0.4935683658885183
+    }
+  }
+}
