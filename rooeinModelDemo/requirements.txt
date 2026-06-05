@@ -1,0 +1,11 @@
+gradio==5.0.0
+huggingface_hub==0.25.2
+joblib
+nltk
+numpy
+pandas
+requests
+scikit-learn
+spacy>=3.7.2,<3.8.0
+textstat
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
